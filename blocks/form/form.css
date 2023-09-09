@@ -1,0 +1,8 @@
+.form{
+    width: 80%;
+    background-color: white;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}

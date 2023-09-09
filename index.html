@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Around the US</title>
+    <link rel="icon" href="/images/avion-favicon.ico" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          src="./images/logo__araund-theUS.svg"
+          alt="logo around the US"
+          class="logo"
+        />
+        <div class="line"></div>
+      </header>
+      <main class="container">
+        <section class="profile">
+          <img
+            src="./images/Avatar__jack.png"
+            alt="avatar de jacques cousteau"
+            class="profile__image"
+          />
+          <ul class="profile__place">
+            <li class="profile__name">Jacques Cousteau</li>
+            <li class="profile__about">Explorador</li>
+          </ul>
+          <button type="button" class="button-edit"></button>
+          <button type="button" class="button-place"></button>
+        </section>
+        <section id="popup-profile" class="popup">
+          <form id="profile-form" class="form" novalidate>
+            <button type="button" class="form__close"></button>
+            <h1 class="form__title">Editar perfil</h1>
+            <input
+              id="text-input-name"
+              class="form__input"
+              type="text"
+              placeholder="Nombre"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="text-input-name-error form__error"></span>
+            <input
+              id="text-input-about"
+              type="text"
+              class="form__input"
+              placeholder="Acerca de mi"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="text-input-about-error form__error"></span>
+            <button type="submit" class="form__button">Guardar</button>
+          </form>
+        </section>
+        <section id="popup-add" class="popup">
+          <form id="add-form" class="form" novalidate>
+            <button
+              id="add-form-close"
+              type="button"
+              class="form__close"
+            ></button>
+            <h2 class="form__title">Nuevo lugar</h2>
+            <input
+              id="text-input-place"
+              type="text"
+              class="form__input"
+              placeholder="Nombre del lugar"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="text-input-place-error form__error"></span>
+            <input
+              type="url"
+              id="url-input-image"
+              class="form__input"
+              placeholder="Introduce URL (https://... o http://...)"
+              required
+            />
+            <span class="url-input-image-error form__error"></span>
+            <button type="submit" class="form__button">Crear</button>
+          </form>
+        </section>
+        <section class="elements"></section>
+        <section class="images-expand">
+          <div class="images-expand__container">
+            <button type="button" class="images-expand__close"></button>
+            <img
+              class="images-expand__image"
+              src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+              alt="US National Park"
+            />
+            <p class="images-expand__title"></p>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2023. Carlos Gomez</p>
+      </footer>
+    </div>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
+  </body>
+</html>

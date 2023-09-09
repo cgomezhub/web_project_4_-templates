@@ -1,0 +1,19 @@
+.images-expand__container{
+    max-width: 75vw;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25%;
+    position: relative;
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px){
+    .images-expand__container{
+        margin: 50% auto;
+    }
+}
+
+
