@@ -1,8 +1,6 @@
-.element{
+.card{
     position: relative;
     margin: 0;
     display: flex;
     flex-direction: column;
-    /*max-width: 98%;
-    max-height: 98%;*/
 }

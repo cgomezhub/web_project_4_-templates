@@ -1,4 +1,4 @@
-.element__image{
+.card__image{
     width: 97%;
     height: 98%;
     border-top-left-radius: 10px;
@@ -6,15 +6,14 @@
     object-fit:cover;
     cursor: pointer;
     border: white solid 0.05px;
-
 }
 
-.element__image:hover{
+.card__image:hover{
     opacity: 80%;
 }
 
 @media screen and (max-width: 768px){
-    .element__image{
+    .card__image{
         pointer-events:none;
         width: 100%;
     }
