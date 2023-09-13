@@ -176,11 +176,18 @@ elementos.forEach((elemento) => {
   cardElement.querySelector('.card__heart').src = elemento.corazon;
   cardElement.querySelector('.card__heart').alt = elemento.altCorazon;
 
+<<<<<<< HEAD
   // hacer que aparezca en la página
 
   cards.append(cardElement);
 
   // activar botones de cerrar, y de espandir la imagen
+=======
+  // haz que aparezca en la página
+  cards.append(cardElement);
+
+  // activando botones de cerrar, y de espandir la imagen
+>>>>>>> 6d5aa266ce4da60b39854da5caee3cc9b4ef8ca9
 
   const cardTrash = cardElement.querySelector('.card__trash');
   const cardImage = cardElement.querySelector('.card__image');
