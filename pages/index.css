@@ -24,12 +24,12 @@
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__trash/card__trash.css);
-@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__place/card__place.css);
 @import url(../blocks/card/__heart/card__heart.css);
 @import url(../blocks/images-expand/images-expand.css);
 @import url(../blocks/images-expand/__container/images-expand__container.css);
 @import url(../blocks/images-expand/__image/images-expand__image.css);
-@import url(../blocks/images-expand/__title/images-expand__title.css);
+@import url(../blocks/images-expand/__place/images-expand__place.css);
 @import url(../blocks/images-expand/__close/images-expand__close.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

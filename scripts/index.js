@@ -75,11 +75,6 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-const imagesExpand = document.querySelector('.images-expand');
-const imagesExpandImage = document.querySelector('.images-expand__image');
-const imagesExpandTitle = document.querySelector('.images-expand__title');
-const imagesExpandClose = document.querySelector('.images-expand__close');
-
 function like(boton) {
   if (boton.src.includes('./images/heart.svg')) {
     boton.src = './images/Black-heart.png';
@@ -90,104 +85,202 @@ function like(boton) {
   }
 }
 
-
-const elementos = [
+const elements = [
   {
-    imagen:
+    image:
       'https://images.unsplash.com/photo-1666831268439-376e34c4de0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80',
-    altImagen: 'imagen de la Montana de Yosemite',
-    nombre: 'Montana de Yosemite',
-    corazon: 'images/heart.svg',
-    altCorazon: 'corazon de me gusta',
-    eliminar: 'images/Trash.svg',
-    altCesta: 'cesta  de eliminar'
+    altImage: 'imagen de la Montana de Yosemite',
+    place: 'Montana de Yosemite',
+    heart: 'images/heart.svg',
+    altHeart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
   },
   {
-    imagen:
+    image:
       'https://images.unsplash.com/photo-1618595723314-c54d51d6e043?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1220&q=80',
-    altImagen: 'imagen de Los Arcos',
-    nombre: 'Los Arcos',
-    corazon: 'images/heart.svg',
-    altCorazon: 'corazon de me gusta',
-    eliminar: 'images/Trash.svg',
-    altCesta: 'cesta  de eliminar'
+    altImage: 'imagen de Los Arcos',
+    place: 'Los Arcos',
+    heart: 'images/heart.svg',
+    altHeart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
   },
   {
-    imagen:
+    image:
       'https://images.unsplash.com/photo-1657589809154-8212431ee6c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-    altImagen: 'imagen del Canon Bryce',
-    nombre: 'Canon Bryce',
-    corazon: 'images/heart.svg',
-    altCorazon: 'corazon de me gusta',
-    eliminar: 'images/Trash.svg',
-    altCesta: 'cesta  de eliminar'
+    altImage: 'imagen del Canon Bryce',
+    place: 'Canon Bryce',
+    heart: 'images/heart.svg',
+    altheart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
   },
   {
-    imagen:
+    image:
       'https://images.unsplash.com/photo-1615405147358-f17791e21fcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-    altImagen: 'imagen del parque nacional Zion',
-    nombre: 'Parque Nacional Zion',
-    corazon: 'images/heart.svg',
-    altCorazon: 'corazon de me gusta',
-    eliminar: 'images/Trash.svg',
-    altCesta: 'cesta  de eliminar'
+    altImage: 'imagen del parque nacional Zion',
+    place: 'Parque Nacional Zion',
+    heart: 'images/heart.svg',
+    altHeart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
   },
   {
-    imagen:
+    image:
       'https://images.unsplash.com/photo-1678806922638-27bf485490ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80',
-    altImagen: 'imagen del parque nacional Denali',
-    nombre: 'Parque Nacional Denali',
-    corazon: 'images/heart.svg',
-    altCorazon: 'corazon de me gusta',
-    eliminar: 'images/Trash.svg',
-    altCesta: 'cesta  de eliminar'
+    altImage: 'imagen del parque nacional Denali',
+    place: 'Parque Nacional Denali',
+    heart: 'images/heart.svg',
+    altHeart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
   },
 
   {
-    imagen:
+    image:
       'https://images.unsplash.com/photo-1643252494989-81cd0b5bead2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
-    altImagen: 'imagen del gran canon',
-    nombre: 'Gran Canon',
-    corazon: 'images/heart.svg',
-    altCorazon: 'corazon de me gusta',
-    eliminar: 'images/Trash.svg',
-    altCesta: 'cesta  de eliminar'
-  }
+    altImage: 'imagen del gran canon',
+    place: 'Gran Canon',
+    heart: 'images/heart.svg',
+    altHeart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
+  },
+  /*
+  {
+    image: popupAddInputHttps.value,
+    altImage: `imagen de ${popupAddInputPlace.value}`,
+    place: popupAddInputPlace.value,
+    heart: 'images/heart.svg',
+    altHeart: 'corazon de me gusta',
+    trash: 'images/Trash.svg',
+    altTrash: 'cesta  de eliminar',
+    isInput: true
+  }*/
 ];
 
 const cards = document.querySelector('.cards');
+const imagesExpand = document.querySelector('.images-expand');
+const imagesExpandImage = document.querySelector('.images-expand__image');
+const imagesExpandPlace = document.querySelector('.images-expand__place');
+const imagesExpandClose = document.querySelector('.images-expand__close');
 
-elementos.forEach((elemento) => {
+
+
+class Card {
+  constructor(data, cardSelector) {
+    this._image = data.image;
+    this._altImage = data.altImage;
+    this._place = data.place;
+    this._heart = data.heart;
+    this._altHeart = data.altHeart;
+    this._trash = data.trash;
+    this._altTrash = data.altTrash;
+    this._cardSelector = cardSelector;
+  }
+  
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector(".card")
+      .cloneNode(true);
+
+    return cardElement;
+  }
+
+
+  generateCard() {
+    this._element = this._getTemplate();
+    
+    this._element.querySelector('.card__place').textContent = this._place;
+    this._element.querySelector('.card__image').src = this._image;
+    this._element.querySelector('.card__image').alt = this._altImage;
+    this._element.querySelector('.card__heart').src = this._heart;
+    this._element.querySelector('.card__heart').alt = this._altHeart;
+    this._element.querySelector('.card__trash').src = this._trash;
+    this._element.querySelector('.card__trash').alt = this._altTrash;
+
+    this._setEventListeners();
+
+    return this._element;
+  }
+
+
+  _handleOpenExpand() {
+    imagesExpand.classList.add('active');
+    imagesExpandImage.src = this._image;
+    imagesExpandImage.alt = this._altImage;
+    imagesExpandPlace.textContent = this._place;
+  }
+
+  _handleRemoveExpand() {
+    imagesExpand.classList.remove('active');
+  }
+
+  _setEventListeners() {
+   
+    this._element.querySelector('.card__image').addEventListener('click', () => {
+        this._handleOpenExpand();
+      });
+  
+    imagesExpandClose.addEventListener('click', () => _handleRemoveExpand );
+  
+
+    imagesExpand.addEventListener('click', function (event) {
+      if (event.target === imagesExpand) {
+        _handleRemoveExpand();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      _handleRemoveExpand();
+    }
+    });
+  }
+}
+
+elements.forEach((item) => {
+  const card = new Card(item, '.card-template');
+
+  const cardElement = card.generateCard();
+
+  cards.append(cardElement);
+});
+
+/*this._place = data.place;
+    this._image = data.image;
+    this._altImage = data.altImage;
+
+*/
+
+/*
+
+elements.forEach((element) => {
   const cardTemplate = document.querySelector('#card-template').content;
-  //const cards = document.querySelector('.cards');
-
+  
   // clona el contenido de la etiqueta template
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
   // añade el contenido de cada tarjeta
-  cardElement.querySelector('.card__image').src = elemento.imagen;
-  cardElement.querySelector('.card__image').alt = elemento.altImagen;
+  cardElement.querySelector('.card__image').src = element.image;
+  cardElement.querySelector('.card__image').alt = element.altImage;
 
-  cardElement.querySelector('.card__trash').src = elemento.eliminar;
-  cardElement.querySelector('.card__trash').alt = elemento.altCesta;
+  cardElement.querySelector('.card__trash').src = element.trash;
+  cardElement.querySelector('.card__trash').alt = element.altTrash;
 
-  cardElement.querySelector('.card__title').textContent = elemento.nombre;
+  cardElement.querySelector('.card__title').textContent = element.title;
 
-  cardElement.querySelector('.card__heart').src = elemento.corazon;
-  cardElement.querySelector('.card__heart').alt = elemento.altCorazon;
+  cardElement.querySelector('.card__heart').src = element.heart;
+  cardElement.querySelector('.card__heart').alt = element.altHeart;
 
-<<<<<<< HEAD
   // hacer que aparezca en la página
 
   cards.append(cardElement);
 
   // activar botones de cerrar, y de espandir la imagen
-=======
-  // haz que aparezca en la página
-  cards.append(cardElement);
-
-  // activando botones de cerrar, y de espandir la imagen
->>>>>>> 6d5aa266ce4da60b39854da5caee3cc9b4ef8ca9
 
   const cardTrash = cardElement.querySelector('.card__trash');
   const cardImage = cardElement.querySelector('.card__image');
@@ -199,9 +292,9 @@ elementos.forEach((elemento) => {
  
   cardImage.addEventListener('click', () => {
     imagesExpand.classList.add('active');
-    imagesExpandImage.src = elemento.imagen;
-    imagesExpandImage.alt = elemento.altImagen;
-    imagesExpandTitle.textContent = elemento.nombre;
+    imagesExpandImage.src = element.image;
+    imagesExpandImage.alt = element.altImage;
+    imagesExpandPlace.textContent = element.place;
   });
 
   function removeExpand() {
@@ -223,6 +316,8 @@ elementos.forEach((elemento) => {
   });
 });
 
+*/
+
 // funcion de me gusta
 
 function like(boton) {
@@ -232,7 +327,6 @@ function like(boton) {
   } else {
     boton.src = 'images/heart.svg';
     boton.alt = 'corazon de me gusta inactivo';
-
   }
 }
 const cardHeart = document.querySelectorAll('.card__heart');
@@ -243,14 +337,16 @@ cardHeart.forEach((boton) => {
   boton.addEventListener('click', () => like(boton));
 });
 
-//Declarar la ventada emergente de agregar fotos 
+//Declarar la ventada emergente de agregar fotos
 
 const popupAddForm = document.getElementById('add-form');
 
+/*
+
 function handleLugarFormSubmit(evt) {
   evt.preventDefault();
+  
   // crear tarjeta nueva
-
   const element = document.querySelector('.card').cloneNode(true);
 
   // declarar las variables para eventos
@@ -263,7 +359,7 @@ function handleLugarFormSubmit(evt) {
 
   element.querySelector('.card__image').src = popupAddInputHttps.value;
   element.querySelector('.card__image').alt = `imagen de ${popupAddInputPlace.value}`;
-  element.querySelector('.card__title').textContent = popupAddInputPlace.value;
+  element.querySelector('.card__place').textContent = popupAddInputPlace.value;
 
   // cambios en el boton de me gusta
 
@@ -280,7 +376,7 @@ function handleLugarFormSubmit(evt) {
   elementImage.addEventListener('click', () => {
     imagesExpand.classList.add('active');
     imagesExpandImage.src = popupAddInputHttps.value;
-    imagesExpandTitle.textContent = popupAddInputPlace.value;
+    imagesExpandPlace.textContent = popupAddInputPlace.value;
     imagesExpandImage.alt = `imagen de ${popupAddInputPlace.value}`;
   });
 
@@ -296,3 +392,4 @@ function handleLugarFormSubmit(evt) {
 // agregar el evento a la ventana emergente de agregar fotos
 
 popupAddForm.addEventListener('submit', handleLugarFormSubmit);
+*/
