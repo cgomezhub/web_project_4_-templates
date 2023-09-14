@@ -223,20 +223,22 @@ class Card {
    
     this._element.querySelector('.card__image').addEventListener('click', () => {
         this._handleOpenExpand();
+    });
+  
+    imagesExpandClose.addEventListener('click', () => {
+      this._handleRemoveExpand();
+    });
+  
+
+    imagesExpand.addEventListener('click', () => {
+
+        this._handleRemoveExpand();
       });
   
-    imagesExpandClose.addEventListener('click', () => _handleRemoveExpand );
-  
 
-    imagesExpand.addEventListener('click', function (event) {
-      if (event.target === imagesExpand) {
-        _handleRemoveExpand();
-      }
-    });
-
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keydown', (event) =>{
     if (event.key === 'Escape') {
-      _handleRemoveExpand();
+      this._handleRemoveExpand();
     }
     });
   }
