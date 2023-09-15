@@ -49,6 +49,7 @@ const popupAdd = document.getElementById('popup-add');
 const popupAddClose = document.getElementById('add-form-close');
 const popupAddInputPlace = document.getElementById('text-input-place');
 const popupAddInputHttps = document.getElementById('url-input-image');
+const popupAddForm = document.getElementById('add-form');
 
 function openAddPopup() {
   popupAdd.classList.add('active');
@@ -74,7 +75,7 @@ document.addEventListener('keydown', function (event) {
     buttonPlace.removeEventListener('click', openAddPopup);
   }
 });
-
+/*
 function like(boton) {
   if (boton.src.includes('./images/heart.svg')) {
     boton.src = './images/Black-heart.png';
@@ -83,7 +84,7 @@ function like(boton) {
     boton.src = './images/heart.svg';
     boton.alt = 'corazon de me gusta inactivo';
   }
-}
+}*/
 
 const elements = [
   {
@@ -94,8 +95,7 @@ const elements = [
     heart: 'images/heart.svg',
     altHeart: 'corazon de me gusta inactivo',
     trash: 'images/Trash.svg',
-    altTrash: 'cesta  de eliminar'
-
+    altTrash: 'cesta  de eliminar',
   },
   {
     image:
@@ -148,17 +148,6 @@ const elements = [
     trash: 'images/Trash.svg',
     altTrash: 'cesta  de eliminar',
   },
-  /*
-  {
-    image: popupAddInputHttps.value,
-    altImage: `imagen de ${popupAddInputPlace.value}`,
-    place: popupAddInputPlace.value,
-    heart: 'images/heart.svg',
-    altHeart: 'corazon de me gusta',
-    trash: 'images/Trash.svg',
-    altTrash: 'cesta  de eliminar',
-    isInput: true
-  }*/
 ];
 
 const cards = document.querySelector('.cards');
@@ -166,9 +155,6 @@ const imagesExpand = document.querySelector('.images-expand');
 const imagesExpandImage = document.querySelector('.images-expand__image');
 const imagesExpandPlace = document.querySelector('.images-expand__place');
 const imagesExpandClose = document.querySelector('.images-expand__close');
-
-
-
 
 class Card {
   constructor(data, cardSelector) {
@@ -181,21 +167,19 @@ class Card {
     this._altTrash = data.altTrash;
     this._cardSelector = cardSelector;
   }
-  
+
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content
-      .querySelector(".card")
+      .content.querySelector('.card')
       .cloneNode(true);
 
     return cardElement;
   }
 
-
   generateCard() {
     this._element = this._getTemplate();
-    
+
     this._element.querySelector('.card__place').textContent = this._place;
     this._element.querySelector('.card__image').src = this._image;
     this._element.querySelector('.card__image').alt = this._altImage;
@@ -209,7 +193,6 @@ class Card {
     return this._element;
   }
 
-
   _handleOpenExpand() {
     imagesExpand.classList.add('active');
     imagesExpandImage.src = this._image;
@@ -221,48 +204,46 @@ class Card {
     imagesExpand.classList.remove('active');
   }
 
-
-  _like (evt) {
-    evt.target.classList.toggle("card__heart_active");  
-  };
+  _like(evt) {
+    evt.target.classList.toggle('card__heart_active');
+  }
 
   _handleRemoveCard() {
     this._element.style.display = 'none';
   }
 
-  
   _setEventListeners() {
-   
-    this._element.querySelector('.card__image').addEventListener('click', () => {
+    this._element
+      .querySelector('.card__image')
+      .addEventListener('click', () => {
         this._handleOpenExpand();
-    });
-  
+      });
+
     imagesExpandClose.addEventListener('click', () => {
       this._handleRemoveExpand();
     });
-  
 
     imagesExpand.addEventListener('click', () => {
-
-        this._handleRemoveExpand();
-      });
-  
-
-    document.addEventListener('keydown', (event) =>{
-    if (event.key === 'Escape') {
       this._handleRemoveExpand();
-    }
     });
 
-    this._element.querySelector(".card__heart").addEventListener('click', (evt) => {
-     
-      this._like(evt);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this._handleRemoveExpand();
+      }
     });
 
-    this._element.querySelector(".card__trash").addEventListener('click', () => {
-     
-      this._handleRemoveCard();
-    });
+    this._element
+      .querySelector('.card__heart')
+      .addEventListener('click', (evt) => {
+        this._like(evt);
+      });
+
+    this._element
+      .querySelector('.card__trash')
+      .addEventListener('click', () => {
+        this._handleRemoveCard();
+      });
   }
 }
 
@@ -274,17 +255,11 @@ elements.forEach((item) => {
   cards.append(cardElement);
 });
 
+// manejador del evento submit
 
-
-//Declarar la ventada emergente de agregar fotos
-
-const popupAddForm = document.getElementById('add-form');
-
-
-
-function handleLugarFormSubmit(evt) {
+function handleInputFormSubmit(evt) {
   evt.preventDefault();
-  
+
   // crear tarjeta nueva
   const element = document.querySelector('.card').cloneNode(true);
 
@@ -293,23 +268,27 @@ function handleLugarFormSubmit(evt) {
   const elementImage = element.querySelector('.card__image');
   const elementTrash = element.querySelector('.card__trash');
   const elementHeart = element.querySelector('.card__heart');
-  
+
   //agregar datos del formulario ingresados por el usuario
 
   element.querySelector('.card__image').src = popupAddInputHttps.value;
-  element.querySelector('.card__image').alt = `imagen de ${popupAddInputPlace.value}`;
+  element.querySelector(
+    '.card__image'
+  ).alt = `imagen de ${popupAddInputPlace.value}`;
   element.querySelector('.card__place').textContent = popupAddInputPlace.value;
 
-  // cambios en el boton de me gusta
+  // alternar el boton de me gusta
 
-  elementHeart.addEventListener('click', () => like(elementHeart));
+  elementHeart.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('card__heart_active');
+  });
 
   // eliminar la foto
 
   elementTrash.addEventListener('click', () => {
     element.style.display = 'none';
   });
-  
+
   //expandir la imagen
 
   elementImage.addEventListener('click', () => {
@@ -328,7 +307,6 @@ function handleLugarFormSubmit(evt) {
   cards.prepend(element);
 }
 
-// agregar el evento a la ventana emergente de agregar fotos
+// agregar el evento submit a la ventana emergente de agregar fotos
 
-popupAddForm.addEventListener('submit', handleLugarFormSubmit);
-
+popupAddForm.addEventListener('submit', handleInputFormSubmit);
