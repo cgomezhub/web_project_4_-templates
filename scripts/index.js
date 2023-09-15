@@ -92,9 +92,10 @@ const elements = [
     altImage: 'imagen de la Montana de Yosemite',
     place: 'Montana de Yosemite',
     heart: 'images/heart.svg',
-    altHeart: 'corazon de me gusta',
+    altHeart: 'corazon de me gusta inactivo',
     trash: 'images/Trash.svg',
-    altTrash: 'cesta  de eliminar',
+    altTrash: 'cesta  de eliminar'
+
   },
   {
     image:
@@ -168,6 +169,7 @@ const imagesExpandClose = document.querySelector('.images-expand__close');
 
 
 
+
 class Card {
   constructor(data, cardSelector) {
     this._image = data.image;
@@ -219,6 +221,16 @@ class Card {
     imagesExpand.classList.remove('active');
   }
 
+
+  _like (evt) {
+    evt.target.classList.toggle("card__heart_active");  
+  };
+
+  _handleRemoveCard() {
+    this._element.style.display = 'none';
+  }
+
+  
   _setEventListeners() {
    
     this._element.querySelector('.card__image').addEventListener('click', () => {
@@ -241,6 +253,16 @@ class Card {
       this._handleRemoveExpand();
     }
     });
+
+    this._element.querySelector(".card__heart").addEventListener('click', (evt) => {
+     
+      this._like(evt);
+    });
+
+    this._element.querySelector(".card__trash").addEventListener('click', () => {
+     
+      this._handleRemoveCard();
+    });
   }
 }
 
@@ -252,98 +274,13 @@ elements.forEach((item) => {
   cards.append(cardElement);
 });
 
-/*this._place = data.place;
-    this._image = data.image;
-    this._altImage = data.altImage;
 
-*/
-
-/*
-
-elements.forEach((element) => {
-  const cardTemplate = document.querySelector('#card-template').content;
-  
-  // clona el contenido de la etiqueta template
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-
-  // añade el contenido de cada tarjeta
-  cardElement.querySelector('.card__image').src = element.image;
-  cardElement.querySelector('.card__image').alt = element.altImage;
-
-  cardElement.querySelector('.card__trash').src = element.trash;
-  cardElement.querySelector('.card__trash').alt = element.altTrash;
-
-  cardElement.querySelector('.card__title').textContent = element.title;
-
-  cardElement.querySelector('.card__heart').src = element.heart;
-  cardElement.querySelector('.card__heart').alt = element.altHeart;
-
-  // hacer que aparezca en la página
-
-  cards.append(cardElement);
-
-  // activar botones de cerrar, y de espandir la imagen
-
-  const cardTrash = cardElement.querySelector('.card__trash');
-  const cardImage = cardElement.querySelector('.card__image');
-
-  cardTrash.addEventListener('click', () => {
-  cardElement.style.display = 'none';
-  });
-
- 
-  cardImage.addEventListener('click', () => {
-    imagesExpand.classList.add('active');
-    imagesExpandImage.src = element.image;
-    imagesExpandImage.alt = element.altImage;
-    imagesExpandPlace.textContent = element.place;
-  });
-
-  function removeExpand() {
-    imagesExpand.classList.remove('active');
-  }
-
-  imagesExpandClose.addEventListener('click', removeExpand);
-
-  imagesExpand.addEventListener('click', function (event) {
-    if (event.target === imagesExpand) {
-      removeExpand();
-    }
-  });
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      removeExpand();
-    }
-  });
-});
-
-*/
-
-// funcion de me gusta
-
-function like(boton) {
-  if (boton.src.includes('images/heart.svg')) {
-    boton.src = 'images/Black-heart.png';
-    boton.alt = 'corazon de me gusta activo';
-  } else {
-    boton.src = 'images/heart.svg';
-    boton.alt = 'corazon de me gusta inactivo';
-  }
-}
-const cardHeart = document.querySelectorAll('.card__heart');
-
-// alternar boton de me gusta
-
-cardHeart.forEach((boton) => {
-  boton.addEventListener('click', () => like(boton));
-});
 
 //Declarar la ventada emergente de agregar fotos
 
 const popupAddForm = document.getElementById('add-form');
 
-/*
+
 
 function handleLugarFormSubmit(evt) {
   evt.preventDefault();
@@ -394,4 +331,4 @@ function handleLugarFormSubmit(evt) {
 // agregar el evento a la ventana emergente de agregar fotos
 
 popupAddForm.addEventListener('submit', handleLugarFormSubmit);
-*/
+
