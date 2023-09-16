@@ -1,3 +1,4 @@
+/*
 const buttonEdit = document.querySelector('.button-edit');
 const popupProfile = document.getElementById('popup-profile');
 const profileFormClose = document.querySelector('.form__close');
@@ -75,16 +76,14 @@ document.addEventListener('keydown', function (event) {
     buttonPlace.removeEventListener('click', openAddPopup);
   }
 });
+*/
 /*
-function like(boton) {
-  if (boton.src.includes('./images/heart.svg')) {
-    boton.src = './images/Black-heart.png';
-    boton.alt = 'corazon de me gusta activo';
-  } else {
-    boton.src = './images/heart.svg';
-    boton.alt = 'corazon de me gusta inactivo';
-  }
-}*/
+const cards = document.querySelector('.cards');
+const imagesExpand = document.querySelector('.images-expand');
+const imagesExpandImage = document.querySelector('.images-expand__image');
+const imagesExpandPlace = document.querySelector('.images-expand__place');
+const imagesExpandClose = document.querySelector('.images-expand__close');
+
 
 const elements = [
   {
@@ -150,12 +149,32 @@ const elements = [
   },
 ];
 
-const cards = document.querySelector('.cards');
-const imagesExpand = document.querySelector('.images-expand');
-const imagesExpandImage = document.querySelector('.images-expand__image');
-const imagesExpandPlace = document.querySelector('.images-expand__place');
-const imagesExpandClose = document.querySelector('.images-expand__close');
+*/
+import { Card } from "../scripts/Card.js";
 
+/*
+
+elements.forEach((item) => {
+  const card = new Card(item, '.card-template');
+
+  const cardElement = card.generateCard();
+
+  cards.append(cardElement);
+});
+
+*/
+/*
+const formSelector = document.querySelector('.form');
+const inputSelector = formSelector.querySelector('.form__input');*/
+
+import { FormValidator } from "../scripts/FormValidator.js";
+
+/*const validator = new FormValidator(formSelector);
+
+validator.enableValidation();*/
+
+
+/*
 class Card {
   constructor(data, cardSelector) {
     this._image = data.image;
@@ -255,6 +274,8 @@ elements.forEach((item) => {
   cards.append(cardElement);
 });
 
+
+
 // manejador del evento submit
 
 function handleInputFormSubmit(evt) {
@@ -310,3 +331,4 @@ function handleInputFormSubmit(evt) {
 // agregar el evento submit a la ventana emergente de agregar fotos
 
 popupAddForm.addEventListener('submit', handleInputFormSubmit);
+*/
