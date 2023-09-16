@@ -87,8 +87,13 @@ const imagesExpandPlace = document.querySelector('.images-expand__place');
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
+  // cerrar la ventana emergente al enviar el formulario
+  popupAdd.classList.remove('active');
+
   // clonar nodo  para marcado de tarjeta
   const element = document.querySelector('.card').cloneNode(true);
+
+
 
   // declarar las variables para eventos
 
@@ -125,12 +130,7 @@ function handleAddFormSubmit(evt) {
     imagesExpandImage.alt = `imagen de ${popupAddInputPlace.value}`;
   });
 
-  // cerrar la ventana emergente al enviar el formulario
-
-  popupAdd.classList.remove('active');
-
   // agregar la tarjeta nueva al Grid
-
   cards.prepend(element);
 }
 
