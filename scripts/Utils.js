@@ -6,6 +6,21 @@ const profileFormInputAbout = document.getElementById('text-input-about');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 
+const buttonPlace = document.querySelector('.button-place');
+const popupAdd = document.getElementById('popup-add');
+const popupAddClose = document.getElementById('add-form-close');
+const popupAddInputPlace = document.getElementById('text-input-place');
+const popupAddInputHttps = document.getElementById('url-input-image');
+
+const popupAddForm = document.getElementById('add-form');
+
+const profileForm = document.getElementById('profile-form');
+
+const cards = document.querySelector('.cards');
+const imagesExpand = document.querySelector('.images-expand');
+const imagesExpandImage = document.querySelector('.images-expand__image');
+const imagesExpandPlace = document.querySelector('.images-expand__place');
+
 function openProfilePopup() {
   popupProfile.classList.add('active');
   profileFormInputName.value = profileName.textContent;
@@ -33,7 +48,6 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-const profileForm = document.getElementById('profile-form');
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -44,12 +58,7 @@ function handleProfileFormSubmit(evt) {
 
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
-const buttonPlace = document.querySelector('.button-place');
-const popupAdd = document.getElementById('popup-add');
-const popupAddClose = document.getElementById('add-form-close');
-const popupAddInputPlace = document.getElementById('text-input-place');
-const popupAddInputHttps = document.getElementById('url-input-image');
-const popupAddForm = document.getElementById('add-form');
+
 
 function openAddPopup() {
   popupAdd.classList.add('active');
@@ -76,12 +85,6 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-
-const cards = document.querySelector('.cards');
-const imagesExpand = document.querySelector('.images-expand');
-const imagesExpandImage = document.querySelector('.images-expand__image');
-const imagesExpandPlace = document.querySelector('.images-expand__place');
-
 // manejador del evento submit
 
 function handleAddFormSubmit(evt) {
@@ -92,7 +95,6 @@ function handleAddFormSubmit(evt) {
 
   // clonar nodo  para marcado de tarjeta
   const element = document.querySelector('.card').cloneNode(true);
-
 
 
   // declarar las variables para eventos
