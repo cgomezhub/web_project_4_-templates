@@ -1,4 +1,29 @@
+const buttonEdit = document.querySelector('.button-edit');
+const popupProfile = document.getElementById('popup-profile');
+const profileFormClose = document.querySelector('.form__close');
+const profileFormInputName = document.getElementById('text-input-name');
+const profileFormInputAbout = document.getElementById('text-input-about');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+
+const buttonPlace = document.querySelector('.button-place');
+const popupAdd = document.getElementById('popup-add');
+const popupAddClose = document.getElementById('add-form-close');
+const popupAddInputPlace = document.getElementById('text-input-place');
+const popupAddInputHttps = document.getElementById('url-input-image');
+
+const popupAddForm = document.getElementById('add-form');
+
+const profileForm = document.getElementById('profile-form');
+
 const cards = document.querySelector('.cards');
+const imagesExpand = document.querySelector('.images-expand');
+const imagesExpandImage = document.querySelector('.images-expand__image');
+const imagesExpandPlace = document.querySelector('.images-expand__place');
+const imagesExpandClose = document.querySelector('.images-expand__close');
+
+const formSelector = document.querySelector('.form');
+const inputSelector = formSelector.querySelector('.form__input');
 
 
 const elements = [
@@ -7,9 +32,9 @@ const elements = [
         'https://images.unsplash.com/photo-1666831268439-376e34c4de0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80',
       altImage: 'imagen de la Montana de Yosemite',
       place: 'Montana de Yosemite',
-      heart: 'images/heart.svg',
+      heart: 'images/Trash.svg',
       altHeart: 'corazon de me gusta inactivo',
-      trash: 'images/Trash.svg',
+      trash: '../images/Trash.svg',
       altTrash: 'cesta  de eliminar',
     },
     {
@@ -65,20 +90,7 @@ const elements = [
     },
 ];
 
-import { Card } from "../scripts/Card.js";
+export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm, profileForm, cards, imagesExpand, imagesExpandImage, imagesExpandPlace, imagesExpandClose};
 
-
-elements.forEach((item) => {
-  const card = new Card(item, '.card-template');
-
-  const cardElement = card.generateCard();
-
-  cards.append(cardElement);
-});
-
-
-
-import { FormValidator } from "../scripts/FormValidator.js";
-
-
-
+export {formSelector, inputSelector};
+export { elements};

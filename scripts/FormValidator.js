@@ -1,7 +1,4 @@
-
-
-const formSelector = document.querySelector('.form');
-const inputSelector = formSelector.querySelector('.form__input');
+import { formSelector, inputSelector } from "../utils/constants.js";
 
 export class FormValidator {
   constructor(formSelector) {

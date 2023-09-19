@@ -1,7 +1,5 @@
-const imagesExpand = document.querySelector('.images-expand');
-const imagesExpandImage = document.querySelector('.images-expand__image');
-const imagesExpandPlace = document.querySelector('.images-expand__place');
-const imagesExpandClose = document.querySelector('.images-expand__close');
+
+import { imagesExpand, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "../utils/constants.js";
 
 export class Card {
   constructor(data, cardSelector) {

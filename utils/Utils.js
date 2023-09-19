@@ -1,25 +1,7 @@
-const buttonEdit = document.querySelector('.button-edit');
-const popupProfile = document.getElementById('popup-profile');
-const profileFormClose = document.querySelector('.form__close');
-const profileFormInputName = document.getElementById('text-input-name');
-const profileFormInputAbout = document.getElementById('text-input-about');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
+import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm} from "../utils/constants.js"
 
-const buttonPlace = document.querySelector('.button-place');
-const popupAdd = document.getElementById('popup-add');
-const popupAddClose = document.getElementById('add-form-close');
-const popupAddInputPlace = document.getElementById('text-input-place');
-const popupAddInputHttps = document.getElementById('url-input-image');
+import { cards, imagesExpand, imagesExpandImage, imagesExpandPlace } from "../utils/constants.js";
 
-const popupAddForm = document.getElementById('add-form');
-
-const profileForm = document.getElementById('profile-form');
-
-const cards = document.querySelector('.cards');
-const imagesExpand = document.querySelector('.images-expand');
-const imagesExpandImage = document.querySelector('.images-expand__image');
-const imagesExpandPlace = document.querySelector('.images-expand__place');
 
 function openProfilePopup() {
   popupProfile.classList.add('active');
@@ -90,10 +72,7 @@ document.addEventListener('keydown', function (event) {
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  // cerrar la ventana emergente al enviar el formulario
-  popupAdd.classList.remove('active');
-
-  // clonar nodo  para marcado de tarjeta
+   // clonar nodo  para marcado de tarjeta
   const element = document.querySelector('.card').cloneNode(true);
 
 
@@ -134,6 +113,8 @@ function handleAddFormSubmit(evt) {
 
   // agregar la tarjeta nueva al Grid
   cards.prepend(element);
+   // cerrar la ventana emergente al enviar el formulario
+   popupAdd.classList.remove('active');
 }
 
 // agregar el evento submit a la ventana emergente de agregar fotos
