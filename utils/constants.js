@@ -34,7 +34,7 @@ const elements = [
       place: 'Montana de Yosemite',
       heart: 'images/Trash.svg',
       altHeart: 'corazon de me gusta inactivo',
-      trash: '../images/Trash.svg',
+      trash: 'images/Trash.svg',
       altTrash: 'cesta  de eliminar',
     },
     {
