@@ -1,0 +1,11 @@
+{
+  "name": "web_project_4_esp",
+  "version": "1.0.0",
+  "description": "Java.scrip modules initicial proyect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Gomez",
+  "license": "ISC"
+}

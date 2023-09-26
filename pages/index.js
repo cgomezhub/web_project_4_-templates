@@ -14,7 +14,6 @@ elements.forEach((item) => {
 });
 
 
-
 import { FormValidator } from "../scripts/FormValidator.js";
 
 
