@@ -29,9 +29,9 @@ export default class Popup {
         this._element.querySelector(".popup").addEventListener("click", () => {
 			this.close();
 		});
-        /*document.addEventListener('keydown', (event) =>{
+        document.addEventListener('keydown', (event) =>{
             this._handleEscClose(event);            
-          });*/
+          });
     }
 
 }
