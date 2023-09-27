@@ -1,6 +1,6 @@
 import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm} from "./constants.js"
 
-import { cards, imagesExpand, imagesExpandImage, imagesExpandPlace } from "./constants.js";
+import { cards, popupImage, imagesExpandImage, imagesExpandPlace } from "./constants.js";
 
 
 function openProfilePopup() {
@@ -105,7 +105,7 @@ function handleAddFormSubmit(evt) {
   //expandir la imagen
 
   elementImage.addEventListener('click', () => {
-    imagesExpand.classList.add('active');
+    popupImage.classList.add('active');
     imagesExpandImage.src = popupAddInputHttps.value;
     imagesExpandPlace.textContent = popupAddInputPlace.value;
     imagesExpandImage.alt = `imagen de ${popupAddInputPlace.value}`;

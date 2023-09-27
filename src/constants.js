@@ -17,7 +17,7 @@ const popupAddForm = document.getElementById('add-form');
 const profileForm = document.getElementById('profile-form');
 
 const cards = document.querySelector('.cards');
-const imagesExpand = document.querySelector('.images-expand');
+const popupImage = document.getElementById('popup-image');
 const imagesExpandImage = document.querySelector('.images-expand__image');
 const imagesExpandPlace = document.querySelector('.images-expand__place');
 const imagesExpandClose = document.querySelector('.images-expand__close');
@@ -78,7 +78,7 @@ const elements = [
     },
 ];
 
-export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm, profileForm, cards, imagesExpand, imagesExpandImage, imagesExpandPlace, imagesExpandClose};
+export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm, profileForm, cards, popupImage, imagesExpandImage, imagesExpandPlace, imagesExpandClose};
 
 export {formSelector, inputSelector};
 export { elements};

@@ -1,5 +1,5 @@
 
-import { imagesExpand, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "./constants.js";
+import { popupImage, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "./constants.js";
 
 export class Card {
   constructor(data, cardSelector) {
@@ -31,14 +31,14 @@ export class Card {
   }
 
   _handleOpenExpand() {
-    imagesExpand.classList.add('active');
+    popupImage.classList.add('active');
     imagesExpandImage.src = this._image;
     imagesExpandImage.alt = this._altImage;
     imagesExpandPlace.textContent = this._place;
   }
 
   _handleRemoveExpand() {
-    imagesExpand.classList.remove('active');
+    popupImage.classList.remove('active');
   }
 
   _like(evt) {
@@ -60,7 +60,7 @@ export class Card {
       this._handleRemoveExpand();
     });
 
-    imagesExpand.addEventListener('click', () => {
+    popupImage.addEventListener('click', () => {
       this._handleRemoveExpand();
     });
 
