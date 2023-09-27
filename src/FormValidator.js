@@ -1,4 +1,4 @@
-import { formSelector, inputSelector } from "../utils/constants.js";
+import { formSelector, inputSelector } from "./constants.js";
 
 export class FormValidator {
   constructor(formSelector) {

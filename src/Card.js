@@ -1,15 +1,11 @@
 
-import { imagesExpand, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "../utils/constants.js";
+import { imagesExpand, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "./constants.js";
 
 export class Card {
   constructor(data, cardSelector) {
     this._image = data.image;
     this._altImage = data.altImage;
     this._place = data.place;
-    this._heart = data.heart;
-    this._altHeart = data.altHeart;
-    this._trash = data.trash;
-    this._altTrash = data.altTrash;
     this._cardSelector = cardSelector;
   }
 
@@ -28,10 +24,6 @@ export class Card {
     this._element.querySelector('.card__place').textContent = this._place;
     this._element.querySelector('.card__image').src = this._image;
     this._element.querySelector('.card__image').alt = this._altImage;
-    this._element.querySelector('.card__heart').src = this._heart;
-    this._element.querySelector('.card__heart').alt = this._altHeart;
-    this._element.querySelector('.card__trash').src = this._trash;
-    this._element.querySelector('.card__trash').alt = this._altTrash;
 
     this._setEventListeners();
 

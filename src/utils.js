@@ -1,6 +1,6 @@
-import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm} from "../utils/constants.js"
+import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm} from "./constants.js"
 
-import { cards, imagesExpand, imagesExpandImage, imagesExpandPlace } from "../utils/constants.js";
+import { cards, imagesExpand, imagesExpandImage, imagesExpandPlace } from "./constants.js";
 
 
 function openProfilePopup() {
@@ -116,6 +116,7 @@ function handleAddFormSubmit(evt) {
    // cerrar la ventana emergente al enviar el formulario
    popupAdd.classList.remove('active');
 }
+
 
 // agregar el evento submit a la ventana emergente de agregar fotos
 

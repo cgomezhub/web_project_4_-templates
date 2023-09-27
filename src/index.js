@@ -1,8 +1,8 @@
 
-import { cards, elements } from "../utils/constants.js";
+import { cards, elements } from "./constants.js";
 
 
-import { Card } from "../scripts/Card.js";
+import { Card } from "./Card.js";
 
 
 elements.forEach((item) => {
@@ -15,7 +15,7 @@ elements.forEach((item) => {
 
 
 
-import { FormValidator } from "../scripts/FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 
 
 
