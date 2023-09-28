@@ -2,10 +2,11 @@
 import { popupImage, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "./constants.js";
 
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, /*handleOpenExpand,*/cardSelector) {
     this._image = data.image;
     this._altImage = data.altImage;
     this._place = data.place;
+    //this._handleOpenExpand = handleOpenExpand;
     this._cardSelector = cardSelector;
   }
 
