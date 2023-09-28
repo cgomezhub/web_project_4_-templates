@@ -1,7 +1,7 @@
 .button-edit{
     width: 55%;
     height: 20%;
-    background-image: url(../../images/Edit-Button.png);
+    background-image: url(../../src/images/Edit-Button.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

@@ -1,3 +1,4 @@
+import "./index.css";
 
 import { cards, elements } from "./constants.js";
 
@@ -22,11 +23,8 @@ elements.forEach((item) => {
 
   cards.append(cardElement);
 });
-
-
+*/
 
 import { FormValidator } from "./FormValidator.js";
 
-
-*/
 

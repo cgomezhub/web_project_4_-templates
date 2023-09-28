@@ -1,6 +1,6 @@
 .card__heart{
   border: none;
-  background: url(../../../images/heart.svg) center no-repeat;
+  background: url(../../../src/images/heart.svg) center no-repeat;
   background-size: 100%;
   cursor: pointer;
   height: 15px;
@@ -20,7 +20,7 @@
 
 .card__heart_active {
     opacity: 1;
-    background: url(../../../images/Black-heart.png) center no-repeat;
+    background: url(../../../src/images/Black-heart.png) center no-repeat;
     background-size: 100%;
   }
 
