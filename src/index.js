@@ -1,22 +1,43 @@
 import "./index.css";
 
-import { cards, elements } from "./constants.js";
+import { items } from "./constants.js";
+
+import Section from "./Section";
+import { Card } from "./Card";
 
 
-import { Card } from "./Card.js";
+const cardsList = new Section({
+  data:items,
+  renderer: (cardItem)=>{
+    const card = new Card(cardItem, '.card-template');
+      
+    const cardElement = card.generateCard();
+    
+    cardsList.addItem(cardElement);
+      
+  }
+}, '.cards');
+
+cardsList.renderItems(); 
+
+import { FormValidator } from "./FormValidator.js";
 
 
-elements.forEach((item) => {
+// import { Card } from "./Card.js";
+
+/*
+items.forEach((item) => {
   const card = new Card(item, '.card-template');
 
   const cardElement = card.generateCard();
 
   cards.append(cardElement);
+
 });
 
-/*import PopupWithForm from "./PopupWithForm.js";
+import PopupWithForm from "./PopupWithForm.js";
 
-elements.forEach((item) => {
+items.forEach((item) => {
   const card = new PopupWithForm(item, '.card-template');
 
   const cardElement = card.generateCard();
@@ -25,6 +46,6 @@ elements.forEach((item) => {
 });
 */
 
-import { FormValidator } from "./FormValidator.js";
+
 
 

@@ -121,3 +121,17 @@ function handleAddFormSubmit(evt) {
 // agregar el evento submit a la ventana emergente de agregar fotos
 
 popupAddForm.addEventListener('submit', handleAddFormSubmit);
+
+// funcion para renderizar las tarjetas
+/*
+import { Card } from "./Card.js";
+import { items } from "./constants.js";
+
+export const renderer = (data) => {
+  data.forEach((item) => {
+  const card = new Card(item, '.card-template');
+  const cardElement = card.generateCard();
+
+  cards.append(cardElement);
+  });
+}*/
