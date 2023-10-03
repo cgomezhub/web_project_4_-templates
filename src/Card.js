@@ -1,13 +1,14 @@
 
-import { popupImage, imagesExpandImage, imagesExpandPlace,imagesExpandClose } from "./constants.js";
+import { popupImageSelector, popupImage, popupPlace, profileFormClose } from "./constants.js";
+//import PopupWithImage from "./PopupWithImage.js";
 
-export class Card {
-  constructor(data, /*handleOpenExpand,*/cardSelector) {
-    this._image = data.image;
-    this._altImage = data.altImage;
-    this._place = data.place;
-    //this._handleOpenExpand = handleOpenExpand;
+export default class Card {
+  constructor({image, place, altImage}, cardSelector) {
+    this._image = image;
+    this._altImage = altImage;
+    this._place = place;
     this._cardSelector = cardSelector;
+    //this._popupWithImage = new PopupWithImage({image, place, altImage});
   }
 
   _getTemplate() {
@@ -30,17 +31,24 @@ export class Card {
 
     return this._element;
   }
-
+/*
   _handleOpenExpand() {
     popupImage.classList.add('active');
-    imagesExpandImage.src = this._image;
-    imagesExpandImage.alt = this._altImage;
-    imagesExpandPlace.textContent = this._place;
+    popupImageImage.src = this._image;
+    popupImageImage.alt = this._altImage;
+    popupImagePlace.textContent = this._place;
   }
-
+*/
+/*
   _handleRemoveExpand() {
     popupImage.classList.remove('active');
   }
+  */
+/*
+  openPopup() {
+    this._popupWithImage.open();
+  }*/
+  
 
   _like(evt) {
     evt.target.classList.toggle('card__heart_active');
@@ -51,25 +59,34 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._element
+/*
+   this._element
       .querySelector('.card__image')
       .addEventListener('click', () => {
-        this._handleOpenExpand();
-      });
-
-    imagesExpandClose.addEventListener('click', () => {
+        this.openPopup();
+        this.
+      });*/
+    
+      /*
+    profileFormClose.addEventListener('click', () => {
       this._handleRemoveExpand();
     });
-
+    
     popupImage.addEventListener('click', () => {
       this._handleRemoveExpand();
-    });
+    });*/
 
-    document.addEventListener('keydown', (event) => {
+    /*document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         this._handleRemoveExpand();
       }
-    });
+    });*/
+    /*
+    this._element
+      .querySelector('.card__image')
+      .addEventListener('click', () => {
+        this.openPopup();
+      });*/
 
     this._element
       .querySelector('.card__heart')

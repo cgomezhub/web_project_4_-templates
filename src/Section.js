@@ -14,8 +14,36 @@ export default class Section {
     renderItems() {
       this._renderedItems.forEach(item => { 
         this._renderer(item);
-      });
+      }); 
       
     }
-    
   }
+
+  /*
+
+  export default class Section {
+    constructor(items, render, containerSelector) {
+      this.items = items;
+      this.render = render;
+      this.containerSelector = containerSelector;
+      this.container = document.querySelector(this.containerSelector);
+    }
+    render() {
+      const container = document.querySelector(this.selector);
+      this.items.forEach((item) => {
+        this.render(item, container);
+      });
+    }
+  
+    addItem(item) {
+      this.items.push(item);
+      this.render();
+    }
+
+    getElement() {
+      return this.container;
+    }
+  }
+
+  */
+

@@ -17,13 +17,18 @@ const popupAddForm = document.getElementById('add-form');
 const profileForm = document.getElementById('profile-form');
 
 const cards = document.querySelector('.cards');
-const popupImage = document.getElementById('popup-image');
-const imagesExpandImage = document.querySelector('.images-expand__image');
-const imagesExpandPlace = document.querySelector('.images-expand__place');
+const cardImage = document.querySelector('.card__image');
+const popupImageSelector = document.getElementById('popup-image');
+const popupImage = document.querySelector('.popup__image');
+const popupPlace = document.querySelector('.popup__place');
 const imagesExpandClose = document.querySelector('.images-expand__close');
 
 const formSelector = document.querySelector('.form');
 const inputSelector = formSelector.querySelector('.form__input');
+
+const popup = document.querySelector('.popup');
+
+const popups = document.querySelector('.popups');
 
 
 const items = [
@@ -66,7 +71,10 @@ const items = [
     },
 ];
 
-export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm, profileForm, cards, popupImage, imagesExpandImage, imagesExpandPlace, imagesExpandClose};
+export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm, profileForm, cards, popupImageSelector, popupImage, popupPlace, imagesExpandClose};
 
 export {formSelector, inputSelector};
 export { items};
+export {cardImage};
+export {popup};
+export {popups};

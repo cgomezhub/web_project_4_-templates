@@ -1,6 +1,6 @@
 import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm} from "./constants.js"
 
-import { cards, popupImage, imagesExpandImage, imagesExpandPlace } from "./constants.js";
+import { cards, popupImage, popupImageImage, popupImagePlace } from "./constants.js";
 
 
 function openProfilePopup() {
@@ -104,13 +104,16 @@ function handleAddFormSubmit(evt) {
 
   //expandir la imagen
 
+
+
   elementImage.addEventListener('click', () => {
     popupImage.classList.add('active');
-    imagesExpandImage.src = popupAddInputHttps.value;
-    imagesExpandPlace.textContent = popupAddInputPlace.value;
-    imagesExpandImage.alt = `imagen de ${popupAddInputPlace.value}`;
+    popupImageImage.src = popupAddInputHttps.value;
+    popupImagePlace.textContent = popupAddInputPlace.value;
+    popupImageImage.alt = `imagen de ${popupAddInputPlace.value}`;
   });
 
+  
   // agregar la tarjeta nueva al Grid
   cards.prepend(element);
    // cerrar la ventana emergente al enviar el formulario
