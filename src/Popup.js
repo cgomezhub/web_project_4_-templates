@@ -1,5 +1,5 @@
 
-import { popups } from "./constants";
+import { popups, buttonPlace } from "./constants";
 export default class Popup {
 	constructor(selectorPopup) {
     this._selectorPopup = selectorPopup;
@@ -18,42 +18,31 @@ export default class Popup {
     }
 
     _handleEscClose(event) {
-        if (event.target === "escape") {
+        if (event === "Escape") {
         popups.classList.remove('active')
         }
     }
 
 	setEventListeners() {
 
-        /*this._element
-        .querySelector('.card__image').addEventListener('click', () => {
-          this.open();
-        });*/
-		this._element.querySelector(".form__close").addEventListener("click", (evt) => {
-			this.close();
+        
+		this._element.querySelector(".form__close").addEventListener("click", this.close)
 
-		});
 		
-
-       /* const test = this._element.querySelector(".popups")
-        console.log("🚀 ~ Popup ~ setEventListeners ~ this._element:", this._element)
-
-        if(test){
-            test.addEventListener("click", () => {
-                this.close();
-            });
-
-        }*/
-
-        
-        popups.addEventListener("click", () => {
-			this.close();
+		  
+        popups.addEventListener("click", (event) => {
+            if (event.target === popups) {
+            this.close();
+            }
 		});
 
-        
         document.addEventListener('keydown', (event) =>{
-            this._handleEscClose(event);            
-          });
+            if (event.key === 'Escape') {
+              this.close();
+              
+            }
+         });
+       
     }
-}
 
+}

@@ -1,6 +1,6 @@
 import { formSelector, inputSelector } from "./constants.js";
 
-export class FormValidator {
+export default class FormValidator {
   constructor(formSelector) {
     this._formSelector = formSelector;
     this._inputSelector = inputSelector;
@@ -98,6 +98,7 @@ export class FormValidator {
     });
   };
 }
+
 
 const validator = new FormValidator(formSelector);
 
