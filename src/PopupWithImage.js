@@ -1,5 +1,5 @@
 
-import { popupsImage, } from "./constants";
+import { popupsImage, popups } from "./constants";
 import Popup from "./Popup";
 
 export default class PopupWithImage extends Popup {
@@ -23,14 +23,16 @@ export default class PopupWithImage extends Popup {
 
     _setEventListeners(){
         super.setEventListeners();
-
         
 
         popupsImage.addEventListener("click", (event) => {
             if (event.target === popupsImage) {
                 popupsImage.classList.remove('active');
+                popups.classList.remove('active');
             }
 		});
+
+        
     }
     
     open({ src, alt , text }) {

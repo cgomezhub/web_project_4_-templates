@@ -1,5 +1,5 @@
 
-import { popupsAdd, cards, addForm, buttonAddForm} from "./constants";
+import { popups, popupsAdd, cards, addForm, buttonAddForm} from "./constants";
 
 import Popup from "./Popup";
 
@@ -70,6 +70,8 @@ export default class PopupWithForm extends Popup{
 
         popupsAdd.classList.remove('active');
 
+        popups.classList.remove('active');
+
        form.reset();
     }
 
@@ -93,7 +95,7 @@ export default class PopupWithForm extends Popup{
         super.open();
         popupsAdd.classList.add('active');
 
-        this._generateFormPopup();
+        //this._generateFormPopup();
         
         popupsAdd.prepend(this._element);
 

@@ -1,5 +1,5 @@
 
-import { popupsUserInfo,  profileName, profileAbout } from "./constants";
+import { popupsUserInfo,  profileName, profileAbout, popups } from "./constants";
 //import Popup from "./Popup";
 
 export default class UserInfo {
@@ -35,7 +35,8 @@ export default class UserInfo {
 
         popupsUserInfo.classList.remove('active');
 
-        form.reset();     
+        form.reset();
+        popups.classList.remove('active');
 
     }
 
@@ -72,7 +73,7 @@ export default class UserInfo {
 
     _open() {
         popupsUserInfo.classList.add('active');
-        this._generateUser();
+        //this._generateUser();
 
         console.log(this._element);
         // declarar variables del nuevo element (inputs)

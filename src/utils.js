@@ -1,3 +1,5 @@
+/*
+
 import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, addForm} from "./constants.js"
 
 import { cards, popupImage, popupImageImage, popupImagePlace } from "./constants.js";
@@ -125,3 +127,4 @@ function handleAddFormSubmit(evt) {
 
 addForm.addEventListener('submit', handleAddFormSubmit);
 
+*/
