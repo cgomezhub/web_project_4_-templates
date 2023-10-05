@@ -1,4 +1,4 @@
-import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm} from "./constants.js"
+import { buttonEdit, popupProfile, profileForm, profileFormClose, profileFormInputName, profileFormInputAbout, profileName, profileAbout, buttonPlace, popupAdd, popupAddClose, popupAddInputPlace, popupAddInputHttps, addForm} from "./constants.js"
 
 import { cards, popupImage, popupImageImage, popupImagePlace } from "./constants.js";
 
@@ -123,5 +123,5 @@ function handleAddFormSubmit(evt) {
 
 // agregar el evento submit a la ventana emergente de agregar fotos
 
-popupAddForm.addEventListener('submit', handleAddFormSubmit);
+addForm.addEventListener('submit', handleAddFormSubmit);
 

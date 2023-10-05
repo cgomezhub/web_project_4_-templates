@@ -1,5 +1,5 @@
 
-import { popupsAdd, cards} from "./constants";
+import { popupsAdd, cards, addForm, buttonAddForm} from "./constants";
 
 import Popup from "./Popup";
 
@@ -12,18 +12,16 @@ export default class PopupWithForm extends Popup{
 
         const inp = document.querySelector(this._selectorPopup)
 
-        const popupElement = inp.content.querySelector(".form").cloneNode(true);
+        const popupElement = inp.content.querySelector("#add-form").cloneNode(true);
         
         return popupElement;
     }
 
     
-    handleAddFormSubmit (evt) {
+    _handleAddFormSubmit (evt) {
         evt.preventDefault();
-
-        console.log('entro al handle');
-    
-        // clonar nodo  paramarco de la tarjeta (element)
+         
+        // clonar nodo  para marco de la tarjeta (element)
         const element = document.querySelector('.card').cloneNode(true);
     
     
@@ -33,6 +31,8 @@ export default class PopupWithForm extends Popup{
         const elementPlace = element.querySelector('.card__place');
         const elementHeart = element.querySelector('.card__heart');
         const elementTrash = element.querySelector('.card__trash');
+        const form = document.querySelector("#add-form");
+
 
         const textInputPlace = document.getElementById('text-input-place');
         const urlInputIimage = document.getElementById('url-input-image');
@@ -63,28 +63,31 @@ export default class PopupWithForm extends Popup{
 
         popupsAdd.classList.remove('active');
 
-        //form.reset();
+       form.reset();
     }
 
    
     _generateFormPopup() {
         this._element = this._getInputValues();
         
-        //popupsAdd.append(this._element);
-       // this._setEventListeners();
         return this._element;
     }
 
     
 
     _setEventListeners() {
-        console.log('entro al setEvent');
+        
         super.setEventListeners();
 
-        console.log('salio del setEvent padre');
+        popupsAdd.addEventListener("click", (event) => {
+            if (event.target === popupsAdd) {
+            this.close();
+            }
+		});
+
+
+        document.addEventListener('submit', this._handleAddFormSubmit);
         
-        document.addEventListener('submit', this.handleAddFormSubmit);
-        console.log('saliendo submit');
 
     }
 
@@ -93,20 +96,11 @@ export default class PopupWithForm extends Popup{
         super.open();
         popupsAdd.classList.add('active');
 
-        console.log('paso open');
-
         this._generateFormPopup();
         
-        console.log('obtuvo el clon');
+        popupsAdd.prepend(this._element);
 
-        // generar otro pop up para cambiar el form
-        popupsAdd.append(this._element);
-
-        console.log('agrego a html');
-
-        this._setEventListeners()
-
-        console.log('salio de setE');
+        this._setEventListeners()        
 
     }
 }

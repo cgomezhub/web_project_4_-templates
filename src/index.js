@@ -8,8 +8,9 @@ import Card from "./Card";
 import FormValidator  from "./FormValidator";
 import PopupWithImage from "./PopupWithImage";
 import PopupWithForm from "./PopupWithForm";
+import UserInfo from "./UserInfo";
 
-import { items, buttonPlace } from "./constants.js";
+import { items, buttonPlace, buttonEdit } from "./constants.js";
 
 
 
@@ -50,22 +51,41 @@ document.addEventListener('click', (evt) => {
   
 });
 
-
 const popupAddForm = new PopupWithForm('.popup-form-template');
 
 popupAddForm._generateFormPopup();
 
 buttonPlace.addEventListener('click', () => {
-  //popupAddForm.open();
   
-  //popupAddForm.open();
-
   popupAddForm._open();
+
+
+  console.log('viene PopupWith');
+
+  const validator = new FormValidator('.form');
+
+  validator.enableValidation(); 
+
+});
+
+
+const popupUserForm = new UserInfo('.popup-user-template');
+
+popupUserForm._generateUser();
+
+console.log('entro UserInfo');
+
+buttonEdit.addEventListener('click', () => {
+  
+  popupUserForm._open();
 
   const validator = new FormValidator('.form');
 
   validator.enableValidation();  
 
 });
+
+
+
 
 

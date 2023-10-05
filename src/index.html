@@ -30,7 +30,7 @@
           <button type="button" class="button-edit"></button>
           <button type="button" class="button-place"></button>
         </section>
-        <section id="popup-profile" class="popup">
+        <!--<section id="popup-profile" class="popup">
           <form id="profile-form" class="form" novalidate>
             <button type="button" class="form__close"></button>
             <h1 class="form__title">Editar perfil</h1>
@@ -56,46 +56,14 @@
             <span class="text-input-about-error form__error"></span>
             <button type="submit" class="form__button">Guardar</button>
           </form>
-        </section>
-       <!-- <section id="popup-add" class="popup">
-          <form id="add-form" class="form" novalidate>
-            <button
-              id="add-form-close"
-              type="button"
-              class="form__close"
-            ></button>
-            <h2 class="form__title">Nuevo lugar</h2>
-            <input
-              id="text-input-place"
-              type="text"
-              class="form__input"
-              placeholder="Nombre del lugar"
-              minlength="2"
-              maxlength="30"
-              required
-            />
-            <span class="text-input-place-error form__error"></span>
-            <input
-              type="url"
-              id="url-input-image"
-              class="form__input"
-              placeholder="Introduce URL (https://... o http://...)"
-              required
-            />
-            <span class="url-input-image-error form__error"></span>
-            <button type="submit" class="form__button">Crear</button>
-          </form>
-        </section>   -->
-        
-
+        </section> -->
 
         <section class="cards"></section>
         <section class="popups">
-          <section class="popups__add"></section>        
+          <section class="popups__add"></section>
           <section class="popups__image"></section>
         </section>
-       
-
+        <section class="popups-user-info"></section>
         
 
       </main>
@@ -111,24 +79,16 @@
         <button class="card__heart"></button>
       </div>
     </template>
-    <template id="popup-image"  class="popup-image-template">
+    <template id="popup-image" class="popup-image-template">
       <div class="popup__container">
         <button type="button" class="form__close"></button>
-        <img
-          src=""
-          alt=""
-          class="popup__image"
-        />
+        <img src="" alt="" class="popup__image" />
         <p class="popup__place"></p>
       </div>
     </template>
     <template id="popup-form" class="popup-form-template">
       <form id="add-form" class="form" novalidate>
-        <button
-          id="add-form-close"
-          type="button"
-          class="form__close"
-        ></button>
+        <button id="add-form-close" type="button" class="form__close"></button>
         <h2 class="form__title">Nuevo lugar</h2>
         <input
           id="text-input-place"
@@ -148,7 +108,34 @@
           required
         />
         <span class="url-input-image-error form__error"></span>
-        <button type="submit" class="form__button">Crear</button>
+        <button id="button-add-form" type="submit" class="form__button">Crear</button>
+      </form>
+    </template>
+    <template id="popup-profile" class="popup-user-template">
+      <form id="profile-form" class="form" novalidate>
+        <button type="button" class="form__close"></button>
+        <h1 class="form__title">Editar perfil</h1>
+        <input
+          id="text-input-name"
+          class="form__input"
+          type="text"
+          placeholder="Nombre"
+          minlength="2"
+          maxlength="40"
+          required
+        />
+        <span class="text-input-name-error form__error"></span>
+        <input
+          id="text-input-about"
+          type="text"
+          class="form__input"
+          placeholder="Acerca de mi"
+          minlength="2"
+          maxlength="200"
+          required
+        />
+        <span class="text-input-about-error form__error"></span>
+        <button id="button-user-form" type="submit" class="form__button">Guardar</button>
       </form>
     </template>
   </body>

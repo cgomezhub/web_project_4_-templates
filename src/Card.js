@@ -8,7 +8,7 @@ export default class Card {
     this._altImage = altImage;
     this._place = place;
     this._cardSelector = cardSelector;
-    //this._popupWithImage = new PopupWithImage({image, place, altImage});
+    
   }
 
   _getTemplate() {

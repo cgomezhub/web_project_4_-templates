@@ -1,5 +1,5 @@
 
-import { popupsImage } from "./constants";
+import { popupsImage, } from "./constants";
 import Popup from "./Popup";
 
 export default class PopupWithImage extends Popup {
@@ -20,6 +20,15 @@ export default class PopupWithImage extends Popup {
         this._element = this._getTemplatePopup();
         return this._element;
     }
+
+    _setEventListeners(){
+        super.setEventListeners();
+        popupsImage.addEventListener("click", (event) => {
+            if (event.target === popupsImage) {
+                popupsImage.classList.remove('active');
+            }
+		});
+    }
     
     open({ src, alt , text }) {
         super.open();
@@ -31,7 +40,7 @@ export default class PopupWithImage extends Popup {
         
         popupsImage.append(this._element);
 
-        super.setEventListeners();
+        this._setEventListeners();
     }
 
 } 

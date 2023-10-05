@@ -12,9 +12,9 @@ const popupAddClose = document.getElementById('add-form-close');
 const popupAddInputPlace = document.getElementById('text-input-place');
 const popupAddInputHttps = document.getElementById('url-input-image');
 
-const popupAddForm = document.getElementById('add-form');
+const addForm = document.querySelector('#add-form');
 
-const profileForm = document.getElementById('profile-form');
+const profileForm = document.querySelector('#profile-form');
 
 const cards = document.querySelector('.cards');
 const cardImage = document.querySelector('.card__image');
@@ -24,13 +24,17 @@ const popupPlace = document.querySelector('.popup__place');
 const imagesExpandClose = document.querySelector('.images-expand__close');
 
 const formSelector = document.querySelector('.form');
-const inputSelector = formSelector.querySelector('.form__input');
+const inputSelector = document.querySelector('.form__input');
 
 const popup = document.querySelector('.popup');
 
 const popups = document.querySelector('.popups');
 const popupsImage = document.querySelector('.popups__image');
 const popupsAdd = document.querySelector('.popups__add');
+const popupsUserInfo = document.querySelector('.popups-user-info');
+
+const buttonUserForm  = document.querySelector("#button-user-form");
+const buttonAddForm  = document.querySelector("#button-add-form");
 
 
 const items = [
@@ -73,10 +77,11 @@ const items = [
     },
 ];
 
-export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, popupAddForm, profileForm, cards, popupImageSelector, popupImage, popupPlace, imagesExpandClose};
+export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, addForm, profileForm, cards, popupImageSelector, popupImage, popupPlace, imagesExpandClose};
 
 export {formSelector, inputSelector};
 export { items};
 export {cardImage};
 export {popup};
-export {popups, popupsImage, popupsAdd};
+export {popups, popupsImage, popupsAdd, popupsUserInfo};
+export {buttonAddForm, buttonUserForm};
