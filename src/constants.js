@@ -29,6 +29,8 @@ const inputSelector = formSelector.querySelector('.form__input');
 const popup = document.querySelector('.popup');
 
 const popups = document.querySelector('.popups');
+const popupsImage = document.querySelector('.popups__image');
+const popupsAdd = document.querySelector('.popups__add');
 
 
 const items = [
@@ -77,4 +79,4 @@ export {formSelector, inputSelector};
 export { items};
 export {cardImage};
 export {popup};
-export {popups};
+export {popups, popupsImage, popupsAdd};

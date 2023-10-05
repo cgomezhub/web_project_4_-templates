@@ -31,6 +31,8 @@ cardsList. renderItems();
 
 const popupImg = new PopupWithImage( '.popup-image-template');
 
+popupImg._generatePopup();
+
 document.addEventListener('click', (evt) => {
   
   if (evt.target.classList.contains('card__image')){
@@ -49,14 +51,21 @@ document.addEventListener('click', (evt) => {
 });
 
 
-const popupAddForm = new PopupWithForm( '.popup-form-template');
+const popupAddForm = new PopupWithForm('.popup-form-template');
+
+popupAddForm._generateFormPopup();
 
 buttonPlace.addEventListener('click', () => {
-   
-    popupAddForm._generateFormPopup();
-    
+  //popupAddForm.open();
+  
+  //popupAddForm.open();
+
+  popupAddForm._open();
+
+  const validator = new FormValidator('.form');
+
+  validator.enableValidation();  
+
 });
 
-const validator = new FormValidator('.form');
 
-validator.enableValidation();

@@ -1,6 +1,7 @@
 
-import { popups } from "./constants";
+import { popupsImage } from "./constants";
 import Popup from "./Popup";
+
 export default class PopupWithImage extends Popup {
     constructor(selectorPopup) {
         super(selectorPopup);
@@ -22,14 +23,13 @@ export default class PopupWithImage extends Popup {
     
     open({ src, alt , text }) {
         super.open();
-
-        this._generatePopup();
+        popupsImage.classList.add('active');
 
         this._element.querySelector(".popup__image").src = src;
         this._element.querySelector(".popup__image").alt = alt;
         this._element.querySelector(".popup__place").textContent = text
         
-        popups.prepend(this._element);
+        popupsImage.append(this._element);
 
         super.setEventListeners();
     }

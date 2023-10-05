@@ -1,20 +1,18 @@
 
-import { popups, cards, popupAddInputHttps, popupAddInputPlace, popupAddForm } from "./constants";
+import { popupsAdd, cards} from "./constants";
 
 import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup{
 	constructor( popupSelector) {
-        super(popupSelector);
-        
-       
+        super(popupSelector);     
 	}
 
-    _getTemplateFormPopup() {
+    _getInputValues() {
 
-        const temp = document.querySelector(this._selectorPopup)
+        const inp = document.querySelector(this._selectorPopup)
 
-        const popupElement = temp.content.querySelector(".form").cloneNode(true);
+        const popupElement = inp.content.querySelector(".form").cloneNode(true);
         
         return popupElement;
     }
@@ -63,117 +61,52 @@ export default class PopupWithForm extends Popup{
 
         // cerrar la ventana emergente al enviar el formulario
 
-        popups.classList.remove('active');
+        popupsAdd.classList.remove('active');
 
         //form.reset();
     }
 
+   
     _generateFormPopup() {
-        super.open();
-        this._element = this._getTemplateFormPopup();
+        this._element = this._getInputValues();
         
-        popups.append(this._element);
-        this._setEventListeners();
-       // return this._element;
+        //popupsAdd.append(this._element);
+       // this._setEventListeners();
+        return this._element;
     }
+
+    
 
     _setEventListeners() {
-       
+        console.log('entro al setEvent');
         super.setEventListeners();
-            
-        // agregar el evento submit a la ventana emergente de agregar fotos
+
+        console.log('salio del setEvent padre');
+        
         document.addEventListener('submit', this.handleAddFormSubmit);
-        console.log('saliendo del al setEvent');
+        console.log('saliendo submit');
 
     }
 
-    
-}
+    _open() {
 
-/*
-    _getInputValues() {
-        
+        super.open();
+        popupsAdd.classList.add('active');
+
+        console.log('paso open');
 
         this._generateFormPopup();
-
-        this._element.querySelector(".popup__image").src = src;
-        this._element.querySelector(".popup__image").alt = alt;
-        this._element.querySelector(".popup__place").textContent = text
         
-        popups.prepend(this._element);
+        console.log('obtuvo el clon');
 
-        super.setEventListeners();
+        // generar otro pop up para cambiar el form
+        popupsAdd.append(this._element);
 
+        console.log('agrego a html');
 
+        this._setEventListeners()
 
+        console.log('salio de setE');
 
-
-        this._inputList = this._element.querySelectorAll(".form__input");
-        this._formValues = {};
-        this._inputList.forEach(input => this._formValues[input.name] = input.value);
-    
-        return this._formValues;
     }
-
-    setEventListeners() {
-		this._element.addEventListener("submit", (evt) => {
-            evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues());
-      
-            this._element.reset();
-        })
-
-        this._element.querySelector(".images-expand__close").addEventListener("click", () => {
-			this.close();
-		});
-        
-    }
-
-    close() {
-        super._close();
-        this._handleFormSubmit.reset();
-    }
-  
-    
 }
-
-
-
-function openProfilePopup() {
-  popupProfile.classList.add('active');
-  profileFormInputName.value = profileName.textContent;
-  profileFormInputAbout.value = profileAbout.textContent;
-}
-
-function closeProfilePopup() {
-  popupProfile.classList.remove('active');
-}
-
-buttonEdit.addEventListener('click', openProfilePopup);
-
-profileFormClose.addEventListener('click', closeProfilePopup);
-
-popupProfile.addEventListener('click', function (event) {
-  if (event.target === popupProfile) {
-    closeProfilePopup();
-  }
-});
-
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
-    closeProfilePopup();
-    buttonEdit.removeEventListener('click', openProfilePopup);
-  }
-});
-
-
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = profileFormInputName.value;
-  profileAbout.textContent = profileFormInputAbout.value;
-  popupProfile.classList.remove('active');
-}
-
-profileForm.addEventListener('submit', handleProfileFormSubmit);
-
-*/
