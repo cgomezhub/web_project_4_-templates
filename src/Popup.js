@@ -8,7 +8,6 @@ export default class Popup {
     open() {
         
         popups.classList.add('active');
-        console.log('abre open padre');
     }
 
       // hay que vaciar la seccion popups cada vez  se abra la imagen
@@ -25,8 +24,7 @@ export default class Popup {
     }
 
 	setEventListeners() {
-        console.log('entro al setEvent padre');
-        
+                
 		this._element.querySelector(".form__close").addEventListener("click", this.close);
 
 		

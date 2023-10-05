@@ -18,6 +18,13 @@ export default class PopupWithForm extends Popup{
     }
 
     
+    _generateFormPopup() {
+        this._element = this._getInputValues();
+        
+        return this._element;
+    }
+    
+
     _handleAddFormSubmit (evt) {
         evt.preventDefault();
          
@@ -66,14 +73,6 @@ export default class PopupWithForm extends Popup{
        form.reset();
     }
 
-   
-    _generateFormPopup() {
-        this._element = this._getInputValues();
-        
-        return this._element;
-    }
-
-    
 
     _setEventListeners() {
         
@@ -85,10 +84,8 @@ export default class PopupWithForm extends Popup{
             }
 		});
 
-
         document.addEventListener('submit', this._handleAddFormSubmit);
-        
-
+    
     }
 
     _open() {

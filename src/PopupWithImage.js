@@ -23,6 +23,9 @@ export default class PopupWithImage extends Popup {
 
     _setEventListeners(){
         super.setEventListeners();
+
+        
+
         popupsImage.addEventListener("click", (event) => {
             if (event.target === popupsImage) {
                 popupsImage.classList.remove('active');
