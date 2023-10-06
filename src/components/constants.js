@@ -12,9 +12,6 @@ const popupAddClose = document.getElementById('add-form-close');
 const popupAddInputPlace = document.getElementById('text-input-place');
 const popupAddInputHttps = document.getElementById('url-input-image');
 
-const addForm = document.querySelector('#add-form');
-
-const profileForm = document.querySelector('#profile-form');
 
 const cards = document.querySelector('.cards');
 const cardImage = document.querySelector('.card__image');
@@ -77,7 +74,7 @@ const items = [
     },
 ];
 
-export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, addForm, profileForm, cards, popupImageSelector, popupImage, popupPlace, imagesExpandClose};
+export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout,profileName, profileAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, cards, popupImageSelector, popupImage, popupPlace, imagesExpandClose};
 
 export {formSelector, inputSelector};
 export { items};

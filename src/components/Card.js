@@ -59,40 +59,12 @@ export default class Card {
   }
 
   _setEventListeners() {
-/*
-   this._element
-      .querySelector('.card__image')
-      .addEventListener('click', () => {
-        this.openPopup();
-        this.
-      });*/
-    
-      /*
-    profileFormClose.addEventListener('click', () => {
-      this._handleRemoveExpand();
-    });
-    
-    popupImage.addEventListener('click', () => {
-      this._handleRemoveExpand();
-    });*/
-
-    /*document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        this._handleRemoveExpand();
-      }
-    });*/
-    /*
-    this._element
-      .querySelector('.card__image')
-      .addEventListener('click', () => {
-        this.openPopup();
-      });*/
 
     this._element
       .querySelector('.card__heart')
       .addEventListener('click', (evt) => {
         this._like(evt);
-      });
+    });
 
     this._element
       .querySelector('.card__trash')

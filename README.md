@@ -42,6 +42,11 @@ Se pone nuevamente en practica la teoria de celdas Grid en CCS, la importacion d
     **Java.Script**
     https://www.w3.org/wiki/The_principles_of_unobtrusive_JavaScript
 
+    **Webpack**
+    https://design-system.w3.org/
+
+
+
 **Imágenes**
 
 A la hora de trabajar, debes optar por exportar las imágenes directamente desde Figma; te recomendamos hacerlo para practicar más. No olvides optimizarlas [aquí](https://tinypng.com/), para que tu proyecto cargue más rápido.
