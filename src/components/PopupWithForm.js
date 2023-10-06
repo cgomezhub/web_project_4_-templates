@@ -1,4 +1,4 @@
-import { popups, popupsAdd, cards, addForm } from './constants';
+import { popups, popupsAdd, cards,  } from './constants';
 
 import Popup from './Popup';
 
@@ -69,14 +69,36 @@ export default class PopupWithForm extends Popup {
     form.reset();
   }
 
-  _setEventListeners() {    
+  _close(){
+
+    popupsAdd.classList.remove('active');
+  }
+
+  _setEventListeners() {
     const addForm = document.querySelector('#add-form');
 
     super.setEventListeners();
 
+    this._element.querySelector('.form__close').addEventListener('click',() =>{
+      super.close();
+      this._close();
+
+
+    });
+
+
     popupsAdd.addEventListener('click', (event) => {
       if (event.target === popupsAdd) {
-        this.close();
+        super.close();
+        this._close();
+
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        super.close();
+        this._close();
       }
     });
 

@@ -1,14 +1,11 @@
 
-import { popupImageSelector, popupImage, popupPlace, profileFormClose } from "./constants.js";
-//import PopupWithImage from "./PopupWithImage.js";
-
 export default class Card {
   constructor({image, place, altImage}, cardSelector) {
     this._image = image;
     this._altImage = altImage;
     this._place = place;
     this._cardSelector = cardSelector;
-    
+
   }
 
   _getTemplate() {
@@ -31,24 +28,6 @@ export default class Card {
 
     return this._element;
   }
-/*
-  _handleOpenExpand() {
-    popupImage.classList.add('active');
-    popupImageImage.src = this._image;
-    popupImageImage.alt = this._altImage;
-    popupImagePlace.textContent = this._place;
-  }
-*/
-/*
-  _handleRemoveExpand() {
-    popupImage.classList.remove('active');
-  }
-  */
-/*
-  openPopup() {
-    this._popupWithImage.open();
-  }*/
-  
 
   _like(evt) {
     evt.target.classList.toggle('card__heart_active');

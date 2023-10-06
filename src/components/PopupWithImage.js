@@ -21,15 +21,36 @@ export default class PopupWithImage extends Popup {
     return this._element;
   }
 
+
+  _close(){
+
+    popupsImage.classList.remove('active');
+  }
   _setEventListeners() {
     super.setEventListeners();
 
+    this._element.querySelector('.form__close').addEventListener('click',() =>{
+        super.close();
+        this._close();
+
+      });
+
     popupsImage.addEventListener('click', (event) => {
       if (event.target === popupsImage) {
-        popupsImage.classList.remove('active');
-        popups.classList.remove('active');
+        super.close();
+        this._close();
+
+
       }
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        super.close();
+        this._close();
+      }
+    });
+
   }
 
   open({ src, alt, text }) {

@@ -22,7 +22,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@babel/highlight": "^7.22.20",
     "core-js": "^3.32.2"
   }
 }
+
