@@ -1,7 +1,7 @@
 .button-place{
     width: 50%;
     height: 40%;
-    background-image: url(../../images/add-button+.png);
+    background-image: url(../../src/images/add-button+.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
