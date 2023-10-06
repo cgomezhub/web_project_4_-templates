@@ -1,16 +1,7 @@
 {
   "name": "web_project_4_esp",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "Java.scrip modules initicial proyect",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Carlos Gomez",
-  "license": "ISC"
-=======
-  "description": "- Autor\r - Introduccion\r - Tecnologias Utilizadas\r - Imágenes\r - Enlace web - Github page",
+  "description": "Java.script modules inicial project",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -31,7 +22,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@babel/highlight": "^7.22.20",
     "core-js": "^3.32.2"
   }
->>>>>>> develop
 }
