@@ -1,4 +1,4 @@
-
+/*
 import { cards, elements } from "../utils/constants.js";
 
 
@@ -18,3 +18,4 @@ import { FormValidator } from "../scripts/FormValidator.js";
 
 
 
+*/
