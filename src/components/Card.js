@@ -1,9 +1,10 @@
 
+import { popupErase, popupEraseClose, popupEraseConfirm } from "./constants";
+
 export default class Card {
-  constructor({image, place, altImage}, cardSelector) {
-    this._image = image;
-    this._altImage = altImage;
-    this._place = place;
+  constructor({link, name}, cardSelector) {
+    this._link = link;
+    this._name = name;
     this._cardSelector = cardSelector;
 
   }
@@ -20,9 +21,9 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    this._element.querySelector('.card__place').textContent = this._place;
-    this._element.querySelector('.card__image').src = this._image;
-    this._element.querySelector('.card__image').alt = this._altImage;
+    this._element.querySelector('.card__name').textContent = this._name;
+    this._element.querySelector('.card__link').src = this._link;
+    this._element.querySelector('.card__link').alt = `imagen de ${this._name}`;
 
     this._setEventListeners();
 
@@ -37,7 +38,15 @@ export default class Card {
     this._element.style.display = 'none';
   }
 
+  closePopupErase(){
+    popupErase.classList.remove('active');
+
+  }
+
+
   _setEventListeners() {
+
+    //const popupErase = document.querySelector('.popup-erase');
 
     this._element
       .querySelector('.card__heart')
@@ -48,8 +57,31 @@ export default class Card {
     this._element
       .querySelector('.card__trash')
       .addEventListener('click', () => {
-        this._handleRemoveCard();
+        popupErase.classList.add('active');
+        //this._handleRemoveCard();
       });
+
+    popupEraseClose.addEventListener('click', () => {
+      this.closePopupErase();
+    });
+
+    popupErase.addEventListener('click', (event) => {
+      if (event.target === popupErase) {
+        this.closePopupErase();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this.closePopupErase();
+      }
+    });
+
+    popupEraseConfirm.addEventListener('click', () => {
+      this._handleRemoveCard();
+      this.closePopupErase();
+    });
+
   }
 }
 

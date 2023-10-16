@@ -21,7 +21,7 @@
           <img
             src="<%=require('../src/images/Avatar__jack.png')%>"
             alt="avatar de jacques cousteau"
-            class="profile__image"
+            class="profile__avatar"
           />
           <ul class="profile__place">
             <li class="profile__name">Jacques Cousteau</li>
@@ -31,12 +31,22 @@
           <button type="button" class="button-place"></button>
         </section>
 
+        <section class="popup-erase">
+          <div class="popup-erase__container">
+            <button  id="popup-erase-close" type="button" class="popup-erase__close"></button>
+            <h2 class="popup-erase__title">¿Estás seguro/a?</h2>
+            <button  type="button" class="popup-erase__confirm"> Sí </button>
+          </div>
+        </section>
+
         <section class="cards"></section>
         <section class="popups">
           <section class="popups__add"></section>
           <section class="popups__image"></section>
         </section>
         <section class="popups-user-info"></section>
+
+
 
       </main>
       <footer class="footer">
@@ -45,15 +55,16 @@
     </div>
     <template class="card-template">
       <div class="card">
-        <img class="card__image" src=" " alt="" />
+        <img class="card__link" src=" " alt="" />
         <button class="card__trash"></button>
-        <p class="card__place"></p>
+        <p class="card__name"></p>
         <button class="card__heart"></button>
+        <p class="card__like-count">1</p>
       </div>
     </template>
     <template id="popup-image" class="popup-image-template">
       <div class="popup__container">
-        <button type="button" class="form__close"></button>i
+        <button type="button" class="form__close"></button>
         <img src="imagen del gran canon" alt='https://images.unsplash.com/photo-1643252494989-81cd0b5bead2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80' class="popup__image" />
         <p class="popup__place"></p>
       </div>

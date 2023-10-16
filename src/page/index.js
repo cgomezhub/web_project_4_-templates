@@ -32,8 +32,8 @@ const popupImg = new PopupWithImage('.popup-image-template');
 popupImg._generatePopup();
 
 document.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('card__image')) {
-    const p = evt.target.parentElement.querySelector('.card__place');
+  if (evt.target.classList.contains('card__link')) {
+    const p = evt.target.parentElement.querySelector('.card__name');
 
     const imageInfo = {
       src: evt.target.src,
@@ -74,3 +74,5 @@ buttonEdit.addEventListener('click', () => {
 
   validator.enableValidation();
 });
+
+

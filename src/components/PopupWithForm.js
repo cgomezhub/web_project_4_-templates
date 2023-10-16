@@ -29,24 +29,26 @@ export default class PopupWithForm extends Popup {
 
     // variables para eventos
 
-    const elementImage = element.querySelector('.card__image');
-    const elementPlace = element.querySelector('.card__place');
+    const elementImage = element.querySelector('.card__link');
+    const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
     const elementTrash = element.querySelector('.card__trash');
     const form = document.querySelector('#add-form');
 
-    const textInputPlace = document.getElementById('text-input-place');
-    const urlInputIimage = document.getElementById('url-input-image');
+    const textInputPlace = document.querySelector('#text-input-place');
+    const urlInputImage = document.querySelector('#url-input-image');
 
-    //agregar datos del formulario ingresados por el usuario
+    //agregar datos del formulario ingresados por el usuario a la tarjeta
 
-    elementImage.src = urlInputIimage.value;
-    elementImage.alt = `imagen de ${urlInputIimage.value}`;
+    elementImage.src = urlInputImage.value;
+    elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
+    elementHeart.classList.remove('card__heart_active');
 
     // configurar  el boton de me gusta
 
     elementHeart.addEventListener('click', (evt) => {
+
       evt.target.classList.toggle('card__heart_active');
     });
 
@@ -67,6 +69,8 @@ export default class PopupWithForm extends Popup {
     popups.classList.remove('active');
 
     form.reset();
+
+    element.style.display = 'flex';
   }
 
   _close(){
