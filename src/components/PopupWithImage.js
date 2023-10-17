@@ -1,4 +1,4 @@
-import { popupsImage, popups } from '../components/constants';
+import { popupsImage, } from '../components/constants';
 import Popup from '../components/Popup';
 
 export default class PopupWithImage extends Popup {

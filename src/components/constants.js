@@ -42,8 +42,8 @@ const buttonAddForm  = document.querySelector("#button-add-form");
 
 
 const popupErase = document.querySelector('.popup-erase');
-const popupEraseClose = document.querySelector('.popup-erase__close');
 const popupEraseConfirm = document.querySelector(".popup-erase__confirm");
+
 
 
 const items = [
@@ -91,4 +91,4 @@ export {buttonAddForm, buttonUserForm};
 
 export {profileName, profileAbout, profileAvatar}
 
-export {popupErase, popupEraseClose, popupEraseConfirm};
+export {popupErase, popupEraseConfirm};

@@ -36,7 +36,7 @@ export default class UserInfo {
     form.reset();
     popups.classList.remove('active');
   }
-  
+
   _close() {
     popupsUserInfo.classList.remove('active');
   }
@@ -71,7 +71,6 @@ export default class UserInfo {
 
   _open() {
     popupsUserInfo.classList.add('active');
-    //this._generateUser();
 
     console.log(this._element);
     // declarar variables del nuevo element (inputs)

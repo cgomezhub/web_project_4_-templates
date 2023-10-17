@@ -31,15 +31,10 @@
           <button type="button" class="button-place"></button>
         </section>
 
-        <section class="popup-erase">
-          <div class="popup-erase__container">
-            <button  id="popup-erase-close" type="button" class="popup-erase__close"></button>
-            <h2 class="popup-erase__title">¿Estás seguro/a?</h2>
-            <button  type="button" class="popup-erase__confirm"> Sí </button>
-          </div>
-        </section>
-
         <section class="cards"></section>
+
+        <Section class="popup-erase"></Section>
+
         <section class="popups">
           <section class="popups__add"></section>
           <section class="popups__image"></section>
@@ -47,12 +42,12 @@
         <section class="popups-user-info"></section>
 
 
-
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2023. Carlos Gomez</p>
       </footer>
     </div>
+
     <template class="card-template">
       <div class="card">
         <img class="card__link" src=" " alt="" />
@@ -62,6 +57,15 @@
         <p class="card__like-count">1</p>
       </div>
     </template>
+
+    <template class="popup-erase-template">
+      <div class="popup-erase__container">
+        <button  id="popup-erase-close" type="button" class="popup-erase__close"></button>
+        <h2 class="popup-erase__title">¿Estás seguro/a?</h2>
+        <button  type="button" class="popup-erase__confirm"> Sí </button>
+      </div>
+    </template>
+
     <template id="popup-image" class="popup-image-template">
       <div class="popup__container">
         <button type="button" class="form__close"></button>
@@ -69,6 +73,7 @@
         <p class="popup__place"></p>
       </div>
     </template>
+
     <template id="popup-form" class="popup-form-template">
       <form id="add-form" class="form" novalidate>
         <button id="add-form-close" type="button" class="form__close"></button>
@@ -96,6 +101,7 @@
         </button>
       </form>
     </template>
+
     <template id="popup-profile" class="popup-user-template">
       <form id="profile-form" class="form" novalidate>
         <button type="button" class="form__close"></button>

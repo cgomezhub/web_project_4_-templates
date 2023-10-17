@@ -2,13 +2,6 @@
     position: relative;
     margin: 0;
     display: flex;
-    /*visibility: visible;*/
     flex-direction: column;
 }
 
-/*
-.card.inactive{
-  visibility: hidden;
-}
-
-*/
