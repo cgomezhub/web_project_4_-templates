@@ -32,7 +32,7 @@ export default class PopupWithConfirm {
 
   _setEventListeners() {
 
-    const popupErase = document.querySelector('.popup-erase');
+    //const popupErase = document.querySelector('.popup-erase');
     const popupEraseClose = this._element.querySelector('.popup-erase__close');
     const popupEraseConfirm = this._element.querySelector(".popup-erase__confirm");
 
