@@ -53,17 +53,16 @@ popupConfirm._generateConfirm();
 document.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('card__trash')) {
 
-    const c = evt.target.parentNode.querySelector('.card');
+    //const c = evt.target.parentNode.querySelector('.card');
 
     //const popupEraseConfirm = document.querySelector(".popup-erase__confirm");
 
     popupConfirm._open();
 
-    /*
     popupEraseConfirm.addEventListener('click', () => {
       c.style.display = 'none';
       this._closePopupErase();
-    }); */
+    });
 
   }
 });
