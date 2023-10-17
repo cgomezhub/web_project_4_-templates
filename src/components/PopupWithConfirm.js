@@ -1,7 +1,5 @@
 import { popupErase,} from "./constants";
 
-//import Card from "./Card";
-
 export default class PopupWithConfirm {
 
   constructor(selectorConfirm) {
