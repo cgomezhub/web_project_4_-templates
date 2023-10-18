@@ -15,7 +15,7 @@ import { buttonPlace, buttonEdit, popupEraseConfirm } from '../components/consta
 
 import { profileName, profileAbout, profileAvatar } from "../components/constants";
 import { cardLink, cardName } from "../components/constants";
-import { profileFormInputName, profileFormInputAbout } from "../components/constants";
+import { profileFormInputName, profileFormInput} from "../components/constants";
 import { popupAddInputPlace, popupAddInputHttps } from "../components/constants";
 
 

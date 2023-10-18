@@ -1,11 +1,7 @@
 {
   "name": "web_project_4_esp",
   "version": "1.0.0",
-<<<<<<< HEAD
   "description": "Java.script modules inicial project",
-=======
-  "description": "- Autor\r - Introduccion\r - Tecnologias Utilizadas\r - Imágenes\r - Enlace web - Github page",
->>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -29,7 +25,3 @@
     "core-js": "^3.32.2"
   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
