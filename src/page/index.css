@@ -7,7 +7,11 @@
 @import url(../../blocks/logo/logo.css);
 @import url(../../blocks/line/line.css);
 @import url(../../blocks/profile/profile.css);
+<<<<<<< HEAD
 @import url(../../blocks/profile/__avatar/profile__avatar.css);
+=======
+@import url(../../blocks/profile/__image/profile__image.css);
+>>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
 @import url(../../blocks/profile/__place/profile__place.css);
 @import url(../../blocks/profile/__name/profile__name.css);
 @import url(../../blocks/profile/__about/profile__about.css);
@@ -15,6 +19,7 @@
 @import url(../../blocks/button-place/button-place.css);
 @import url(../../blocks/popup/popup.css);
 @import url(../../blocks/popup-form-template/popup-form-template.css);
+<<<<<<< HEAD
 /*@import url(../../blocks/popup-image-template/popup-image-template.css);*/
 @import url(../../blocks/popup-user-template/popup-user-template.css);
 @import url(../../blocks/popup-erase/popup-erase.css);
@@ -22,6 +27,10 @@
 @import url(../../blocks/popup-erase/__close/popup-erase__close.css);
 @import url(../../blocks/popup-erase/__title/popup-erase__title.css);
 @import url(../../blocks/popup-erase/__confirm/popup-erase__confirm.css);
+=======
+@import url(../../blocks/popup-image-template/popup-image-template.css);
+@import url(../../blocks/popup-user-template/popup-user-template.css);
+>>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
 @import url(../../blocks/form/form.css);
 @import url(../../blocks/form/__close/form__close.css);
 @import url(../../blocks/form/__title/form__title.css);
@@ -34,11 +43,18 @@
 @import url(../../blocks/popups/__image/popups__image.css);
 @import url(../../blocks/popups-user-info/popups-user-info.css);
 @import url(../../blocks/card/card.css);
+<<<<<<< HEAD
 @import url(../../blocks/card/__link/card__link.css);
 @import url(../../blocks/card/__trash/card__trash.css);
 @import url(../../blocks/card/__name/card__name.css);
 @import url(../../blocks/card/__heart/card__heart.css);
 @import url(../../blocks/card/__like-count/card__like-count.css);
+=======
+@import url(../../blocks/card/__image/card__image.css);
+@import url(../../blocks/card/__trash/card__trash.css);
+@import url(../../blocks/card/__place/card__place.css);
+@import url(../../blocks/card/__heart/card__heart.css);
+>>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
 @import url(../../blocks/popup/__container/popup__container.css);
 @import url(../../blocks/popup/__image/popup__image.css);
 @import url(../../blocks/popup/__place/popup__place.css);

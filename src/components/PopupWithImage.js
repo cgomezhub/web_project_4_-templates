@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { popupsImage, } from '../components/constants';
+=======
+import { popupsImage, popups } from '../components/constants';
+>>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
 import Popup from '../components/Popup';
 
 export default class PopupWithImage extends Popup {
@@ -21,6 +25,7 @@ export default class PopupWithImage extends Popup {
     return this._element;
   }
 
+<<<<<<< HEAD
 
   _close(){
 
@@ -51,6 +56,17 @@ export default class PopupWithImage extends Popup {
       }
     });
 
+=======
+  _setEventListeners() {
+    super.setEventListeners();
+
+    popupsImage.addEventListener('click', (event) => {
+      if (event.target === popupsImage) {
+        popupsImage.classList.remove('active');
+        popups.classList.remove('active');
+      }
+    });
+>>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
   }
 
   open({ src, alt, text }) {

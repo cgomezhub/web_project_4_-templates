@@ -12,7 +12,11 @@
     margin-top: -10%;
     padding-top:10%;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 0b7eed16f570754b79a31472fe0a4a984f82abda
   .popup-user-template.active{
     visibility: visible;
     opacity: 1;

@@ -2,12 +2,15 @@
     background: url(../../../src/images/Trash.svg) center no-repeat;
     background-size: 100%;
     border: none;
+    background: url(../../../src/images/Trash.svg) center no-repeat;
+    background-size: 100%;
+    border: none;
     position: absolute;
     top: 5%;
-    right: 7%;
+    right: 5%;
+    background: none;
+    border: none;
     cursor: pointer;
-    height: 7%;
-    width: 7%;
     }
 
 .card__trash:hover{
