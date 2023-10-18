@@ -3,11 +3,16 @@ import { cardLink, cardName } from "./constants";
 import { profileFormInputName, profileFormInputAbout } from "./constants";
 import { popupAddInputPlace, popupAddInputHttps } from "./constants";
 
-class Api {
+import { inputName, inputJob } from "./constants";
+
+export default class Api {
   constructor(options) {
   this.baseUrl = options.baseUrl;
   this.headers = options.headers;
   }
+
+
+  //1. Cargar la información del usuario desde el servidor
 
   getUserInfo() {
   return fetch(`${this.baseUrl}/users/me`,{
@@ -24,6 +29,8 @@ class Api {
      });
  }
 
+ //2. Cargar las tarjetas desde el servidor
+
   getInitialCards() {
   return fetch(`${this.baseUrl}/cards`,{
      headers: this.headers
@@ -37,38 +44,37 @@ class Api {
     .catch(err => {
       console.log(err);
     });
+
+
   }
 
-  editPerfil() {
+ // 3. Editar el perfil
+
+  editPerfil(updatedData) {
       return fetch(`${this.baseUrl}/users/me`,{
          method: "PATCH",
          headers: this.headers,
-         body: JSON.stringify({
-          name: "",
-          about: ""
-        })
 
+         body: JSON.stringify(updatedData)
         })
         .then(res => {
-           if (res.ok) {
-             return res.json();
-            }
-            return Promise.reject('Error: ' + res.status);
-            })
-        .catch(err => {
-          console.log(err);
+          if (res.ok) {
+            return res.json();
+           }
+           return Promise.reject('Error: ' + res.status);
+           })
+       .catch(err => {
+         console.log(err);
         });
   }
 
-  addCard() {
+  //4. Añadir una nueva tarjeta
+
+  addCard(newImage) {
     return fetch(`${this.baseUrl}/cards`,{
        method: "POST",
        headers: this.headers,
-       body: JSON.stringify({
-        name: "",
-        link: ""
-      })
-
+       body: JSON.stringify(newImage)
       })
       .then(res => {
          if (res.ok) {
@@ -94,85 +100,18 @@ class Api {
 
 }
 
-//1. Cargar la información del usuario desde el servidor
+/*
 
-
-const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/group-42',
- headers: {
-  authorization: 'tu-token',
-  "Content-Type": "application/json"
- }
-});
-api.getUserInfo() .then(data => {
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-   profileName.textContent = data.name;
-   profileAbout.textContent = data.about;
-   profileAvatar.src = data.avatar;
-});
-
-//aseugurate de reemplazar 'tu-token' con el token real que obtuviste para la autenticación.
-//También, asegúrate de que las clases o elementos HTML .header__name, .header__about y
-// .header__avatar existan en tu página.
-
-
-//2. Cargar las tarjetas desde el servidor
-
-api.getInicialCards() .then(data => {
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-   cardLink.textContent = data.link;
-   cardName.textContent = data.name;
-});
-
-
-//3. Editar el perfil
-
-const editPerfilApi = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/group-42',
- headers: {
-   authorization: 'tu-token',
-   "Content-Type": "application/json"
-  },
- body: JSON.stringify({
-  name: "",
-  about: ""
- })
- });
-editPerfilApi.editPerfil() .then(data => {
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-   data.name = profileFormInputName.value;
-   data.about = profileFormInputAbout.value;
-});
-
-//4. Añadir una nueva tarjeta
-
-const addCardApi = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/group-42',
- headers: {
-   authorization: 'tu-token',
-   "Content-Type": "application/json"
-  },
- body: JSON.stringify({
-  name: "",
-  link: ""
- })
- });
-addCardApi.editPerfil() .then(data => {
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-   data.name = popupAddInputPlace.value;
-   data.link = popupAddInputHttps.value;
-});
-
-//5. Mostrar cuántos "me gusta" tiene una tarjeta
-
-// agregar un elemento contador card__like-count a la tarejeta en HTML
-
+/5. Mostrar cuántos "me gusta" tiene una tarjeta
 
 api.getCardLikes('cardId') .then(data => {
   const likeCountElement = document.querySelector('.card__like-count');
   likeCountElement.textContent = data.likes.length;
  });
+
+
+
+
 
 //En este ejemplo, hemos agregado el método getCardLikes a la clase Api.
 //Este método recibe el ID de la tarjeta como argumento y realiza una solicitud GET
@@ -184,11 +123,7 @@ api.getCardLikes('cardId') .then(data => {
 // con el ID real de la tarjeta que deseas obtener los "me gusta".
 
 
-
-
-
-
-
+*/
 
 
 

@@ -2,6 +2,15 @@ import { popups, popupsAdd, cards,  } from './constants';
 
 import Popup from './Popup';
 
+import Api from './Api';
+
+const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+ headers: {
+  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+  "Content-Type": "application/json"
+ }
+});
+
 export default class PopupWithForm extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
@@ -44,6 +53,16 @@ export default class PopupWithForm extends Popup {
     elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
+
+
+    const link = elementImage.src;
+    const name = elementPlace.textContent;
+
+    const newImage = {link: link, name: name }
+
+    api.addCard(newImage);
+
+
 
     // configurar  el boton de me gusta
 

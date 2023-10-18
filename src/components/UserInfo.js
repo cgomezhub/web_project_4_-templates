@@ -1,5 +1,14 @@
 import { popupsUserInfo, profileName, profileAbout, popups } from '../components/constants';
 
+import Api from './Api';
+
+const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+ headers: {
+  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+  "Content-Type": "application/json"
+ }
+});
+
 export default class UserInfo {
   constructor(selectorUser) {
     this._selectorUser = selectorUser;
@@ -30,6 +39,13 @@ export default class UserInfo {
 
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputJob.value;
+
+    const name = profileName.textContent;
+    const about = profileAbout.textContent;
+
+    const updatedData = { name: name, about: about }
+
+    api.editPerfil(updatedData);
 
     popupsUserInfo.classList.remove('active');
 

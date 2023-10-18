@@ -20,7 +20,7 @@ const popupAddInputHttps = document.querySelector('#url-input-image');
 
 const cards = document.querySelector('.cards');
 const cardLink = document.querySelector('.card__link');
-const cardName = document.querySelector('card__name')
+const cardName = document.querySelector('.card__name');
 
 const popupImageSelector = document.getElementById('popup-image');
 const popupImage = document.querySelector('.popup__image');
@@ -44,9 +44,12 @@ const buttonAddForm  = document.querySelector("#button-add-form");
 const popupErase = document.querySelector('.popup-erase');
 const popupEraseConfirm = document.querySelector(".popup-erase__confirm");
 
+const inputName = document.querySelector('#text-input-name');
+const inputJob = document.querySelector('#text-input-about');
 
 
-const items = [
+/*
+const data = [
     {
       link:
         'https://images.unsplash.com/photo-1666831268439-376e34c4de0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80',
@@ -80,10 +83,12 @@ const items = [
     },
 ];
 
+*/
+
 export { buttonEdit, popupProfile, profileFormClose,profileFormInputName, profileFormInputAbout, buttonPlace, popupAdd,popupAddClose, popupAddInputPlace, popupAddInputHttps, cards, popupImageSelector, popupImage, popupPlace, imagesExpandClose};
 
 export {formSelector, inputSelector};
-export { items};
+//export { data};
 export {cardLink, cardName};
 export {popup};
 export {popups, popupsImage, popupsAdd, popupsUserInfo};
@@ -92,3 +97,5 @@ export {buttonAddForm, buttonUserForm};
 export {profileName, profileAbout, profileAvatar}
 
 export {popupErase, popupEraseConfirm};
+
+export{inputName, inputJob};

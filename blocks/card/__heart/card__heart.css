@@ -1,12 +1,12 @@
 .card__heart{
   border: none;
   background: url(../../../src/images/heart.svg) center no-repeat;
-  background-size: 100%;
+  background-size: 70%;
   cursor: pointer;
-  height: 15px;
-  width: 15px;
+  height: 10%;
+  width: 10%;
   position: absolute;
-  top: 90%;
+  top: 80%;
   right: 5%;
   opacity: 70%;
   transition: 0.5s;
@@ -26,20 +26,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 768px){
     .card__heart{
-        width: 7%;
-        top: 89%;
-        right: 6%;
+      background-size: 40%;
     }
 }
-
-@media screen and (max-width: 320px){
-    .card__heart{
-        width: 7%;
-        top: 90%;
-        right: 7%;
-
-    }
-}
-
-
 

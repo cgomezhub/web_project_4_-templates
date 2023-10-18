@@ -4,10 +4,10 @@
     border: none;
     position: absolute;
     top: 5%;
-    right: 5%;
+    right: 7%;
     cursor: pointer;
-    height: 15px;
-    width: 15px;
+    height: 7%;
+    width: 7%;
     }
 
 .card__trash:hover{
@@ -17,9 +17,9 @@
 
 @media screen and (min-width: 320px) and (max-width: 768px){
     .card__trash{
-        width: 8%;
-        top: 6%;
-        right: 6%;
+        background-size: 40%;
+        height: 9%;
+        width: 9%;
     }
 }
 
@@ -27,7 +27,7 @@
     .card__trash{
         width: 6%;
         top: 6%;
-        right: 8%;
+        right: 7%;
 
     }
 }
