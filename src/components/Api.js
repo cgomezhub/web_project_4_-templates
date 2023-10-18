@@ -110,9 +110,6 @@ api.getCardLikes('cardId') .then(data => {
  });
 
 
-
-
-
 //En este ejemplo, hemos agregado el método getCardLikes a la clase Api.
 //Este método recibe el ID de la tarjeta como argumento y realiza una solicitud GET
 //a la URL correspondiente para obtener los "me gusta" de esa tarjeta.
@@ -121,15 +118,4 @@ api.getCardLikes('cardId') .then(data => {
 //HTML .card__like-count con el valor de data.likes.length,
 //que representa la cantidad de "me gusta" que tiene la tarjeta. Recuerda reemplazar 'cardId'
 // con el ID real de la tarjeta que deseas obtener los "me gusta".
-
-
 */
-
-
-
-
-
-
-
-
-
