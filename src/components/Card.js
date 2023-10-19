@@ -1,6 +1,17 @@
 
 import { popupErase, popupEraseClose, popupEraseConfirm } from "./constants";
 
+import Api from '../components/Api';
+import { useFunc } from "ajv/dist/compile/util";
+
+const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+ headers: {
+  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+  "Content-Type": "application/json"
+ }
+});
+
+
 export default class Card {
   constructor({link, name}, cardSelector) {
     this._link = link;
@@ -25,6 +36,16 @@ export default class Card {
     this._element.querySelector('.card__link').src = this._link;
     this._element.querySelector('.card__link').alt = `imagen de ${this._name}`;
 
+    //5. mostrar los megusta de una tarjeta de la URL
+
+    const  cardLikeCount  = this._element.querySelector('.card__like-count');
+
+    api.getCardLikes().then(data => {
+
+    cardLikeCount.textContent=data.likes;
+
+    });
+
     this._setEventListeners();
 
     return this._element;
@@ -34,19 +55,61 @@ export default class Card {
     evt.target.classList.toggle('card__heart_active');
   }
 
-
-
   handleRemoveCard() {
     this._element.style.display = 'none';
   }
 
   _setEventListeners() {
+    const cardHeart =  this._element.querySelector('.card__heart');
 
-    this._element
-      .querySelector('.card__heart')
-      .addEventListener('click', (evt) => {
+    cardHeart.addEventListener('click', (evt) => {
         this._like(evt);
+
+        console.log ('paso like');
+
+        if (cardHeart.classList.contains('card__heart_active')) {
+
+          // obtetener el valor de la propiedad name de la URL user
+
+          console.log ('valido corazon');
+
+          api.getUserInfo().then(data => {
+
+            const userName = data.name
+
+            console.log (userName);
+
+            //return userName
+
+          });
+
+
+
+          //console.log (userName);
+
+           // cards.likes.push(userName);
+
+             //api.addCardLikes(cards);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
     });
+
+
   }
 }
 

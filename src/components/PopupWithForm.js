@@ -55,6 +55,9 @@ export default class PopupWithForm extends Popup {
     elementHeart.classList.remove('card__heart_active');
 
 
+    // 4. agregar nueva tarjeta a la URL
+
+
     const link = elementImage.src;
     const name = elementPlace.textContent;
 

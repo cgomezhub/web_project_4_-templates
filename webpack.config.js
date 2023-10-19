@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
         clean: true,
     },
     target: ['web', 'es5'],
-    stats: { children: true },    
+    stats: { children: true },
     mode: 'development',
     devServer: {
         static: path.resolve(__dirname, './dist'), // especifica una carpeta desde donde servir la aplicación y su contenido
@@ -49,7 +49,7 @@ module.exports = {
             test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
             type: "asset/resource"
           },
-        
+
         ]
     },
     plugins: [

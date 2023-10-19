@@ -10,13 +10,12 @@ import UserInfo from '../components/UserInfo';
 import PopupWithConfirm from '../components/PopupWithConfirm';
 import Api from '../components/Api';
 
-import { buttonPlace, buttonEdit, popupEraseConfirm } from '../components/constants';
+import { buttonPlace, buttonEdit } from '../components/constants';
 
 
-import { profileName, profileAbout, profileAvatar } from "../components/constants";
-import { cardLink, cardName } from "../components/constants";
-import { profileFormInputName, profileFormInput} from "../components/constants";
-import { popupAddInputPlace, popupAddInputHttps } from "../components/constants";
+import { profileName, profileAbout} from "../components/constants";
+
+
 
 
 const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
@@ -26,15 +25,18 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
  }
 });
 
+// 1. obtener datos del usuario de la URL
 
 api.getUserInfo() .then(data => {
   // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
 
    profileName.textContent = data.name;
    profileAbout.textContent = data.about;
-   profileAvatar.src = data.avatar;
+   //profileAvatar.src = data.avatar;
 });
 
+
+//2. obtener y cargar las tarjetas desde la URL
 
 api.getInitialCards().then(data => {
 
@@ -56,8 +58,6 @@ api.getInitialCards().then(data => {
   cardsList.renderItems();
 
 });
-
-
 
 const popupUserForm = new UserInfo('.popup-user-template');
 
@@ -86,7 +86,6 @@ api.editPerfil({
 });
 
 */
-
 
 
 

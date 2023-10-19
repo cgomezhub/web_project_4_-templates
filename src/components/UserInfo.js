@@ -40,17 +40,21 @@ export default class UserInfo {
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputJob.value;
 
-    const name = profileName.textContent;
-    const about = profileAbout.textContent;
-
-    const updatedData = { name: name, about: about }
-
-    api.editPerfil(updatedData);
-
     popupsUserInfo.classList.remove('active');
 
     form.reset();
+
     popups.classList.remove('active');
+
+
+    //3. editar el perfil desde la URL
+
+    const name = profileName.textContent;
+    const about = profileAbout.textContent;
+
+    const updatedData = { name: name, about: about};
+
+    api.editPerfil(updatedData);
   }
 
   _close() {

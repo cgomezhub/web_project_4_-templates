@@ -1,4 +1,4 @@
-import { profileName, profileAbout, profileAvatar } from "./constants";
+import { profileName, profileAbout, profileAvatar, cards } from "./constants";
 import { cardLink, cardName } from "./constants";
 import { profileFormInputName, profileFormInputAbout } from "./constants";
 import { popupAddInputPlace, popupAddInputHttps } from "./constants";
@@ -54,7 +54,6 @@ export default class Api {
       return fetch(`${this.baseUrl}/users/me`,{
          method: "PATCH",
          headers: this.headers,
-
          body: JSON.stringify(updatedData)
         })
         .then(res => {
@@ -71,7 +70,7 @@ export default class Api {
   //4. Añadir una nueva tarjeta
 
   addCard(newImage) {
-    return fetch(`${this.baseUrl}/cards`,{
+    return fetch(`${this.baseUrl}/cards/likes`,{
        method: "POST",
        headers: this.headers,
        body: JSON.stringify(newImage)
@@ -87,8 +86,12 @@ export default class Api {
       });
   }
 
-  getCardLikes(cardId) {
-    return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
+  //5. Mostrar cuántos "me gusta" tiene una tarjeta
+
+  //MOSTRAR cuantos me gusta tiene una tarjeta
+
+  getCardLikes() {
+    return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers
      }) .then(res => {
         if (res.ok) { return res.json();
@@ -96,7 +99,76 @@ export default class Api {
      }) .catch(err => {
         console.log(err);
        });
-     }
+  }
+
+
+
+
+// en la Class Card puedo agregar cuando se active el heart:
+    // tomar el  valor  la propiedad name de la URL Users  === listo ===
+    // agregar dicho valor como valor de  la propiedad Likes de la base Cards == usa push
+
+
+  addCardLikes(cards)
+   {
+    return fetch(`${this.baseUrl}/cards`,{
+       method: "PATCH",
+       headers: this.headers,
+       body: JSON.stringify(cards)
+      })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+         }
+         return Promise.reject('Error: ' + res.status);
+         })
+     .catch(err => {
+       console.log(err);
+      });
+  }
+
+
+  /*
+  //Agrega el valor del nombre al arreglo "likes[]" del "objeto1"
+  objeto1.likes.push(name);
+   // Realiza la solicitud PATCH a la API para actualizar el "objeto1" en la base de datos
+    fetch('URL_DE_TU_API/objeto1/' + objeto1._id, {
+      method: 'PATCH',
+      headers: {
+         'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objeto1)
+      })
+      .then(response => {
+         if (response.ok) { return response.json();
+        }
+        throw new Error('Error: ' + response.status);
+       })
+       .then(data => { console.log('Objeto1 actualizado:', data);
+       // Haz cualquier otra acción necesaria después de actualizar el objeto1
+       // en la base de datos })
+       .catch(error => { console.log('Error al actualizar el objeto1:', error);
+       // Maneja el error de alguna manera adecuada }); });
+*/
+
+  deleteCardLikes(updatedCard) {
+    return fetch(`${this.baseUrl}/cards`,{
+       method: "DELETE",
+       headers: this.headers,
+       body: JSON.stringify(updatedCard)
+      })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+         }
+         return Promise.reject('Error: ' + res.status);
+         })
+     .catch(err => {
+       console.log(err);
+      });
+  }
+
+
 
 }
 

@@ -48,6 +48,9 @@ const inputName = document.querySelector('#text-input-name');
 const inputJob = document.querySelector('#text-input-about');
 
 
+
+
+
 /*
 const data = [
     {
