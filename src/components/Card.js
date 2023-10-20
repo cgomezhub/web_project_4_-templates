@@ -13,12 +13,13 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
 
 
 export default class Card {
-  constructor({link, name, likes}, cardSelector) {
-    this._link = link;
-    this._name = name;
-    this._likes = likes;
+  constructor(cardItem, user, cardSelector) {
+    this._link = cardItem.link;
+    this._name = cardItem.name;
+    this._likes = cardItem.likes;
+    this._cardUserId=cardItem.owner._id;
+    this._userId=user._id;
     this._cardSelector = cardSelector;
-
   }
 
   _getTemplate() {
@@ -42,12 +43,15 @@ export default class Card {
     const  cardLikeCount  = this._element.querySelector('.card__like-count');
     cardLikeCount.textContent = this._likes.length;
 
+    //6. y 7. mostrar el basurero solo al ususario
 
-    /*api.getCardLikes().then(data => {
+    console.log(this._userId,this._cardUserId)
 
-    cardLikeCount.textContent=data.likes;
+    if(this._userId === this._cardUserId){
+      this._element.querySelector('.card__trash').style.display = 'block';
+      console.log("entro,",this._element.querySelector('.card__trash'))
+    }
 
-    });*/
 
     this._setEventListeners();
 

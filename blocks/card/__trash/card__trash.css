@@ -8,20 +8,12 @@
   cursor: pointer;
   height: 7%;
   width: 7%;
+  display: none;
   /*visibility: hidden;*/
 
 }
 
 
-/*
-
-.card__trash_active{
-
-  visibility: visible;
-}
-
-
-*/
 
 .card__trash:hover{
     opacity: 70%;

@@ -25,26 +25,19 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
  }
 });
 
-// 1. obtener datos del usuario de la URL
+// 1. obtener datos del usuario de la URL y 2. obtener y cargar las tarjetas desde la URL
+api.getInitialCards().then((data) => {
+  api.getUserInfo() .then((user)  => {
+    profileName.textContent = user.name;
+    profileAbout.textContent = user.about;
+    console.log(data,user);
 
-api.getUserInfo() .then(data => {
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-   profileName.textContent = data.name;
-   profileAbout.textContent = data.about;
-   //profileAvatar.src = data.avatar;
-});
-
-
-//2. obtener y cargar las tarjetas desde la URL
-
-api.getInitialCards().then(data => {
 
    const cardsList = new Section(
     {
       data: data,
       renderer: (cardItem) => {
-        const card = new Card(cardItem, '.card-template');
+        const card = new Card(cardItem, user, '.card-template');
 
         console.log(cardItem);
 
@@ -59,6 +52,7 @@ api.getInitialCards().then(data => {
 
   cardsList.renderItems();
 
+});
 });
 
 
@@ -92,12 +86,6 @@ api.editPerfil({
 });
 
 */
-
-
-
-
-
-
 
 
 /*
@@ -170,7 +158,3 @@ buttonPlace.addEventListener('click', () => {
 
   validator.enableValidation();
 });
-
-
-
-
