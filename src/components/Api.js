@@ -70,7 +70,7 @@ export default class Api {
   //4. Añadir una nueva tarjeta
 
   addCard(newImage) {
-    return fetch(`${this.baseUrl}/cards/likes`,{
+    return fetch(`${this.baseUrl}/`,{
        method: "POST",
        headers: this.headers,
        body: JSON.stringify(newImage)

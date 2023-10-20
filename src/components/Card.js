@@ -13,9 +13,10 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
 
 
 export default class Card {
-  constructor({link, name}, cardSelector) {
+  constructor({link, name, likes}, cardSelector) {
     this._link = link;
     this._name = name;
+    this._likes = likes;
     this._cardSelector = cardSelector;
 
   }
@@ -36,15 +37,17 @@ export default class Card {
     this._element.querySelector('.card__link').src = this._link;
     this._element.querySelector('.card__link').alt = `imagen de ${this._name}`;
 
-    //5. mostrar los megusta de una tarjeta de la URL
+    //5. mostrar los megusta de una tarjeta desde la URL
 
     const  cardLikeCount  = this._element.querySelector('.card__like-count');
+    cardLikeCount.textContent = this._likes.length;
 
-    api.getCardLikes().then(data => {
+
+    /*api.getCardLikes().then(data => {
 
     cardLikeCount.textContent=data.likes;
 
-    });
+    });*/
 
     this._setEventListeners();
 

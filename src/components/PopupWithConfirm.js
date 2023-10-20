@@ -55,9 +55,8 @@ export default class PopupWithConfirm {
     });
 
     popupEraseConfirm.addEventListener('click', () => {
-      //this._handleRemoveCard();
+
       card.style.display = 'none';
-      //super.handleRemoveCard() ;
       this._closePopupErase();
     });
   }

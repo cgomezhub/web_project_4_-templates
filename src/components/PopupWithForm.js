@@ -41,22 +41,37 @@ export default class PopupWithForm extends Popup {
     const elementImage = element.querySelector('.card__link');
     const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
-    const elementTrash = element.querySelector('.card__trash');
+
     const form = document.querySelector('#add-form');
 
     const textInputPlace = document.querySelector('#text-input-place');
     const urlInputImage = document.querySelector('#url-input-image');
 
-    //agregar datos del formulario ingresados por el usuario a la tarjeta
+
+    // construir elemento trash que se agregara solo a la tarjeta generada por este usuario
+
+    const elementTrash = document.createElement('button');
+    elementTrash.classList.add('card__trash');
+
+    element.appendChild(elementTrash);
+
+
+    // Agrega el botón al elemento div
+
+
+    //agregar datos del formulario ingresados por el usuario para la tarjeta
 
     elementImage.src = urlInputImage.value;
     elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
+    //elementTrash.classList.remove("card__trash");
+    //elementTrash.classList.add("card__trash_active");
 
 
     // 4. agregar nueva tarjeta a la URL
 
+    //construir objeto a agregar
 
     const link = elementImage.src;
     const name = elementPlace.textContent;

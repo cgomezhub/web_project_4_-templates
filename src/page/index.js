@@ -46,6 +46,8 @@ api.getInitialCards().then(data => {
       renderer: (cardItem) => {
         const card = new Card(cardItem, '.card-template');
 
+        console.log(cardItem);
+
         const cardElement = card.generateCard();
 
         cardsList.addItem(cardElement);
@@ -58,6 +60,10 @@ api.getInitialCards().then(data => {
   cardsList.renderItems();
 
 });
+
+
+//Popup formulario para Informacion del Usuario
+
 
 const popupUserForm = new UserInfo('.popup-user-template');
 
@@ -105,8 +111,7 @@ api.addCard() .then(data => {
 */
 
 
-
-
+// Popup  zoon de imagen seleccionada
 
 const popupImg = new PopupWithImage('.popup-image-template');
 
@@ -125,6 +130,10 @@ document.addEventListener('click', (evt) => {
     popupImg.open(imageInfo);
   }
 });
+
+
+// Popup de confirmacion para eliminar imagen
+
 
 const popupConfirm = new PopupWithConfirm('.popup-erase-template');
 
@@ -146,7 +155,7 @@ document.addEventListener('click', (evt) => {
   }
 });
 
-
+// Popup formulario de imagen
 
 const popupAddForm = new PopupWithForm('.popup-form-template');
 
@@ -162,20 +171,6 @@ buttonPlace.addEventListener('click', () => {
   validator.enableValidation();
 });
 
-/*
-const popupUserForm = new UserInfo('.popup-user-template');
 
-popupUserForm._generateUser();
-
-console.log('entro UserInfo');
-
-buttonEdit.addEventListener('click', () => {
-  popupUserForm._open();
-
-  const validator = new FormValidator('.form');
-
-  validator.enableValidation();
-});
-*/
 
 
