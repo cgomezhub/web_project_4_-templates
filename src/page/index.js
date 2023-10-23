@@ -10,7 +10,7 @@ import UserInfo from '../components/UserInfo';
 import PopupWithConfirm from '../components/PopupWithConfirm';
 import Api from '../components/Api';
 
-import { buttonPlace, buttonEdit } from '../components/constants';
+import { buttonPlace, buttonEdit, popupErase } from '../components/constants';
 
 
 import { profileName, profileAbout} from "../components/constants";
@@ -52,6 +52,8 @@ api.getInitialCards().then((data) => {
 
   cardsList.renderItems();
 
+
+
 });
 });
 
@@ -75,31 +77,9 @@ buttonEdit.addEventListener('click', () => {
 });
 
 
-/*
-
-api.editPerfil({
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-    name : profileName.textContent,
-    about : profileAbout.textContent,
-    //data.avatar = profileAvatar.src;
-});
-
-*/
 
 
-/*
-api.addCard() .then(data => {
-  // Utiliza las propiedades name, about y avatar en los elementos del encabezado correspondientes de la página
-
-   data.name = popupAddInputPlace.value;
-   data.link = popupAddInputHttps.value;
-});
-
-*/
-
-
-// Popup  zoon de imagen seleccionada
+// Popup  zoon de la imagen de la card
 
 const popupImg = new PopupWithImage('.popup-image-template');
 
@@ -120,9 +100,11 @@ document.addEventListener('click', (evt) => {
 });
 
 
-// Popup de confirmacion para eliminar imagen
+
+// Popup para confirmar eliminar cartas
 
 
+/*
 const popupConfirm = new PopupWithConfirm('.popup-erase-template');
 
 popupConfirm._generateConfirm();
@@ -130,20 +112,18 @@ popupConfirm._generateConfirm();
 document.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('card__trash')) {
 
-   // const c = evt.target.parentElement.querySelector('.card');
+
     popupConfirm._open();
 
-    /*const popupEraseConfirm = document.querySelector(".popup-erase__confirm");
-
-    popupEraseConfirm.addEventListener('click', () => {
-      c.style.display = 'none';
-      this._closePopupErase();
-    });*/
-
-  }
+}
 });
 
-// Popup formulario de imagen
+
+*/
+
+
+
+// Popup formulario de crear cartas
 
 const popupAddForm = new PopupWithForm('.popup-form-template');
 

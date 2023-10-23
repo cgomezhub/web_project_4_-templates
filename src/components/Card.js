@@ -2,7 +2,7 @@
 import { popupErase, popupEraseClose, popupEraseConfirm } from "./constants";
 
 import Api from '../components/Api';
-import { useFunc } from "ajv/dist/compile/util";
+
 
 const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
  headers: {
@@ -11,14 +11,16 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
  }
 });
 
+import PopupWithConfirm from "./PopupWithConfirm";
 
 export default class Card {
   constructor(cardItem, user, cardSelector) {
     this._link = cardItem.link;
     this._name = cardItem.name;
     this._likes = cardItem.likes;
-    this._cardUserId=cardItem.owner._id;
-    this._userId=user._id;
+    this._ownerId = cardItem.owner._id;
+    this._cardId = cardItem._id;
+    this._userId = user._id;
     this._cardSelector = cardSelector;
   }
 
@@ -27,6 +29,8 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector('.card')
       .cloneNode(true);
+
+      console.log(cardElement);
 
     return cardElement;
   }
@@ -38,35 +42,97 @@ export default class Card {
     this._element.querySelector('.card__link').src = this._link;
     this._element.querySelector('.card__link').alt = `imagen de ${this._name}`;
 
+
     //5. mostrar los megusta de una tarjeta desde la URL
 
     const  cardLikeCount  = this._element.querySelector('.card__like-count');
     cardLikeCount.textContent = this._likes.length;
 
+
     //6. y 7. mostrar el basurero solo al ususario
 
-    console.log(this._userId,this._cardUserId)
+    console.log(this._userId,this._ownerId)
 
-    if(this._userId === this._cardUserId){
-      this._element.querySelector('.card__trash').style.display = 'block';
+    if(this._userId === this._ownerId){
+      //this._element.querySelector('.card__trash').style.display = 'block';
+      this._element.querySelector('.card__trash').classList.add('card__trash_active');
       console.log("entro,",this._element.querySelector('.card__trash'))
     }
 
 
     this._setEventListeners();
+    this._handleRemoveCard();
 
     return this._element;
   }
+
+  ///////////////////////////
 
   _like(evt) {
     evt.target.classList.toggle('card__heart_active');
   }
 
-  handleRemoveCard() {
-    this._element.style.display = 'none';
+  _closePopupErase(){
+    popupErase.classList.remove('active');
+  }
+
+
+  _handleRemoveCard() {
+
+    // variables para eventos del popup - erase
+
+    const cardTrash = this._element.querySelector('.card__trash');
+    const popupEraseClose = document.querySelector('.popup-erase__close');
+    const popupEraseConfirm = document.querySelector(".popup-erase__confirm");
+
+
+    console.log(this._element);
+
+
+    const eraseContent = () => {
+      const idImage = this._cardId;
+      console.log(idImage);
+      //api.eraseCard(idImage);
+      popupErase.classList.remove('active');
+      this._element.style.display = 'none';
+    };
+
+    cardTrash.addEventListener('click', () => {
+      popupErase.classList.add('active');
+      popupEraseConfirm.addEventListener('click', eraseContent);
+    });
+
+
+
+    popupEraseClose.addEventListener('click', () => {
+
+
+      this._closePopupErase();
+      popupEraseConfirm.removeEventListener('click', eraseContent);
+
+
+    })
+
+    popupErase.addEventListener('click', (event) => {
+    if (event.target === popupErase) {
+      this._closePopupErase();
+    }
+    popupEraseConfirm.removeEventListener('click', eraseContent);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this._closePopupErase();
+      }
+    popupEraseConfirm.removeEventListener('click', eraseContent);
+    });
   }
 
   _setEventListeners() {
+
+
+    ////////////////////////////////////////////////////////
+
     const cardHeart =  this._element.querySelector('.card__heart');
 
     cardHeart.addEventListener('click', (evt) => {
@@ -90,33 +156,17 @@ export default class Card {
 
           });
 
-
-
           //console.log (userName);
 
            // cards.likes.push(userName);
 
              //api.addCardLikes(cards);
 
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
 
 
     });
-
-
   }
 }
 

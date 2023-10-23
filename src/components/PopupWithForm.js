@@ -41,6 +41,7 @@ export default class PopupWithForm extends Popup {
     const elementImage = element.querySelector('.card__link');
     const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
+    const elementTrash = element.querySelector('.card__trash');
 
     const form = document.querySelector('#add-form');
 
@@ -48,15 +49,6 @@ export default class PopupWithForm extends Popup {
     const urlInputImage = document.querySelector('#url-input-image');
 
 
-    // construir elemento trash que se agregara solo a la tarjeta generada por este usuario
-
-    const elementTrash = document.createElement('button');
-    elementTrash.classList.add('card__trash');
-
-    element.appendChild(elementTrash);
-
-
-    // Agrega el botón al elemento div
 
 
     //agregar datos del formulario ingresados por el usuario para la tarjeta
@@ -65,8 +57,8 @@ export default class PopupWithForm extends Popup {
     elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
-    //elementTrash.classList.remove("card__trash");
-    //elementTrash.classList.add("card__trash_active");
+    elementTrash.classList.add('card__trash_active');
+
 
 
     // 4. agregar nueva tarjeta a la URL
@@ -89,11 +81,13 @@ export default class PopupWithForm extends Popup {
       evt.target.classList.toggle('card__heart_active');
     });
 
+    /*
     // configurar eliminar tarjeta
 
     elementTrash.addEventListener('click', () => {
       element.style.display = 'none';
-    });
+    });*/
+
 
     // agregar la tarjeta nueva al Grid
 

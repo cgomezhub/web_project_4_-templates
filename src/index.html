@@ -33,7 +33,13 @@
 
         <section class="cards"></section>
 
-        <Section class="popup-erase"></Section>
+        <section class="popup-erase">
+          <div class="popup-erase__container">
+              <button  id="popup-erase-close" type="button" class="popup-erase__close"></button>
+              <h2 class="popup-erase__title">¿Estás seguro/a?</h2>
+              <button  type="button" class="popup-erase__confirm"> Sí </button>
+          </div>
+        </section>
 
         <section class="popups">
           <section class="popups__add"></section>
@@ -51,20 +57,20 @@
     <template class="card-template">
       <div class="card">
         <img class="card__link" src=" " alt="" />
-        <button class="card__trash card__trash_active"></button>
+        <button class="card__trash"></button>
         <p class="card__name"></p>
         <button class="card__heart"></button>
         <p class="card__like-count">5</p>
       </div>
     </template>
 
-    <template class="popup-erase-template">
+    <!--<template class="popup-erase-template">
       <div class="popup-erase__container">
         <button  id="popup-erase-close" type="button" class="popup-erase__close"></button>
         <h2 class="popup-erase__title">¿Estás seguro/a?</h2>
         <button  type="button" class="popup-erase__confirm"> Sí </button>
       </div>
-    </template>
+    </template>-->
 
     <template id="popup-image" class="popup-image-template">
       <div class="popup__container">

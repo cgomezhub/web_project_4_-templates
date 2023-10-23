@@ -8,9 +8,14 @@
   cursor: pointer;
   height: 7%;
   width: 7%;
-  display: none;
-  /*visibility: hidden;*/
+  /*display: none; */
+  visibility: hidden;
 
+}
+
+.card__trash_active{
+
+  visibility: visible;
 }
 
 

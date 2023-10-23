@@ -70,7 +70,7 @@ export default class Api {
   //4. Añadir una nueva tarjeta
 
   addCard(newImage) {
-    return fetch(`${this.baseUrl}/`,{
+    return fetch(`${this.baseUrl}/cards`,{
        method: "POST",
        headers: this.headers,
        body: JSON.stringify(newImage)
@@ -86,23 +86,25 @@ export default class Api {
       });
   }
 
-  //5. Mostrar cuántos "me gusta" tiene una tarjeta
 
-  //MOSTRAR cuantos me gusta tiene una tarjeta
+  //7. borrar una tarjeta
 
-  getCardLikes() {
-    return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers
-     }) .then(res => {
-        if (res.ok) { return res.json();
-       } return Promise.reject('Error: ' + res.status);
-     }) .catch(err => {
+  eraseCard(idImage) {
+    return fetch(`${this.baseUrl}/cards/` + idImage,{
+       method: "DELETE",
+       headers: this.headers,
+      // body: JSON.stringify(idImage)
+      })
+      .then(res => {
+         if (res.ok) {
+           return res.json();
+          }
+          return Promise.reject('Error: ' + res.status);
+          })
+      .catch(err => {
         console.log(err);
-       });
+      });
   }
-
-
-
 
 // en la Class Card puedo agregar cuando se active el heart:
     // tomar el  valor  la propiedad name de la URL Users  === listo ===
@@ -111,7 +113,7 @@ export default class Api {
 
   addCardLikes(cards)
    {
-    return fetch(`${this.baseUrl}/cards`,{
+    return fetch(`${this.baseUrl}/cards?`,{
        method: "PATCH",
        headers: this.headers,
        body: JSON.stringify(cards)

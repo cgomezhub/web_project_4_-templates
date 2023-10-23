@@ -1,4 +1,15 @@
-import { popupErase,} from "./constants";
+/*import { popupErase,} from "./constants";
+
+import Api from "./Api";
+
+const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+ headers: {
+  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+  "Content-Type": "application/json"
+ }
+});
+
+
 
 export default class PopupWithConfirm {
 
@@ -18,8 +29,8 @@ export default class PopupWithConfirm {
   }
 
   _generateConfirm() {
-    this._element = this._getTemplateConfirm();
-    return this._element;
+    this._elementC = this._getTemplateConfirm();
+    return this._elementC;
   }
 
 
@@ -33,10 +44,10 @@ export default class PopupWithConfirm {
   _setEventListeners() {
 
     const popupErase = document.querySelector('.popup-erase');
-    const popupEraseClose = this._element.querySelector('.popup-erase__close');
-    const popupEraseConfirm = this._element.querySelector(".popup-erase__confirm");
+    const popupEraseClose = this._elementC.querySelector('.popup-erase__close');
+    const popupEraseConfirm = this._elementC.querySelector(".popup-erase__confirm");
 
-    const card = document.querySelector('.card');
+
 
     popupEraseClose.addEventListener('click', () => {
       this._closePopupErase();
@@ -54,21 +65,41 @@ export default class PopupWithConfirm {
       }
     });
 
+
+   7// elimiar carta de la URL
+
+
     popupEraseConfirm.addEventListener('click', () => {
 
-      card.style.display = 'none';
+
       this._closePopupErase();
+
+
+      /*
+      const name = profileName.textContent;
+      const about = profileAbout.textContent;
+
+      const idImage = { name: name, about: about};
+
+
+      api.eraseCard(idImage);
+
     });
+
+
   }
 
   _open() {
 
     console.log ('paso 1');
+
     popupErase.classList.add('active');
 
-    popupErase.append(this._element);
+    popupErase.append(this._elementC);
 
     this._setEventListeners();
   }
 
 }
+
+*/
