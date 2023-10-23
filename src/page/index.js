@@ -7,10 +7,10 @@ import FormValidator from '../components/FormValidator';
 import PopupWithImage from '../components/PopupWithImage';
 import PopupWithForm from '../components/PopupWithForm';
 import UserInfo from '../components/UserInfo';
-import PopupWithConfirm from '../components/PopupWithConfirm';
+
 import Api from '../components/Api';
 
-import { buttonPlace, buttonEdit, popupErase } from '../components/constants';
+import { buttonPlace, buttonEdit } from '../components/constants';
 
 
 import { profileName, profileAbout} from "../components/constants";
@@ -98,28 +98,6 @@ document.addEventListener('click', (evt) => {
     popupImg.open(imageInfo);
   }
 });
-
-
-
-// Popup para confirmar eliminar cartas
-
-
-/*
-const popupConfirm = new PopupWithConfirm('.popup-erase-template');
-
-popupConfirm._generateConfirm();
-
-document.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('card__trash')) {
-
-
-    popupConfirm._open();
-
-}
-});
-
-
-*/
 
 
 

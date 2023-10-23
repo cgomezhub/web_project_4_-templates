@@ -11,7 +11,7 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
  }
 });
 
-import PopupWithConfirm from "./PopupWithConfirm";
+
 
 export default class Card {
   constructor(cardItem, user, cardSelector) {
