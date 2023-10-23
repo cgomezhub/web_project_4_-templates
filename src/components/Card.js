@@ -19,8 +19,10 @@ export default class Card {
     this._name = cardItem.name;
     this._likes = cardItem.likes;
     this._ownerId = cardItem.owner._id;
+    this._ownerName = cardItem.owner.name;
     this._cardId = cardItem._id;
     this._userId = user._id;
+    this._userName = user.name;
     this._cardSelector = cardSelector;
   }
 
@@ -59,8 +61,18 @@ export default class Card {
       console.log("entro,",this._element.querySelector('.card__trash'))
     }
 
+    if (this._likes.some( (like) => { like._id === this._userId }) ) {
 
-    this._setEventListeners();
+      this._element.querySelector('.card__heart').classList.add('card__heart_active');
+    }
+
+
+
+    // validar si like de la card some fue echo por mi usuario
+
+
+
+    this._handleLikes();
     this._handleRemoveCard();
 
     return this._element;
@@ -74,6 +86,52 @@ export default class Card {
 
   _closePopupErase(){
     popupErase.classList.remove('active');
+  }
+
+
+  _handleLikes() {
+
+    const cardHeart =  this._element.querySelector('.card__heart');
+
+    cardHeart.addEventListener('click', (evt) => {
+        this._like(evt);
+
+        const likeArray = this._likes
+
+        console.log(likeArray);
+
+        const userName = this._userName
+
+        console.log(userName);
+
+        const cardId = this._cardId;
+
+        console.log(userLike);
+
+
+        console.log ('paso like');
+
+        // validar
+
+        if (cardHeart.classList.contains('card__heart_active')) {
+
+          // obtetener el valor de la propiedad name de la URL user
+
+          console.log ('valido corazon active');
+
+          api.addCardLikes(cardId);
+
+           // cards.likes.push(userName);
+
+          // cardLikeCount.textContent = this._likes.length;
+
+
+
+        }
+
+
+
+    });
   }
 
 
@@ -128,45 +186,6 @@ export default class Card {
     });
   }
 
-  _setEventListeners() {
 
-
-    ////////////////////////////////////////////////////////
-
-    const cardHeart =  this._element.querySelector('.card__heart');
-
-    cardHeart.addEventListener('click', (evt) => {
-        this._like(evt);
-
-        console.log ('paso like');
-
-        if (cardHeart.classList.contains('card__heart_active')) {
-
-          // obtetener el valor de la propiedad name de la URL user
-
-          console.log ('valido corazon');
-
-          api.getUserInfo().then(data => {
-
-            const userName = data.name
-
-            console.log (userName);
-
-            //return userName
-
-          });
-
-          //console.log (userName);
-
-           // cards.likes.push(userName);
-
-             //api.addCardLikes(cards);
-
-        }
-
-
-
-    });
-  }
 }
 

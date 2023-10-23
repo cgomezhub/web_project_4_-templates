@@ -93,7 +93,6 @@ export default class Api {
     return fetch(`${this.baseUrl}/cards/` + idImage,{
        method: "DELETE",
        headers: this.headers,
-      // body: JSON.stringify(idImage)
       })
       .then(res => {
          if (res.ok) {
@@ -110,13 +109,13 @@ export default class Api {
     // tomar el  valor  la propiedad name de la URL Users  === listo ===
     // agregar dicho valor como valor de  la propiedad Likes de la base Cards == usa push
 
+    //8. anadir y eliminar "me gustas"
 
-  addCardLikes(cards)
-   {
-    return fetch(`${this.baseUrl}/cards?`,{
-       method: "PATCH",
+    addCardLikes(idCard) {
+    return fetch(`${this.baseUrl}/cards/likes/`+ idCard,{
+       method: "PUT",
        headers: this.headers,
-       body: JSON.stringify(cards)
+       //body: JSON.stringify(cards)
       })
       .then(res => {
         if (res.ok) {
@@ -153,11 +152,11 @@ export default class Api {
        // Maneja el error de alguna manera adecuada }); });
 */
 
-  deleteCardLikes(updatedCard) {
-    return fetch(`${this.baseUrl}/cards`,{
+  deleteCardLikes(idImage) {
+    return fetch(`${this.baseUrl}/cards/likes`+ idImage,{
        method: "DELETE",
        headers: this.headers,
-       body: JSON.stringify(updatedCard)
+       //body: JSON.stringify(updatedCard)
       })
       .then(res => {
         if (res.ok) {
@@ -174,22 +173,3 @@ export default class Api {
 
 }
 
-/*
-
-/5. Mostrar cuántos "me gusta" tiene una tarjeta
-
-api.getCardLikes('cardId') .then(data => {
-  const likeCountElement = document.querySelector('.card__like-count');
-  likeCountElement.textContent = data.likes.length;
- });
-
-
-//En este ejemplo, hemos agregado el método getCardLikes a la clase Api.
-//Este método recibe el ID de la tarjeta como argumento y realiza una solicitud GET
-//a la URL correspondiente para obtener los "me gusta" de esa tarjeta.
-//Luego, utilizamos getCardLikes en el código existente para obtener la cantidad
-// de "me gusta" de una tarjeta específica. Actualizamos el elemento
-//HTML .card__like-count con el valor de data.likes.length,
-//que representa la cantidad de "me gusta" que tiene la tarjeta. Recuerda reemplazar 'cardId'
-// con el ID real de la tarjeta que deseas obtener los "me gusta".
-*/
