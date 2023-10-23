@@ -92,7 +92,7 @@ export default class Card {
     const eraseContent = () => {
       const idImage = this._cardId;
       console.log(idImage);
-      //api.eraseCard(idImage);
+      api.eraseCard(idImage);
       popupErase.classList.remove('active');
       this._element.style.display = 'none';
     };
