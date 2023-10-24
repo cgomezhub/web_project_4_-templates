@@ -18,7 +18,6 @@ export default class Card {
     this._link = cardItem.link;
     this._name = cardItem.name;
     this._likes = cardItem.likes;
-    //this._likesId = cardItem.likes._id;
     this._ownerId = cardItem.owner._id;
     this._ownerName = cardItem.owner.name;
     this._cardId = cardItem._id;
@@ -26,6 +25,7 @@ export default class Card {
     this._userName = user.name;
     this._user = user;
     this._cardSelector = cardSelector;
+    this._cardItem = cardItem;
   }
 
   _getTemplate() {
@@ -34,7 +34,6 @@ export default class Card {
       .content.querySelector('.card')
       .cloneNode(true);
 
-      console.log(cardElement);
 
     return cardElement;
   }
@@ -58,26 +57,16 @@ export default class Card {
     console.log(this._userId,this._ownerId)
 
     if(this._userId === this._ownerId){
-      //this._element.querySelector('.card__trash').style.display = 'block';
       this._element.querySelector('.card__trash').classList.add('card__trash_active');
-      console.log("entro,",this._element.querySelector('.card__trash'))
-      console.log("entro,",this._element.querySelector('.card__trash'))
     }
 
     // 8.1 validar con some  en la URL si  ya mi usuario esta esta registrado, es decir qur  le dio like a alguna carta
 
-   // this._likes.forEach(like => { console.log(like._id); });
 
-    //console.log(this._likesId);
-    this._likes.forEach(like => { console.log(like._id); });
-    console.log(this._userId);
 
-    if (this._likes.some(like => { like._id === this._userId })) {
+    if (this._likes.some(like =>  like._id === this._userId )) {
 
-      console.log(like._id);
-      console.log(this._userId);
       this._element.querySelector('.card__heart').classList.add('card__heart_active');
-      console.log("entro,",this._element.querySelector('.card__heart').classList.add('card__heart_active'));
 
     }
 
@@ -106,44 +95,41 @@ export default class Card {
 
    const cardHeart =  this._element.querySelector('.card__heart');
 
-   cardHeart.addEventListener('click', (evt) => {
-      this._like(evt);
+   cardHeart.addEventListener('click', () => {
 
-      console.log ('paso like');
-
-      console.log (this._likes);
-
-      console.log (this._userId);
-
-      // this._likes.forEach(like => { console.log(like._id); });
 
       const  cardId = this._cardId
 
-      console.log (cardId);
+      console.log (this._likes);
 
-      if (this._likes.some(like => { like._id === this._userId }) ) {
-        console.log (like._id);
+      if (this._likes.some(like => like._id === this._userId ) ) {
+        console.log ("entrol", this._likes);
         console.log (this._userId);
 
-        this._element.querySelector('.card__like-count').textContent = this._likes.length;
-        console.log (this._element.querySelector('.card__like-count'));
 
-        api.deleteCardLikes(cardId).then((user)  => {
-           this._likes = user
+        api.deleteCardLikes(cardId).then((response)  => {
+          console.log(response);
+           this._likes = response.likes
+           console.log(this._likes);
            this._element.querySelector('.card__like-count').textContent = this._likes.length;
            this._element.querySelector('.card__heart').classList.remove('card__heart_active');
         });
       }
-      else /*if (!this._likes.some(like => { like._id === this._userId }) ) */{
+      else {
 
-        console.log(this._userId);
+        console.log("no entro");
+        console.log (this._likes);
 
 
-        api.addCardLikes(cardId) .then((user)  => {
-          this._likes= user
+        api.addCardLikes(cardId) .then((response)  => {
+          console.log("req",response);
+          console.log(       this._element, this._element.querySelector('.card__like-count')
+          )
+          console.log(this._likes, this._likes.length)
+          this._likes= response.likes
+          console.log(this._likes, this._likes.length)
         this._element.querySelector('.card__like-count').textContent = this._likes.length;
-        this._element.querySelector('.card__heart').classList.remove('card__heart_active');
-
+        this._element.querySelector('.card__heart').classList.add('card__heart_active');
 
         console.log (this._element.querySelector('.card__like-count'));
         });

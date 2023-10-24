@@ -129,7 +129,7 @@ export default class Api {
     }
 
     deleteCardLikes(cardId) {
-     return fetch(`${this.baseUrl}/cards/likes`+ cardId,{
+     return fetch(`${this.baseUrl}/cards/likes/`+ cardId,{
        method: "DELETE",
        headers: this.headers,
        //body: JSON.stringify(updatedCard)
