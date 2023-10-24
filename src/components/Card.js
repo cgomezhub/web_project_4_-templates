@@ -18,11 +18,13 @@ export default class Card {
     this._link = cardItem.link;
     this._name = cardItem.name;
     this._likes = cardItem.likes;
+    //this._likesId = cardItem.likes._id;
     this._ownerId = cardItem.owner._id;
     this._ownerName = cardItem.owner.name;
     this._cardId = cardItem._id;
     this._userId = user._id;
     this._userName = user.name;
+    this._user = user;
     this._cardSelector = cardSelector;
   }
 
@@ -59,17 +61,25 @@ export default class Card {
       //this._element.querySelector('.card__trash').style.display = 'block';
       this._element.querySelector('.card__trash').classList.add('card__trash_active');
       console.log("entro,",this._element.querySelector('.card__trash'))
+      console.log("entro,",this._element.querySelector('.card__trash'))
     }
 
-    if (this._likes.some( (like) => { like._id === this._userId }) ) {
+    // 8.1 validar con some  en la URL si  ya mi usuario esta esta registrado, es decir qur  le dio like a alguna carta
 
+   // this._likes.forEach(like => { console.log(like._id); });
+
+    //console.log(this._likesId);
+    this._likes.forEach(like => { console.log(like._id); });
+    console.log(this._userId);
+
+    if (this._likes.some(like => { like._id === this._userId })) {
+
+      console.log(like._id);
+      console.log(this._userId);
       this._element.querySelector('.card__heart').classList.add('card__heart_active');
+      console.log("entro,",this._element.querySelector('.card__heart').classList.add('card__heart_active'));
+
     }
-
-
-
-    // validar si like de la card some fue echo por mi usuario
-
 
 
     this._handleLikes();
@@ -91,47 +101,55 @@ export default class Card {
 
   _handleLikes() {
 
-    const cardHeart =  this._element.querySelector('.card__heart');
 
-    cardHeart.addEventListener('click', (evt) => {
-        this._like(evt);
+   // 8.2 validar si podemos llamar a la Api que agrega like
 
-        const likeArray = this._likes
+   const cardHeart =  this._element.querySelector('.card__heart');
 
-        console.log(likeArray);
+   cardHeart.addEventListener('click', (evt) => {
+      this._like(evt);
 
-        const userName = this._userName
+      console.log ('paso like');
 
-        console.log(userName);
+      console.log (this._likes);
 
-        const cardId = this._cardId;
+      console.log (this._userId);
 
-        console.log(userLike);
+      // this._likes.forEach(like => { console.log(like._id); });
 
+      const  cardId = this._cardId
 
-        console.log ('paso like');
+      console.log (cardId);
 
-        // validar
+      if (this._likes.some(like => { like._id === this._userId }) ) {
+        console.log (like._id);
+        console.log (this._userId);
 
-        if (cardHeart.classList.contains('card__heart_active')) {
+        this._element.querySelector('.card__like-count').textContent = this._likes.length;
+        console.log (this._element.querySelector('.card__like-count'));
 
-          // obtetener el valor de la propiedad name de la URL user
+        api.deleteCardLikes(cardId).then((user)  => {
+           this._likes = user
+           this._element.querySelector('.card__like-count').textContent = this._likes.length;
+           this._element.querySelector('.card__heart').classList.remove('card__heart_active');
+        });
+      }
+      else /*if (!this._likes.some(like => { like._id === this._userId }) ) */{
 
-          console.log ('valido corazon active');
-
-          api.addCardLikes(cardId);
-
-           // cards.likes.push(userName);
-
-          // cardLikeCount.textContent = this._likes.length;
-
-
-
-        }
-
+        console.log(this._userId);
 
 
+        api.addCardLikes(cardId) .then((user)  => {
+          this._likes= user
+        this._element.querySelector('.card__like-count').textContent = this._likes.length;
+        this._element.querySelector('.card__heart').classList.remove('card__heart_active');
+
+
+        console.log (this._element.querySelector('.card__like-count'));
+        });
+      };
     });
+
   }
 
 
@@ -142,9 +160,6 @@ export default class Card {
     const cardTrash = this._element.querySelector('.card__trash');
     const popupEraseClose = document.querySelector('.popup-erase__close');
     const popupEraseConfirm = document.querySelector(".popup-erase__confirm");
-
-
-    console.log(this._element);
 
 
     const eraseContent = () => {
@@ -160,15 +175,9 @@ export default class Card {
       popupEraseConfirm.addEventListener('click', eraseContent);
     });
 
-
-
     popupEraseClose.addEventListener('click', () => {
-
-
       this._closePopupErase();
       popupEraseConfirm.removeEventListener('click', eraseContent);
-
-
     })
 
     popupErase.addEventListener('click', (event) => {

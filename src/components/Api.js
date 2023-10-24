@@ -105,14 +105,14 @@ export default class Api {
       });
   }
 
-// en la Class Card puedo agregar cuando se active el heart:
+  // en la Class Card puedo agregar cuando se active el heart:
     // tomar el  valor  la propiedad name de la URL Users  === listo ===
     // agregar dicho valor como valor de  la propiedad Likes de la base Cards == usa push
 
     //8. anadir y eliminar "me gustas"
 
-    addCardLikes(idCard) {
-    return fetch(`${this.baseUrl}/cards/likes/`+ idCard,{
+    addCardLikes(cardId) {
+    return fetch(`${this.baseUrl}/cards/likes/`+ cardId,{
        method: "PUT",
        headers: this.headers,
        //body: JSON.stringify(cards)
@@ -126,34 +126,10 @@ export default class Api {
      .catch(err => {
        console.log(err);
       });
-  }
+    }
 
-
-  /*
-  //Agrega el valor del nombre al arreglo "likes[]" del "objeto1"
-  objeto1.likes.push(name);
-   // Realiza la solicitud PATCH a la API para actualizar el "objeto1" en la base de datos
-    fetch('URL_DE_TU_API/objeto1/' + objeto1._id, {
-      method: 'PATCH',
-      headers: {
-         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(objeto1)
-      })
-      .then(response => {
-         if (response.ok) { return response.json();
-        }
-        throw new Error('Error: ' + response.status);
-       })
-       .then(data => { console.log('Objeto1 actualizado:', data);
-       // Haz cualquier otra acción necesaria después de actualizar el objeto1
-       // en la base de datos })
-       .catch(error => { console.log('Error al actualizar el objeto1:', error);
-       // Maneja el error de alguna manera adecuada }); });
-*/
-
-  deleteCardLikes(idImage) {
-    return fetch(`${this.baseUrl}/cards/likes`+ idImage,{
+    deleteCardLikes(cardId) {
+     return fetch(`${this.baseUrl}/cards/likes`+ cardId,{
        method: "DELETE",
        headers: this.headers,
        //body: JSON.stringify(updatedCard)
@@ -164,12 +140,9 @@ export default class Api {
          }
          return Promise.reject('Error: ' + res.status);
          })
-     .catch(err => {
+      .catch(err => {
        console.log(err);
       });
-  }
-
-
-
+    }
 }
 
