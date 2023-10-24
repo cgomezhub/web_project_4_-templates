@@ -103,7 +103,7 @@ export default class Card {
       console.log (this._likes);
 
       if (this._likes.some(like => like._id === this._userId ) ) {
-        console.log ("entrol", this._likes);
+        console.log ("no entro", this._likes);
         console.log (this._userId);
 
 
@@ -117,7 +117,7 @@ export default class Card {
       }
       else {
 
-        console.log("no entro");
+        console.log("entro");
         console.log (this._likes);
 
 
