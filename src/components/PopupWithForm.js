@@ -57,7 +57,7 @@ export default class PopupWithForm extends Popup {
     elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
-    //elementTrash.classList.add('card__trash_active');
+    elementTrash.classList.add('card__trash_active');
 
 
 
