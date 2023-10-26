@@ -7,15 +7,14 @@ import FormValidator from '../components/FormValidator';
 import PopupWithImage from '../components/PopupWithImage';
 import PopupWithForm from '../components/PopupWithForm';
 import UserInfo from '../components/UserInfo';
+import Avatar from '../components/Avatar';
 
 import Api from '../components/Api';
 
-import { buttonPlace, buttonEdit } from '../components/constants';
+import { buttonPlace, buttonEdit, profileAvatarEdit } from '../components/constants';
 
 
-import { profileName, profileAbout} from "../components/constants";
-
-
+import { profileName, profileAbout, profileAvatar} from "../components/constants";
 
 
 const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
@@ -30,6 +29,9 @@ api.getInitialCards().then((data) => {
   api.getUserInfo() .then((user)  => {
     profileName.textContent = user.name;
     profileAbout.textContent = user.about;
+    profileAvatar.src = user.avatar;
+
+
     console.log(data,user);
 
 
@@ -75,6 +77,22 @@ buttonEdit.addEventListener('click', () => {
 
     validator.enableValidation();
 });
+
+
+//Popup formulario para cambiar el avatar
+
+const popupAvatarForm = new Avatar('.popup-Avatar');
+
+popupAvatarForm._generateAvatar();
+
+
+profileAvatarEdit.addEventListener('click', () => {
+
+    popupAvatarForm._open();
+
+
+});
+
 
 
 

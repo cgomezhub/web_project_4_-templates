@@ -1,18 +1,18 @@
 
 .profile__avatar {
   width: 80%;
-
+  border-radius: 50%;
 }
 
 .profile__avatar:hover {
-   filter: brightness(0.5);
+   filter: brightness(0.25);
 }
 
 
-.profile__avatar:hover + .profile__avartar-edit {
-    opacity: 1;
-}
 
+.profile__avatar:hover + .profile__avatar-edit{
+    opacity: 0.5;
+}
 
 
 @media screen and (min-width: 320px) and (max-width: 768px) {

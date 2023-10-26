@@ -20,14 +20,14 @@
         <section class="profile">
           <div class="profile__avatar-container">
             <img
-              src="<%=require('../src/images/Avatar__jack.png')%>"
-              alt="Avatar de jacques cousteau"
+              src=""
+              alt="Avatar del usuario"
               class="profile__avatar"
             />
             <img
               src="<%=require('../src/images/Vectoredit-pencil2.svg')%>"
               alt="Pencil de editar"
-              class="profile__avartar-edit"
+              class="profile__avatar-edit"
             />
           </div>
           <ul class="profile__place">
@@ -53,22 +53,28 @@
         </section>
 
         <section class="popup-avatar">
-          <div class="popup-avatar__container">
-            <button
-              id="popup-avatar-close"
-              type="button"
-              class="popup-avatar__close"
-            ></button>
-            <h2 class="popup-avatar__title">Cambiar foto de perfil</h2>
-            <button type="button" class="popup-avatar__confirm">Guardar</button>
-          </div>
+          <form id="avatar-form" class="form" novalidate>
+            <button type="button" id = "avatar-form-close" class="form__close"></button>
+            <h2 class="form__title">Cambiar foto de perfil</h2>
+            <input
+              type="url"
+              id="url-input-avatar"
+              class="form__input"
+              placeholder="Introduce URL (https://... o http://...)"
+              required
+            />
+            <span class="url-input-avatar-error form__error"></span>
+            <button id="button-add-form" type="submit" class="form__button">Guardar</button>
+          </form>
         </section>
 
         <section class="popups">
           <section class="popups__add"></section>
           <section class="popups__image"></section>
         </section>
+
         <section class="popups-user-info"></section>
+
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2023. Carlos Gomez</p>
@@ -84,14 +90,6 @@
         <p class="card__like-count">5</p>
       </div>
     </template>
-
-    <!--<template class="popup-erase-template">
-      <div class="popup-erase__container">
-        <button  id="popup-erase-close" type="button" class="popup-erase__close"></button>
-        <h2 class="popup-erase__title">¿Estás seguro/a?</h2>
-        <button  type="button" class="popup-erase__confirm"> Sí </button>
-      </div>
-    </template>-->
 
     <template id="popup-image" class="popup-image-template">
       <div class="popup__container">

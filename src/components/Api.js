@@ -144,5 +144,25 @@ export default class Api {
        console.log(err);
       });
     }
+
+// 9. Actualizar la foto de perfil
+
+editAvatar(updatedAvatar) {
+  return fetch(`${this.baseUrl}/users/me/avatar`,{
+     method: "PATCH",
+     headers: this.headers,
+     body: JSON.stringify(updatedAvatar)
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+       }
+       return Promise.reject('Error: ' + res.status);
+       })
+   .catch(err => {
+     console.log(err);
+    });
+}
+
 }
 

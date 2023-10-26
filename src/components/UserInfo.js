@@ -43,10 +43,6 @@ export default class UserInfo {
     popupsUserInfo.classList.remove('active');
 
     form.reset();
-
-    popups.classList.remove('active');
-
-
     //3. editar el perfil desde la URL
 
     const name = profileName.textContent;
@@ -80,12 +76,6 @@ export default class UserInfo {
       }
     });
 
-    popupsUserInfo.addEventListener('click', (event) => {
-      if (event.target === popupsUserInfo) {
-        this._close();
-      }
-    });
-
     profileForm.addEventListener('submit', this._handleUserFormSubmit);
   }
 
@@ -93,6 +83,7 @@ export default class UserInfo {
     popupsUserInfo.classList.add('active');
 
     console.log(this._element);
+
     // declarar variables del nuevo element (inputs)
     const inputName = this._element.querySelector('#text-input-name');
     const inputJob = this._element.querySelector('#text-input-about');
