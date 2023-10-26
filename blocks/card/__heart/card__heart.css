@@ -6,7 +6,7 @@
   height: 10%;
   width: 10%;
   position: absolute;
-  top: 80%;
+  top: 83%;
   right: 5%;
   opacity: 70%;
   transition: 0.5s;
@@ -26,7 +26,17 @@
 
 @media screen and (min-width: 320px) and (max-width: 768px){
     .card__heart{
-      background-size: 40%;
+      background-size: 55%;
+      top: 85%;
+      right: 5%;
     }
+}
+
+@media screen and (max-width: 320px){
+  .card__heart{
+    background-size: 60%;
+    top: 85%;
+    right: 5%;
+  }
 }
 

@@ -1,4 +1,4 @@
-import { popupsUserInfo, profileName, profileAbout, popups } from '../components/constants';
+import { popupsUserInfo, profileName, profileAbout, } from '../components/constants';
 
 import Api from './Api';
 
@@ -40,9 +40,10 @@ export default class UserInfo {
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputJob.value;
 
-    popupsUserInfo.classList.remove('active');
+    const buttonUserSave  = document.querySelector("#button-user-save");
+    const buttonUserSaving  = document.querySelector("#button-user-saving");
 
-    form.reset();
+
     //3. editar el perfil desde la URL
 
     const name = profileName.textContent;
@@ -50,7 +51,20 @@ export default class UserInfo {
 
     const updatedData = { name: name, about: about};
 
-    api.editPerfil(updatedData);
+    buttonUserSaving.style.display = "block";
+
+    buttonUserSave.style.display = "none";
+
+
+    api.editPerfil(updatedData).then((response)  => {
+      console.log(response);
+      buttonUserSave.style.display = "block";
+      buttonUserSaving.style.display = "none";
+      popupsUserInfo.classList.remove('active');
+
+    });
+
+    form.reset();
   }
 
   _close() {

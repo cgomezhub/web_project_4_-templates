@@ -64,7 +64,10 @@
               required
             />
             <span class="url-input-avatar-error form__error"></span>
-            <button id="button-add-form" type="submit" class="form__button">Guardar</button>
+            <div class="form__button-container">
+              <button id="button-avatar-save" type="submit" class="form__button">Guardar</button>
+              <button id="button-avatar-saving"class="form__button-saving">Guardando...</button>
+            </div>
           </form>
         </section>
 
@@ -125,9 +128,10 @@
           required
         />
         <span class="url-input-image-error form__error"></span>
-        <button id="button-add-form" type="submit" class="form__button">
-          Crear
-        </button>
+        <div class="form__button-container">
+          <button id="button-add-save" type="submit" class="form__button">Crear</button>
+          <button id="button-add-saving"class="form__button-saving">Guardando...</button>
+        </div>
       </form>
     </template>
 
@@ -155,9 +159,10 @@
           required
         />
         <span class="text-input-about-error form__error"></span>
-        <button id="button-user-form" type="submit" class="form__button">
-          Guardar
-        </button>
+        <div class="form__button-container">
+          <button id="button-user-save" type="submit" class="form__button">Guardar</button>
+          <button id="button-user-saving"class="form__button-saving">Guardando...</button>
+        </div>
       </form>
     </template>
   </body>

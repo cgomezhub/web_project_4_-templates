@@ -2,14 +2,13 @@
     width: 80%;
     background-color: black;
     color: white;
-    margin: 10% auto;
+    margin: 5% 10%;
     font-family: "Inter", Arial, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 120%;
     text-align: center;
     padding: 5% 0;
     cursor: pointer;
-
 }
 
 .form__button:hover{

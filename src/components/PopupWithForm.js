@@ -1,14 +1,15 @@
-import { popups, popupsAdd, cards,  } from './constants';
+import { popups, popupsAdd, cards } from './constants';
 
 import Popup from './Popup';
 
 import Api from './Api';
 
-const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
- headers: {
-  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
-  "Content-Type": "application/json"
- }
+const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+  headers: {
+    authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+    'Content-Type': 'application/json',
+  },
 });
 
 export default class PopupWithForm extends Popup {
@@ -43,13 +44,13 @@ export default class PopupWithForm extends Popup {
     const elementHeart = element.querySelector('.card__heart');
     const elementTrash = element.querySelector('.card__trash');
 
+    const buttonAddSave = document.querySelector('#button-add-save');
+    const buttonAddSaving = document.querySelector('#button-add-saving');
+
     const form = document.querySelector('#add-form');
 
     const textInputPlace = document.querySelector('#text-input-place');
     const urlInputImage = document.querySelector('#url-input-image');
-
-
-
 
     //agregar datos del formulario ingresados por el usuario para la tarjeta
 
@@ -59,8 +60,6 @@ export default class PopupWithForm extends Popup {
     elementHeart.classList.remove('card__heart_active');
     elementTrash.classList.add('card__trash_active');
 
-
-
     // 4. agregar nueva tarjeta a la URL
 
     //construir objeto a agregar
@@ -68,44 +67,37 @@ export default class PopupWithForm extends Popup {
     const link = elementImage.src;
     const name = elementPlace.textContent;
 
-    const newImage = {link: link, name: name }
+    const newImage = { link: link, name: name };
 
-    api.addCard(newImage);
+    buttonAddSave.style.display = 'none';
+    buttonAddSaving.style.display = 'block';
+    buttonAddSave.style.pointer = 'none';
 
+    api.addCard(newImage).then((response) => {
+      console.log(response);
+      buttonAddSave.style.display = 'block';
 
+      buttonAddSaving.style.display = 'none';
+      popupsAdd.classList.remove('active');
+      popups.classList.remove('active');
+    });
 
     // configurar  el boton de me gusta
 
     elementHeart.addEventListener('click', (evt) => {
-
       evt.target.classList.toggle('card__heart_active');
     });
-
-    /*
-    // configurar eliminar tarjeta
-
-    elementTrash.addEventListener('click', () => {
-      element.style.display = 'none';
-    });*/
-
 
     // agregar la tarjeta nueva al Grid
 
     cards.prepend(element);
-
-    // cerrar la ventana emergente al enviar el formulario
-
-    popupsAdd.classList.remove('active');
-
-    popups.classList.remove('active');
 
     form.reset();
 
     element.style.display = 'flex';
   }
 
-  _close(){
-
+  _close() {
     popupsAdd.classList.remove('active');
   }
 
@@ -114,19 +106,17 @@ export default class PopupWithForm extends Popup {
 
     super.setEventListeners();
 
-    this._element.querySelector('.form__close').addEventListener('click',() =>{
-      super.close();
-      this._close();
-
-
-    });
-
+    this._element
+      .querySelector('.form__close')
+      .addEventListener('click', () => {
+        super.close();
+        this._close();
+      });
 
     popupsAdd.addEventListener('click', (event) => {
       if (event.target === popupsAdd) {
         super.close();
         this._close();
-
       }
     });
 

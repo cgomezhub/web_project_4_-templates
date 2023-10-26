@@ -1,4 +1,4 @@
-import { profileAvatar, popupAvatar} from '../components/constants';
+import { profileAvatar, popupAvatar, buttonAvatarSave, buttonAvatarSaving} from '../components/constants';
 
 import Api from './Api';
 
@@ -10,12 +10,8 @@ const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
 });
 
 export default class Avatar {
-  constructor(user, selectorAvatar) {
+  constructor(selectorAvatar) {
     this._selectorAvatar = selectorAvatar;
-    this._user = user._id;
-    this._userName = user.name;
-    this._user = user;
-
 
   }
 
@@ -31,10 +27,20 @@ export default class Avatar {
     return this._element;
   }
 
-
   _close() {
     popupAvatar.classList.remove('active');
   };
+
+  renderLoading(isLoading) {
+    if (isLoading) {
+        buttonAvatarSave.style.display = "none";
+        buttonAvatarSaving.style.display = "block";
+
+    } else {
+      buttonAvatarSave.style.display = "block";
+      buttonAvatarSaving.style.display = "none";
+    }
+  }
 
   _handleAvatarSubmit(evt) {
     evt.preventDefault();
@@ -46,24 +52,24 @@ export default class Avatar {
 
     profileAvatar.src = inputAvatar.value;
 
-    //popupAvatar.classList.remove('active');
-
-
     //3. editar el perfil a la la URL
 
     const avatar = profileAvatar.src;
 
     const updatedAvatar = { avatar: avatar};
 
+    //this.renderLoading(true);
+
+    buttonAvatarSave.style.display = "none";
+    buttonAvatarSaving.style.display = "block";
+
     api.editAvatar(updatedAvatar).then((response)  => {
-      console.log(response);
-       //this._likes = response.avatar
-       //console.log(this._likes);;
+      //console.log(response);
+      buttonAvatarSave.style.display = "block";
+      buttonAvatarSaving.style.display = "none";
+      popupAvatar.classList.remove('active');
+
     });
-
-
-    //this._close();
-    popupAvatar.classList.remove('active');
 
     form.reset();
   }
@@ -96,15 +102,6 @@ export default class Avatar {
     popupAvatar.classList.add('active');
 
     console.log(this._element);
-
-    // declarar variables del nuevo element (inputs)
-   // const inputAvatar = this._element.querySelector('#url-input-avatar');
-
-    // cargar valores alos inputs
-    //inputAvatar.value = profileAvatar.src;
-
-    //popupAvatar.append(this._element);
-
 
     this._setEventListeners();
   }
