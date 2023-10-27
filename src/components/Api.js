@@ -4,7 +4,24 @@ export default class Api {
     this.headers = options.headers;
   }
 
-  //1. Cargar la información del usuario desde el servidor
+ //2. Cargar las tarjetas desde el servidor
+
+  getInitialCards() {
+    return fetch(`${this.baseUrl}/cards`, {
+      headers: this.headers,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject('Error: ' + res.status);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+//1. Cargar la información del usuario desde el servidor
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
@@ -21,22 +38,9 @@ export default class Api {
       });
   }
 
-  //2. Cargar las tarjetas desde el servidor
 
-  getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject('Error: ' + res.status);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+
+
 
   // 3. Editar el perfil
 
