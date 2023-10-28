@@ -35,7 +35,7 @@ export default class UserInfo {
     // declarar variables del nuevo element ( evento input)
     const inputName = document.querySelector('#text-input-name');
     const inputJob = document.querySelector('#text-input-about');
-    const form = document.querySelector('#profile-form');
+    //const form = document.querySelector('#profile-form');
 
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputJob.value;
@@ -64,7 +64,7 @@ export default class UserInfo {
 
     });
 
-    form.reset();
+    //form.reset();
   }
 
   _close() {
