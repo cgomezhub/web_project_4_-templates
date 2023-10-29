@@ -28,6 +28,7 @@ export default class Avatar {
   }
 
   _close() {
+    //popupAvatar.classList.add('hide');
     popupAvatar.classList.remove('active');
   };
 
@@ -101,7 +102,7 @@ export default class Avatar {
 
     popupAvatar.classList.add('active');
 
-    console.log(this._element);
+
 
     this._setEventListeners();
   }

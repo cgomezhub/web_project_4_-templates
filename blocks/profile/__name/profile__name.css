@@ -1,6 +1,6 @@
 .profile__name{
     font-family: "Inter", Arial, sans-serif;
-    font-size: 42px;
+    font-size: 35px;
     line-height: 133%;
     color: #FFFFFF;
     list-style: none;
@@ -9,9 +9,9 @@
     overflow: hidden;
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px){
-    .profile__name{
-        font-size: 12px;
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .profile__name{
+      font-size: 30px;
 
     }
 }

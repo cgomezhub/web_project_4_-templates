@@ -29,17 +29,22 @@ export default class PopupWithImage extends Popup {
   _setEventListeners() {
     super.setEventListeners();
 
+
+
     this._element.querySelector('.form__close').addEventListener('click',() =>{
         super.close();
         this._close();
 
       });
 
-    popupsImage.addEventListener('click', (event) => {
-      if (event.target === popupsImage) {
+      popupsImage.addEventListener('click', (event) => {
+
+      const popupContainer = document.querySelector('.popup__container');
+
+
+      if (event.target === popupsImage  || popupContainer ) {
         super.close();
         this._close();
-
 
       }
     });

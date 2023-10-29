@@ -38,10 +38,6 @@ export default class Api {
       });
   }
 
-
-
-
-
   // 3. Editar el perfil
 
   editPerfil(updatedData) {
@@ -104,7 +100,6 @@ export default class Api {
     return fetch(`${this.baseUrl}/cards/likes/` + cardId, {
       method: 'PUT',
       headers: this.headers,
-      //body: JSON.stringify(cards)
     })
       .then((res) => {
         if (res.ok) {
@@ -121,7 +116,6 @@ export default class Api {
     return fetch(`${this.baseUrl}/cards/likes/` + cardId, {
       method: 'DELETE',
       headers: this.headers,
-      //body: JSON.stringify(updatedCard)
     })
       .then((res) => {
         if (res.ok) {

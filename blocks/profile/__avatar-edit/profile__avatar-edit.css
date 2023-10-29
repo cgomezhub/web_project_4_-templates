@@ -1,8 +1,8 @@
 .profile__avatar-edit {
   opacity: 0;
   position: absolute;
-  top: 35%;
-  right: 60%;
+  top: 30%;
+  right: 42%;
   cursor: pointer;
 }
 
@@ -17,17 +17,16 @@
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .profile__avartar-edit {
-    top: 28%;
-    right: 30%;
+    top: 40%;
+    right: 50%;
     width: 10%;
   }
 }
 
-
 @media screen and (max-width: 320px) {
   .profile__avartar-edit {
-    background-size: 10%;
-    top: 28%;
-    right: 40%;
+    top: 40%;
+    right: 50%;
+    width: 10%;
   }
 }

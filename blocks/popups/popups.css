@@ -6,14 +6,14 @@
     background-color: rgb(0, 0, 0, 0.6);
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear;
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
     z-index: 2;
     margin-right: 0;
-    margin-top: -10%;
     padding-top:10%;
   }
-  
+
   .popups.active{
     visibility: visible;
     opacity: 1;
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0s;
   }

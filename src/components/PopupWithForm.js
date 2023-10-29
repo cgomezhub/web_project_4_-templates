@@ -31,8 +31,8 @@ export default class PopupWithForm extends Popup {
     return this._element;
   }
 
-  _handleAddFormSubmit(evt) {
-    evt.preventDefault();
+  _handleAddFormSubmit() {
+   // evt.preventDefault();
 
     // clonar nodo  para marco de la tarjeta (element)
     const element = document.querySelector('.card').cloneNode(true);
@@ -47,7 +47,6 @@ export default class PopupWithForm extends Popup {
     const buttonAddSave = document.querySelector('#button-add-save');
     const buttonAddSaving = document.querySelector('#button-add-saving');
 
-    const form = document.querySelector('#add-form');
 
     const textInputPlace = document.querySelector('#text-input-place');
     const urlInputImage = document.querySelector('#url-input-image');
@@ -80,21 +79,12 @@ export default class PopupWithForm extends Popup {
       buttonAddSaving.style.display = 'none';
       popupsAdd.classList.remove('active');
       popups.classList.remove('active');
+
+      location.reload();
+
     });
 
-    // configurar  el boton de me gusta
 
-    elementHeart.addEventListener('click', (evt) => {
-      evt.target.classList.toggle('card__heart_active');
-    });
-
-    // agregar la tarjeta nueva al Grid
-
-    cards.prepend(element);
-
-    form.reset();
-
-    element.style.display = 'flex';
   }
 
   _close() {
