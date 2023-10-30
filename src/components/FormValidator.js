@@ -1,49 +1,51 @@
-import { formSelector, inputSelector } from "./constants.js";
+import { formSelector, inputSelector } from './constants.js';
 
 export default class FormValidator {
   constructor(formSelector) {
     this._formSelector = formSelector;
     this._inputSelector = inputSelector;
-    
   }
 
-  _showError (formSelector, inputSelector, errorMessage) {
+  _showError(formSelector, inputSelector, errorMessage) {
     const errorClass = formSelector.querySelector(`.${inputSelector.id}-error`);
     inputSelector.classList.add('form__input_type_error');
     errorClass.textContent = errorMessage;
     errorClass.classList.add('form__error_active');
-  };
-  
-  _hideError (formSelector, inputSelector) {
+  }
+
+  _hideError(formSelector, inputSelector) {
     const errorClass = formSelector.querySelector(`.${inputSelector.id}-error`);
     inputSelector.classList.remove('form__input_type_error');
     errorClass.classList.remove('form__error_active');
     errorClass.textContent = '';
-  };
+  }
 
-  _checkInputValidity (formSelector, inputSelector) {
+  _checkInputValidity(formSelector, inputSelector) {
     if (!inputSelector.validity.valid) {
       // Si NO lo es (!), muestra el elemento erróneo
-      this._showError(formSelector, inputSelector, inputSelector.validationMessage);
-      
+      this._showError(
+        formSelector,
+        inputSelector,
+        inputSelector.validationMessage
+      );
     } else {
       // Si es válido, oculta el elemento erróneo
       this._hideError(formSelector, inputSelector);
     }
-  };
-  
-  _hasInvalidInput (inputList) {
+  }
+
+  _hasInvalidInput(inputList) {
     // itera sobre el array utilizando el método some()
     return inputList.some((inputSelector) => {
       // Si el campo no es válido, el callback devolverá true.
       // El método se detendrá entonces, y la función hasInvalidInput() devolverá true
       // hasInvalidInput devuelve true
-  
+
       return !inputSelector.validity.valid;
     });
-  };
-    
-  _toggleButtonState (inputList, submitButtonSelector) {
+  }
+
+  _toggleButtonState(inputList, submitButtonSelector) {
     // Si hay al menos una entrada que no es válida
     if (this._hasInvalidInput(inputList)) {
       // hace que el botón esté inactivo
@@ -52,15 +54,14 @@ export default class FormValidator {
         if (event.key === 'Enter') {
           event.preventDefault();
         }
-      }); 
+      });
     } else {
       // en caso contrario, lo hace activo
       submitButtonSelector.classList.remove('form__button_inactive');
-      
-      }
-  };
+    }
+  }
 
-  _setEventListeners (formSelector)  {
+  _setEventListeners(formSelector) {
     // Encuentra todos los campos dentro del formulario y
     // crea un array a partir de estos, utilizando el método Array.from()
     const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
@@ -78,9 +79,9 @@ export default class FormValidator {
         this._toggleButtonState(inputList, submitButtonSelector);
       });
     });
-  };
+  }
 
-  enableValidation  () {
+  enableValidation() {
     // Encontrará todos los formularios con la clase especificada en el DOM y
     // creará un array, a partir de estos, utilizando el método Array.from()
     const formList = Array.from(document.querySelectorAll('.form'));
@@ -90,15 +91,13 @@ export default class FormValidator {
         // Cancela el comportamiento por defecto de cada formulario
         evt.preventDefault();
       });
-    
+
       // Llama a la función setEventListeners() para cada formulario
       // tomando un elemento del formulario como argumento
       this._setEventListeners(formSelector);
-      
     });
-  };
+  }
 }
-
 
 const validator = new FormValidator(formSelector);
 

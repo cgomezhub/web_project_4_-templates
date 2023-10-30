@@ -1,12 +1,17 @@
-import { popupsUserInfo, profileName, profileAbout, } from '../components/constants';
+import {
+  popupsUserInfo,
+  profileName,
+  profileAbout,
+} from '../components/constants';
 
 import Api from './Api';
 
-const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
- headers: {
-  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
-  "Content-Type": "application/json"
- }
+const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+  headers: {
+    authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+    'Content-Type': 'application/json',
+  },
 });
 
 export default class UserInfo {
@@ -40,28 +45,25 @@ export default class UserInfo {
     profileName.textContent = inputName.value;
     profileAbout.textContent = inputJob.value;
 
-    const buttonUserSave  = document.querySelector("#button-user-save");
-    const buttonUserSaving  = document.querySelector("#button-user-saving");
-
+    const buttonUserSave = document.querySelector('#button-user-save');
+    const buttonUserSaving = document.querySelector('#button-user-saving');
 
     //3. editar el perfil desde la URL
 
     const name = profileName.textContent;
     const about = profileAbout.textContent;
 
-    const updatedData = { name: name, about: about};
+    const updatedData = { name: name, about: about };
 
-    buttonUserSaving.style.display = "block";
+    buttonUserSaving.style.display = 'block';
 
-    buttonUserSave.style.display = "none";
+    buttonUserSave.style.display = 'none';
 
-
-    api.editPerfil(updatedData).then((response)  => {
-      console.log(response);
-      buttonUserSave.style.display = "block";
-      buttonUserSaving.style.display = "none";
+    api.editPerfil(updatedData).then((response) => {
+      //console.log(response);
+      buttonUserSave.style.display = 'block';
+      buttonUserSaving.style.display = 'none';
       popupsUserInfo.classList.remove('active');
-
     });
 
     //form.reset();
@@ -91,12 +93,23 @@ export default class UserInfo {
     });
 
     profileForm.addEventListener('submit', this._handleUserFormSubmit);
+
+    profileForm.addEventListener(
+      'keydown',
+      function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          // Evita el comportamiento predeterminado de enviar el formulario
+          this._handleUserFormSubmit(event);
+        }
+      }.bind(this)
+    );
   }
 
   _open() {
     popupsUserInfo.classList.add('active');
 
-    console.log(this._element);
+    //console.log(this._element);
 
     // declarar variables del nuevo element (inputs)
     const inputName = this._element.querySelector('#text-input-name');
@@ -110,5 +123,4 @@ export default class UserInfo {
 
     this._setEventListeners();
   }
-
 }

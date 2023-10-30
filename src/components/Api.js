@@ -4,7 +4,7 @@ export default class Api {
     this.headers = options.headers;
   }
 
- //2. Cargar las tarjetas desde el servidor
+  //2. Cargar las tarjetas desde el servidor
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
@@ -21,7 +21,7 @@ export default class Api {
       });
   }
 
-//1. Cargar la información del usuario desde el servidor
+  //1. Cargar la información del usuario desde el servidor
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {

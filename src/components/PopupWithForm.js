@@ -31,9 +31,8 @@ export default class PopupWithForm extends Popup {
     return this._element;
   }
 
-  _handleAddFormSubmit() {
-   // evt.preventDefault();
-
+  _handleAddFormSubmit(evt) {
+    evt.preventDefault();
     // clonar nodo  para marco de la tarjeta (element)
     const element = document.querySelector('.card').cloneNode(true);
 
@@ -43,10 +42,12 @@ export default class PopupWithForm extends Popup {
     const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
     const elementTrash = element.querySelector('.card__trash');
+    const elemenLikeCount = element.querySelector('.card__like-count');
 
     const buttonAddSave = document.querySelector('#button-add-save');
     const buttonAddSaving = document.querySelector('#button-add-saving');
 
+    const form = document.querySelector('#add-form');
 
     const textInputPlace = document.querySelector('#text-input-place');
     const urlInputImage = document.querySelector('#url-input-image');
@@ -58,6 +59,7 @@ export default class PopupWithForm extends Popup {
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
     elementTrash.classList.add('card__trash_active');
+    elemenLikeCount.textContent = '0';
 
     // 4. agregar nueva tarjeta a la URL
 
@@ -73,18 +75,28 @@ export default class PopupWithForm extends Popup {
     buttonAddSave.style.pointer = 'none';
 
     api.addCard(newImage).then((response) => {
-      console.log(response);
+      //console.log(response);
       buttonAddSave.style.display = 'block';
 
       buttonAddSaving.style.display = 'none';
       popupsAdd.classList.remove('active');
       popups.classList.remove('active');
-
-      location.reload();
-
+      api.getInitialCards();
+      form.reset();
+      //location.reload();
     });
 
+    // configurar  el boton de me gusta
 
+    elementHeart.addEventListener('click', (evt) => {
+      evt.target.classList.toggle('card__heart_active');
+    });
+
+    // agregar la tarjeta nueva al Grid
+
+    cards.prepend(element);
+
+    element.style.display = 'flex';
   }
 
   _close() {
@@ -117,7 +129,25 @@ export default class PopupWithForm extends Popup {
       }
     });
 
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        //this._handleAddFormSubmit();
+      }
+    });
+
     addForm.addEventListener('submit', this._handleAddFormSubmit);
+
+    addForm.addEventListener(
+      'keydown',
+      function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          // Evita el comportamiento predeterminado de enviar el formulario
+          this._handleAddFormSubmit(event);
+        }
+      }.bind(this)
+    );
   }
 
   _open() {

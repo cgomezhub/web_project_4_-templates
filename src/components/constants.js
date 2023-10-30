@@ -63,24 +63,24 @@ export {
   popupImage,
   popupPlace,
   imagesExpandClose,
-};
-
-export { formSelector, inputSelector };
-
-export { cardLink, cardName };
-export { popup };
-export { popups, popupsImage, popupsAdd, popupsUserInfo };
-
-export {
+  formSelector,
+  inputSelector,
+  cardLink,
+  cardName,
+  popup,
+  popups,
+  popupsImage,
+  popupsAdd,
+  popupsUserInfo,
   profileName,
   profileAbout,
   profileAvatar,
   popupAvatar,
   profileAvatarEdit,
+  popupErase,
+  popupEraseConfirm,
+  inputName,
+  inputJob,
+  buttonAvatarSave,
+  buttonAvatarSaving,
 };
-
-export { popupErase, popupEraseConfirm };
-
-export { inputName, inputJob };
-
-export { buttonAvatarSave, buttonAvatarSaving };

@@ -1,23 +1,29 @@
-import { profileAvatar, popupAvatar, buttonAvatarSave, buttonAvatarSaving} from '../components/constants';
+import {
+  profileAvatar,
+  popupAvatar,
+  buttonAvatarSave,
+  buttonAvatarSaving,
+} from '../components/constants';
 
 import Api from './Api';
 
-const api = new Api({ baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
- headers: {
-  authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
-  "Content-Type": "application/json"
- }
+const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/web_es_09',
+  headers: {
+    authorization: '24db7356-9f7a-470a-979e-9ec3f25f6f02',
+    'Content-Type': 'application/json',
+  },
 });
 
 export default class Avatar {
   constructor(selectorAvatar) {
     this._selectorAvatar = selectorAvatar;
-
   }
 
   _getTemplateAvatar() {
-
-    const avatarElement = document.querySelector('#avatar-form').cloneNode(true);
+    const avatarElement = document
+      .querySelector('#avatar-form')
+      .cloneNode(true);
 
     return avatarElement;
   }
@@ -30,16 +36,15 @@ export default class Avatar {
   _close() {
     //popupAvatar.classList.add('hide');
     popupAvatar.classList.remove('active');
-  };
+  }
 
   renderLoading(isLoading) {
     if (isLoading) {
-        buttonAvatarSave.style.display = "none";
-        buttonAvatarSaving.style.display = "block";
-
+      buttonAvatarSave.style.display = 'none';
+      buttonAvatarSaving.style.display = 'block';
     } else {
-      buttonAvatarSave.style.display = "block";
-      buttonAvatarSaving.style.display = "none";
+      buttonAvatarSave.style.display = 'block';
+      buttonAvatarSaving.style.display = 'none';
     }
   }
 
@@ -57,30 +62,28 @@ export default class Avatar {
 
     const avatar = profileAvatar.src;
 
-    const updatedAvatar = { avatar: avatar};
+    const updatedAvatar = { avatar: avatar };
 
     //this.renderLoading(true);
 
-    buttonAvatarSave.style.display = "none";
-    buttonAvatarSaving.style.display = "block";
+    buttonAvatarSave.style.display = 'none';
+    buttonAvatarSaving.style.display = 'block';
 
-    api.editAvatar(updatedAvatar).then((response)  => {
+    api.editAvatar(updatedAvatar).then((response) => {
       //console.log(response);
-      buttonAvatarSave.style.display = "block";
-      buttonAvatarSaving.style.display = "none";
+      buttonAvatarSave.style.display = 'block';
+      buttonAvatarSaving.style.display = 'none';
       popupAvatar.classList.remove('active');
-
     });
 
     form.reset();
   }
 
-
   _setEventListeners() {
-
     const avatarForm = document.querySelector('#avatar-form');
 
-    document.querySelector('#avatar-form-close')
+    document
+      .querySelector('#avatar-form-close')
       .addEventListener('click', this._close);
 
     popupAvatar.addEventListener('click', (event) => {
@@ -96,15 +99,22 @@ export default class Avatar {
     });
 
     avatarForm.addEventListener('submit', this._handleAvatarSubmit);
+
+    avatarForm.addEventListener(
+      'keydown',
+      function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          // Evita el comportamiento predeterminado de enviar el formulario
+          this._handleAvatarSubmit(event);
+        }
+      }.bind(this)
+    );
   }
 
   _open() {
-
     popupAvatar.classList.add('active');
-
-
 
     this._setEventListeners();
   }
-
 }

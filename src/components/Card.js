@@ -1,4 +1,4 @@
-import { popupErase} from './constants';
+import { popupErase } from './constants';
 
 import Api from '../components/Api';
 
@@ -65,14 +65,13 @@ export default class Card {
         .classList.add('card__heart_active');
     }
 
-    this._handleLikes();
-    this._handleRemoveCard();
+    this._setEventListeners();
 
     return this._element;
   }
 
   ///////////////////////////
-/*
+  /*
   _like(evt) {
     evt.target.classList.toggle('card__heart_active');
   }*/
@@ -81,55 +80,9 @@ export default class Card {
     popupErase.classList.remove('active');
   }
 
-  _handleLikes() {
-    const cardHeart = this._element.querySelector('.card__heart');
+  _setEventListeners(){
 
-    // 8.2 validar si podemos llamar a la Api que agregar o quitar like
-
-    cardHeart.addEventListener('click', () => {
-      const cardId = this._cardId;
-      //console.log (this._likes);
-
-      // si ya esta activado entoces, borrar el like de la URL
-
-      if (this._likes.some((like) => like._id === this._userId)) {
-        //console.log ("no entro", this._likes);
-        //console.log (this._userId);
-        api.deleteCardLikes(cardId).then((response) => {
-          //console.log(response);
-          this._likes = response.likes;
-          console.log(this._likes);
-          this._element.querySelector('.card__like-count').textContent =
-            this._likes.length;
-          this._element
-            .querySelector('.card__heart')
-            .classList.remove('card__heart_active');
-        });
-      }
-      // si no esta activado, entoces agregar el like a la URL
-      else {
-        //console.log("entro");
-        //console.log (this._likes);
-        api.addCardLikes(cardId).then((response) => {
-          // console.log("req",response);
-          // console.log(       this._element, this._element.querySelector('.card__like-count')
-          // )
-          // console.log(this._likes, this._likes.length)
-          this._likes = response.likes;
-          //console.log(this._likes, this._likes.length)
-          this._element.querySelector('.card__like-count').textContent =
-            this._likes.length;
-          this._element
-            .querySelector('.card__heart')
-            .classList.add('card__heart_active');
-          //console.log (this._element.querySelector('.card__like-count'));
-        });
-      }
-    });
-  }
-
-  _handleRemoveCard() {
-    // variables para eventos del popup - erase
+    // 7.  variables de eventos para agregar y eliminar tarjetas
 
     const cardTrash = this._element.querySelector('.card__trash');
     const popupEraseClose = document.querySelector('.popup-erase__close');
@@ -137,7 +90,7 @@ export default class Card {
 
     const eraseContent = () => {
       const idImage = this._cardId;
-      console.log(idImage);
+     // console.log(idImage);
       api.eraseCard(idImage);
       popupErase.classList.remove('active');
       this._element.style.display = 'none';
@@ -166,5 +119,53 @@ export default class Card {
       }
       popupEraseConfirm.removeEventListener('click', eraseContent);
     });
+
+    // 8.2 validar si podemos llamar a la Api que agregar o quitar like
+
+    const cardHeart = this._element.querySelector('.card__heart');
+
+
+    cardHeart.addEventListener('click', () => {
+      const cardId = this._cardId;
+      //console.log (this._likes);
+
+      // si ya esta activado entoces, borrar el like de la URL
+
+      if (this._likes.some((like) => like._id === this._userId)) {
+        //console.log ("no entro", this._likes);
+        //console.log (this._userId);
+        api.deleteCardLikes(cardId).then((response) => {
+          //console.log(response);
+          this._likes = response.likes;
+          //console.log(this._likes);
+          this._element.querySelector('.card__like-count').textContent =
+            this._likes.length;
+          this._element
+            .querySelector('.card__heart')
+            .classList.remove('card__heart_active');
+        });
+      }
+      // si no esta activado, entoces agregar el like a la URL
+      else {
+        //console.log("entro");
+        //console.log (this._likes);
+        api.addCardLikes(cardId).then((response) => {
+          // console.log("req",response);
+          // console.log(       this._element, this._element.querySelector('.card__like-count')
+          // )
+          // console.log(this._likes, this._likes.length)
+          this._likes = response.likes;
+          //console.log(this._likes, this._likes.length)
+          this._element.querySelector('.card__like-count').textContent =
+            this._likes.length;
+          this._element
+            .querySelector('.card__heart')
+            .classList.add('card__heart_active');
+          //console.log (this._element.querySelector('.card__like-count'));
+        });
+      }
+    });
+
+
   }
 }

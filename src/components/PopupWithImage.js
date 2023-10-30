@@ -1,4 +1,4 @@
-import { popupsImage, } from '../components/constants';
+import { popupsImage } from '../components/constants';
 import Popup from '../components/Popup';
 
 export default class PopupWithImage extends Popup {
@@ -21,31 +21,25 @@ export default class PopupWithImage extends Popup {
     return this._element;
   }
 
-
-  _close(){
-
+  _close() {
     popupsImage.classList.remove('active');
   }
   _setEventListeners() {
     super.setEventListeners();
 
-
-
-    this._element.querySelector('.form__close').addEventListener('click',() =>{
+    this._element
+      .querySelector('.form__close')
+      .addEventListener('click', () => {
         super.close();
         this._close();
-
       });
 
-      popupsImage.addEventListener('click', (event) => {
-
+    popupsImage.addEventListener('click', (event) => {
       const popupContainer = document.querySelector('.popup__container');
 
-
-      if (event.target === popupsImage  || popupContainer ) {
+      if (event.target === popupsImage || popupContainer) {
         super.close();
         this._close();
-
       }
     });
 
@@ -55,7 +49,6 @@ export default class PopupWithImage extends Popup {
         this._close();
       }
     });
-
   }
 
   open({ src, alt, text }) {
