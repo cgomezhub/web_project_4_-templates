@@ -1,7 +1,7 @@
 import { popups, popupsAdd, cards } from './constants';
 
 import Popup from './Popup';
-//import Card from './Card';
+
 
 import Api from './Api';
 
@@ -35,7 +35,6 @@ export default class PopupWithForm extends Popup {
   _handleAddFormSubmit(evt) {
     evt.preventDefault();
 
-
     // clonar nodo  para marco de la tarjeta (element)
 
     const element = document.querySelector('.card').cloneNode(true);
@@ -45,8 +44,10 @@ export default class PopupWithForm extends Popup {
     const elementImage = element.querySelector('.card__link');
     const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
-    const elementTrash = element.querySelector('.card__trash');
+    //const elementTrash = element.querySelector('.card__trash');
     const elementLikeCount = element.querySelector('.card__like-count');
+
+
 
     const buttonAddSave = document.querySelector('#button-add-save');
     const buttonAddSaving = document.querySelector('#button-add-saving');
@@ -72,7 +73,8 @@ export default class PopupWithForm extends Popup {
     const link = elementImage.src;
     const name = elementPlace.textContent;
 
-    const newImage = { link: link, name: name };
+
+    const newImage = { link: link, name: name};
 
     buttonAddSave.style.display = 'none';
     buttonAddSaving.style.display = 'block';
