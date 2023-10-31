@@ -41,7 +41,33 @@ export default class Card {
     this._element.querySelector('.card__link').src = this._link;
     this._element.querySelector('.card__link').alt = `imagen de ${this._name}`;
 
+
+
     //5. mostrar los megusta de una tarjeta desde la URL
+
+    //6. y 7. mostrar el basurero solo al ususario
+
+    //console.log(this._userId,this._ownerId)
+
+    if (this._userId === this._ownerId) {
+      this._element
+        .querySelector('.card__trash')
+        .classList.add('card__trash_active');
+    };
+
+
+    /*
+    if (this._likes && Array.isArray(this._likes)) {
+      const cardLikeCount = this._element.querySelector('.card__like-count');
+      cardLikeCount.textContent = this._likes.length;
+
+      if (this._likes.some((like) => like._id === this._userId)) {
+        this._element
+          .querySelector('.card__heart')
+          .classList.add('card__heart_active');
+      }
+    }*/
+
 
     const cardLikeCount = this._element.querySelector('.card__like-count');
     cardLikeCount.textContent = this._likes.length;
@@ -71,10 +97,10 @@ export default class Card {
   }
 
   ///////////////////////////
-  /*
+
   _like(evt) {
     evt.target.classList.toggle('card__heart_active');
-  }*/
+  }
 
   _closePopupErase() {
     popupErase.classList.remove('active');
@@ -89,12 +115,14 @@ export default class Card {
     const popupEraseConfirm = document.querySelector('.popup-erase__confirm');
 
     const eraseContent = () => {
-      const idImage = this._cardId;
+      const cardId = this._cardId;
      // console.log(idImage);
-      api.eraseCard(idImage);
-      popupErase.classList.remove('active');
-      this._element.style.display = 'none';
-    };
+      //api.eraseCard(idImage);
+      api.addOrDeleteCard(cardId, 'DELETE').then((response) => {
+        this._element.style.display = 'none';
+        popupErase.classList.remove('active');
+        });
+      }
 
     cardTrash.addEventListener('click', () => {
       popupErase.classList.add('active');
@@ -127,10 +155,28 @@ export default class Card {
 
     cardHeart.addEventListener('click', () => {
       const cardId = this._cardId;
+
+      console.log (cardId);
       //console.log (this._likes);
 
-      // si ya esta activado entoces, borrar el like de la URL
 
+      if (this._likes.some((like) => like._id === this._userId)) {
+        api.addOrDeleteLike(cardId, 'DELETE').then((response) => {
+          this._likes = response.likes;
+          this._element.querySelector('.card__like-count').textContent = this._likes.length;
+          this._element.querySelector('.card__heart').classList.remove('card__heart_active');
+        });
+      } else {
+        api.addOrDeleteLike(cardId, 'PUT').then((response) => {
+          this._likes = response.likes;
+          this._element.querySelector('.card__like-count').textContent = this._likes.length;
+          this._element.querySelector('.card__heart').classList.add('card__heart_active');
+        });
+      }
+    });
+
+      // si ya esta activado entoces, borrar el like de la URL
+      /*
       if (this._likes.some((like) => like._id === this._userId)) {
         //console.log ("no entro", this._likes);
         //console.log (this._userId);
@@ -149,8 +195,9 @@ export default class Card {
       else {
         //console.log("entro");
         //console.log (this._likes);
+
         api.addCardLikes(cardId).then((response) => {
-          // console.log("req",response);
+          //console.log("req",response);
           // console.log(       this._element, this._element.querySelector('.card__like-count')
           // )
           // console.log(this._likes, this._likes.length)
@@ -164,7 +211,9 @@ export default class Card {
           //console.log (this._element.querySelector('.card__like-count'));
         });
       }
-    });
+
+
+    });*/
 
 
   }

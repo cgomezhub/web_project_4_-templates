@@ -1,6 +1,7 @@
 import { popups, popupsAdd, cards } from './constants';
 
 import Popup from './Popup';
+//import Card from './Card';
 
 import Api from './Api';
 
@@ -33,7 +34,10 @@ export default class PopupWithForm extends Popup {
 
   _handleAddFormSubmit(evt) {
     evt.preventDefault();
+
+
     // clonar nodo  para marco de la tarjeta (element)
+
     const element = document.querySelector('.card').cloneNode(true);
 
     // variables para eventos
@@ -42,7 +46,7 @@ export default class PopupWithForm extends Popup {
     const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
     const elementTrash = element.querySelector('.card__trash');
-    const elemenLikeCount = element.querySelector('.card__like-count');
+    const elementLikeCount = element.querySelector('.card__like-count');
 
     const buttonAddSave = document.querySelector('#button-add-save');
     const buttonAddSaving = document.querySelector('#button-add-saving');
@@ -58,8 +62,8 @@ export default class PopupWithForm extends Popup {
     elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
-    elementTrash.classList.add('card__trash_active');
-    elemenLikeCount.textContent = '0';
+    //elementTrash.classList.add('card__trash_active');
+    elementLikeCount.textContent = '0';
 
     // 4. agregar nueva tarjeta a la URL
 
@@ -75,6 +79,7 @@ export default class PopupWithForm extends Popup {
     buttonAddSave.style.pointer = 'none';
 
     api.addCard(newImage).then((response) => {
+
       //console.log(response);
       buttonAddSave.style.display = 'block';
 
@@ -95,6 +100,8 @@ export default class PopupWithForm extends Popup {
     // agregar la tarjeta nueva al Grid
 
     cards.prepend(element);
+
+
 
     element.style.display = 'flex';
   }

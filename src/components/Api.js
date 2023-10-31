@@ -59,6 +59,23 @@ export default class Api {
 
   //4. Añadir una nueva tarjeta
 
+  addOrDeleteCard(cardId, method, newImage) {
+    return fetch(`${this.baseUrl}/cards/${cardId}`, {
+      method: method,
+      headers: this.headers,
+      body: JSON.stringify(newImage),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject('Error: ' + res.status);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   addCard(newImage) {
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
@@ -76,29 +93,11 @@ export default class Api {
       });
   }
 
-  //7. borrar una tarjeta
-
-  eraseCard(idImage) {
-    return fetch(`${this.baseUrl}/cards/` + idImage, {
-      method: 'DELETE',
-      headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject('Error: ' + res.status);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   //8. anadir y eliminar "me gustas"
 
-  addCardLikes(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/` + cardId, {
-      method: 'PUT',
+  addOrDeleteLike(cardId, method) {
+    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+      method: method,
       headers: this.headers,
     })
       .then((res) => {
@@ -112,21 +111,6 @@ export default class Api {
       });
   }
 
-  deleteCardLikes(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/` + cardId, {
-      method: 'DELETE',
-      headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject('Error: ' + res.status);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   // 9. Actualizar la foto de perfil
 
