@@ -44,7 +44,7 @@ export default class PopupWithForm extends Popup {
     const elementImage = element.querySelector('.card__link');
     const elementPlace = element.querySelector('.card__name');
     const elementHeart = element.querySelector('.card__heart');
-    //const elementTrash = element.querySelector('.card__trash');
+    const elementTrash = element.querySelector('.card__trash');
     const elementLikeCount = element.querySelector('.card__like-count');
 
 
@@ -63,7 +63,7 @@ export default class PopupWithForm extends Popup {
     elementImage.alt = `imagen de ${urlInputImage.value}`;
     elementPlace.textContent = textInputPlace.value;
     elementHeart.classList.remove('card__heart_active');
-    //elementTrash.classList.add('card__trash_active');
+    elementTrash.classList.add('card__trash_active');
     elementLikeCount.textContent = '0';
 
     // 4. agregar nueva tarjeta a la URL
